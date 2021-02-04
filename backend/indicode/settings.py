@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'accounts',
+    'questionnaire',
 ]
 
 MIDDLEWARE = [
