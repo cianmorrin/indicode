@@ -43,3 +43,26 @@ class Answer(models.Model):
 
 	def __str__(self):
 		return self.text
+
+class Profile(models.Model):
+    user = models.OneToOneField(UserAccount, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    modified = models.DateTimeField(auto_now=True, editable=False)
+    
+    # Returns the string representation of the model.
+    def _str_(self):
+        return f"{self.user}"
+
+class UserLearningStyle(models.Model):
+    user_style = models.OneToOneField(UserAccount, on_delete=models.CASCADE)
+    active_score = models.IntegerField('Active Score')
+    reflective_score = models.IntegerField('Reflective Score')  
+    sensing_score = models.IntegerField('Sensing Score')
+    intuitive_score = models.IntegerField('Intuitive Score')
+    visual_score = models.IntegerField('Visual Score')
+    verbal_score = models.IntegerField('Verbal Score')
+    sequential_score = models.IntegerField('Sequential Score')
+    global_score = models.IntegerField('Global Score')
+
+    def _str_(self):
+        return self.user_style

@@ -6,7 +6,7 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework import routers
-from questionnaire import views
+from quizzes import views
 
 router = routers.SimpleRouter()
 router.register(r'quizzes', views.QuizViewSet)
@@ -19,7 +19,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/accounts/', include('accounts.urls')),
-    path('api/quizzes/', include('questionnaire.urls')),
+    path('api/quizzes/', include('quizzes.urls')),
     url(r'^api/v2/', include((router.urls, 'quizzes'), namespace='apiv2')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
