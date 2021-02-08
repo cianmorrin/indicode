@@ -6,9 +6,8 @@ import { GET_LEARNING } from "./types";
 // GET LEARNING MATERIAL
 export const getLearning = () => (dispatch, getState) => {
   axios
-    .get("/api/learning/", tokenConfig(getState))
+    .get("/api/learning/content/", tokenConfig(getState))
     .then((res) => {
-      console.log(res);
       dispatch({
         type: GET_LEARNING,
         payload: res.data,

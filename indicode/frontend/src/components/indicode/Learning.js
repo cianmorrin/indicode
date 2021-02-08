@@ -18,7 +18,7 @@ export class Learning extends Component {
       <Fragment>
         <h2>Learning Coddnvvtent</h2>
         {this.props.learning.map((learning) => (
-          <div>
+          <div key={learning.id}>
             <div>{learning.module}</div>
             <div>{learning.ed_content}</div>
           </div>
