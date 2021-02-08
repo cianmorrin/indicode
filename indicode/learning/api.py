@@ -1,4 +1,3 @@
-from learning.models import LearningModule
 from rest_framework import viewsets, permissions
 from .serializers import LearningModuleSerializer, LearningStyleQuestionnaireSerializer
 from .models import LearningModule, LearningStyleQuestionnaire

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'frontend',
     'accounts',
     'learning',
+    'userprofile',
     'knox',
 ]
 
