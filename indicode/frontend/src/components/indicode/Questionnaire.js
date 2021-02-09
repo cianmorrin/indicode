@@ -5,12 +5,14 @@ import {
   getQuestionnaire,
   submitQuestionnaire,
 } from "../../actions/questionnaire";
+import { getLearningStyleResults } from "../../actions/learning";
 
 export class Questionnaire extends Component {
   static propTypes = {
     questionnaire: PropTypes.array.isRequired,
     getQuestionnaire: PropTypes.func.isRequired,
     submitQuestionnaire: PropTypes.func.isRequired,
+    getLearningStyleResults: PropTypes.func.isRequired,
   };
 
   state = {};
@@ -34,11 +36,11 @@ export class Questionnaire extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div>
         <h2>Questionnaire</h2>
         <form onSubmit={this.onSubmit}>
-          {this.props.questionnaire.map((questionnaire) => (
-            <div key={questionnaire.id}>
+          {this.props.questionnaire.map((questionnaire, index) => (
+            <div key={index}>
               <h4>{questionnaire.question}</h4>
               <input
                 type="radio"
@@ -62,7 +64,7 @@ export class Questionnaire extends Component {
             </button>
           </div>
         </form>
-      </Fragment>
+      </div>
     );
   }
 }
@@ -74,4 +76,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getQuestionnaire,
   submitQuestionnaire,
+  getLearningStyleResults,
 })(Questionnaire);

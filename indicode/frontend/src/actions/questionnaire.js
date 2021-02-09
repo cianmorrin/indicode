@@ -26,7 +26,6 @@ export const submitQuestionnaire = (questionnaireResults) => (
   for (const [key, value] of Object.entries(questionnaireResults)) {
     results.push(value);
   }
-  console.log(results);
   let af_a = 0,
     af_b = 0,
     si_a = 0,
@@ -89,7 +88,6 @@ export const submitQuestionnaire = (questionnaireResults) => (
     sequential_score: sg_a,
     global_score: sg_b,
   };
-  console.log(questionnaireSubmission);
   axios
     .post(
       "/api/user/learningstyle/",
@@ -97,15 +95,14 @@ export const submitQuestionnaire = (questionnaireResults) => (
       tokenConfig(getState)
     )
     .then((res) => {
-      console.log("any then");
       // dispatch(
       //   createMessage({ submitQuestionnaire: "Questionnaire Submitted" })
       // );
-      // dispatch({
-      //   type: SUBMIIT_QUESTIONNAIRE,
-      //   payload: res.data,
-      // });
-      console.log("res", res);
+      console.log("res", res.data);
+      dispatch({
+        type: SUBMIIT_QUESTIONNAIRE,
+        payload: res.data,
+      });
     })
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
