@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class UserLearningStyle(models.Model):
-    user_ls = models.OneToOneField(User, related_name="userlearningstyle", on_delete=models.CASCADE, null=True)
+    user_ls = models.ForeignKey(User, related_name="userlearningstyle", on_delete=models.CASCADE, null=True)
     completed_questionnaire = models.BooleanField(default=False)
     active_score = models.IntegerField('Active Score')
     reflective_score = models.IntegerField('Reflective Score')  
