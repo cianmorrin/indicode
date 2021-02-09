@@ -1,13 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getQuestionnaire } from "../../actions/questionnaire";
+import {
+  getQuestionnaire,
+  submitQuestionnaire,
+} from "../../actions/questionnaire";
 
 export class Questionnaire extends Component {
   static propTypes = {
     questionnaire: PropTypes.array.isRequired,
     getQuestionnaire: PropTypes.func.isRequired,
-    questionnaireResults: PropTypes.array,
+    submitQuestionnaire: PropTypes.func.isRequired,
   };
 
   state = {};
@@ -26,15 +29,7 @@ export class Questionnaire extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
-    // const { name, email, message } = this.state;
-    // const lead = { name, email, message };
-    // this.props.addLead(lead);
-    // this.setState({
-    //   name: "",
-    //   email: "",
-    //   message: "",
-    // });
+    this.props.submitQuestionnaire(this.state);
   };
 
   render() {
@@ -76,4 +71,7 @@ const mapStateToProps = (state) => ({
   questionnaire: state.questionnaire.questionnaire,
 });
 
-export default connect(mapStateToProps, { getQuestionnaire })(Questionnaire);
+export default connect(mapStateToProps, {
+  getQuestionnaire,
+  submitQuestionnaire,
+})(Questionnaire);
