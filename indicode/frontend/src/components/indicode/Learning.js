@@ -16,9 +16,9 @@ export class Learning extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Learning Coddnvvtent</h2>
-        {this.props.learning.map((learning) => (
-          <div>
+        <h2>Learning Content</h2>
+        {this.props.learning.map((learning, index) => (
+          <div key={index}>
             <div>{learning.module}</div>
             <div>{learning.ed_content}</div>
           </div>
