@@ -46,9 +46,9 @@ export class Header extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          {/* <button
+          <button
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -63,7 +63,7 @@ export class Header extends Component {
             <a className="navbar-brand" href="#">
               IndiCode
             </a>
-          </div> */}
+          </div>
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>

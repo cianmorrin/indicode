@@ -37,7 +37,7 @@ class App extends Component {
         <AlertProvider template={AlertTemplate} {...alertOptions}>
           <Router>
             <Fragment>
-              <Navbar />
+              {/* <Navbar /> */}
               <Header />
               <Alerts />
               <div className="container">
