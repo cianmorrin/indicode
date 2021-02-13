@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import Navigation from "./Navbar";
 
 export class Header extends Component {
   static propTypes = {
@@ -47,7 +48,7 @@ export class Header extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
-          <button
+          {/* <button
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -62,7 +63,7 @@ export class Header extends Component {
             <a className="navbar-brand" href="#">
               IndiCode
             </a>
-          </div>
+          </div> */}
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>

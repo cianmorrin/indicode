@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
+import "../components/css/App.css";
 import {
   HashRouter as Router,
   Route,
@@ -9,6 +10,7 @@ import {
 
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import Navbar from "./layout/Navbar";
 import Header from "./layout/Header";
 import Dashboard from "./indicode/Dashboard";
 import Alerts from "./layout/Alerts";
@@ -35,9 +37,9 @@ class App extends Component {
         <AlertProvider template={AlertTemplate} {...alertOptions}>
           <Router>
             <Fragment>
+              <Navbar />
               <Header />
               <Alerts />
-              <SideNavPage />
               <div className="container">
                 <Switch>
                   <PrivateRoute exact path="/" component={Dashboard} />
