@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import {
   HashRouter as Router,
+  Link,
   Route,
   Switch,
   Redirect,
@@ -19,14 +20,10 @@ import PrivateRoute from "./common/PrivateRoute";
 import { Provider } from "react-redux";
 import store from "../store";
 import { loadUser } from "../actions/auth";
-
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import "react-pro-sidebar/dist/css/styles.css";
-
-const alertOptions = {
-  timeout: 3000,
-  position: "top center",
-};
+import "./styles/App.scss";
+import Layout from "./sidebar/Layout";
+import Explore from "./pages/Explore";
+import Learning from "./pages/Learning";
 
 class App extends Component {
   componentDidMount() {
@@ -36,21 +33,14 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <Router>
-            <Fragment>
-              <Header />
-              <Alerts />
-              <div className="container">
-                <Switch>
-                  <PrivateRoute exact path="/" component={Dashboard} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/login" component={Login} />
-                </Switch>
-              </div>
-            </Fragment>
-          </Router>
-        </AlertProvider>
+        <Router>
+          <Layout />
+          <Switch>
+            <Route exact path="/" component={Layout} />
+            <Route exact path="/learning" component={Learning} />
+            <Route exact path="/explore" component={Explore} />
+          </Switch>
+        </Router>
       </Provider>
     );
   }
