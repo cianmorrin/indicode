@@ -4,10 +4,14 @@ import PropTypes from "prop-types";
 import { getLearningStyleResults } from "../../actions/learning";
 
 export class LearningStyleResults extends Component {
-  static propTypes = {
-    learningStyleResults: PropTypes.array.isRequired,
-    getLearningStyleResults: PropTypes.func.isRequired,
-  };
+  // static propTypes = {
+  //   learningStyleResults: PropTypes.array.isRequired,
+  //   getLearningStyleResults: PropTypes.func.isRequired,
+  // };
+  constructor(props) {
+    super(props);
+    this.state = { brand: "Ford" };
+  }
 
   componentDidMount() {
     this.props.getLearningStyleResults();
@@ -16,7 +20,7 @@ export class LearningStyleResults extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Learning Style Results</h2>
+        <h2>Learning Style Results {this.state.brand}</h2>
         <table className="table table-striped">
           <thead>
             <tr>

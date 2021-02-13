@@ -8,14 +8,16 @@ import {
 import { getLearningStyleResults } from "../../actions/learning";
 
 export class Questionnaire extends Component {
-  static propTypes = {
-    questionnaire: PropTypes.array.isRequired,
-    getQuestionnaire: PropTypes.func.isRequired,
-    submitQuestionnaire: PropTypes.func.isRequired,
-    getLearningStyleResults: PropTypes.func.isRequired,
-  };
-
-  state = {};
+  // static propTypes = {
+  //   questionnaire: PropTypes.array.isRequired,
+  //   getQuestionnaire: PropTypes.func.isRequired,
+  //   submitQuestionnaire: PropTypes.func.isRequired,
+  //   getLearningStyleResults: PropTypes.func.isRequired,
+  // };
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   componentDidMount() {
     this.props.getQuestionnaire();
