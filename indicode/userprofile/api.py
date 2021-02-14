@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
 from .serializers import UserLearningStyleSerializer
-from .models import UserLearningStyle
+from userprofile.models import UserLearningStyle
 
 class UserLearningStyleViewSet(viewsets.ModelViewSet):
     serializer_class = UserLearningStyleSerializer

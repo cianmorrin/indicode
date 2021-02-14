@@ -1,7 +1,7 @@
 import axios from "axios";
 import { tokenConfig } from "./auth";
 
-import { GET_LEARNING, GET_LEARNING_STYLE_RESULTS } from "./types";
+import { GET_LEARNING } from "./types";
 
 // GET LEARNING MATERIAL
 export const getLearning = () => (dispatch, getState) => {
@@ -14,17 +14,4 @@ export const getLearning = () => (dispatch, getState) => {
       });
     })
     .catch((err) => console.log("error retreiving learning content"));
-};
-
-// GET LEARNING STYLE QUESTIONNAIRE RESULTS
-export const getLearningStyleResults = () => (dispatch, getState) => {
-  axios
-    .get("/api/user/learningstyle/", tokenConfig(getState))
-    .then((res) => {
-      dispatch({
-        type: GET_LEARNING_STYLE_RESULTS,
-        payload: res.data,
-      });
-    })
-    .catch((err) => console.log("error retreiving learning style results"));
 };

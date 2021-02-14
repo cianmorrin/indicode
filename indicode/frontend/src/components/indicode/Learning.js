@@ -4,19 +4,25 @@ import PropTypes from "prop-types";
 import { getLearning } from "../../actions/learning";
 
 export class Learning extends Component {
-  static propTypes = {
-    learning: PropTypes.array.isRequired,
-    getLearning: PropTypes.func.isRequired,
-  };
+  // static propTypes = {
+  //   learning: PropTypes.array.isRequired,
+  //   getLearning: PropTypes.func.isRequired,
+  // };
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   componentDidMount() {
+    console.log("learning mounted");
     this.props.getLearning();
   }
 
   render() {
     return (
       <Fragment>
-        <h2>Learning Content</h2>
+        <h2>Learning cContent {}</h2>
         {this.props.learning.map((learning, index) => (
           <div key={index}>
             <div>{learning.module}</div>
