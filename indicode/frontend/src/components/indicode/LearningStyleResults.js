@@ -10,7 +10,7 @@ export class LearningStyleResults extends Component {
   // };
   constructor(props) {
     super(props);
-    this.state = { brand: "Ford" };
+    this.state = {};
   }
 
   componentDidMount() {

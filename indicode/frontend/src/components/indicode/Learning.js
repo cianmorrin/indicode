@@ -11,17 +11,18 @@ export class Learning extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { brand: "Ford" };
+    this.state = {};
   }
 
   componentDidMount() {
+    console.log("learning mounted");
     this.props.getLearning();
   }
 
   render() {
     return (
       <Fragment>
-        <h2>Learning Content {this.state.brand}</h2>
+        <h2>Learning cContent {}</h2>
         {this.props.learning.map((learning, index) => (
           <div key={index}>
             <div>{learning.module}</div>

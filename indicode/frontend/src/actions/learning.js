@@ -18,8 +18,9 @@ export const getLearning = () => (dispatch, getState) => {
 
 // GET LEARNING STYLE QUESTIONNAIRE RESULTS
 export const getLearningStyleResults = () => (dispatch, getState) => {
+  console.log("getLearningStyleResults getting called");
   axios
-    .get("/api/user/learningstyle/", tokenConfig(getState))
+    .get("/api/user/learningstyle", tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: GET_LEARNING_STYLE_RESULTS,
