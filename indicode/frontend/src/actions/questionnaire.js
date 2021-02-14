@@ -2,7 +2,11 @@ import axios from "axios";
 import { tokenConfig } from "./auth";
 import { returnErrors } from "./messages";
 
-import { GET_QUESTIONNAIRE, SUBMIIT_QUESTIONNAIRE } from "./types";
+import {
+  GET_LEARNING_STYLE_RESULTS,
+  GET_QUESTIONNAIRE,
+  SUBMIIT_QUESTIONNAIRE,
+} from "./types";
 
 // GET QUESTIONNAIRE MATERIAL
 export const getQuestionnaire = () => (dispatch, getState) => {
@@ -15,6 +19,21 @@ export const getQuestionnaire = () => (dispatch, getState) => {
       });
     })
     .catch((err) => console.log("error retreiving questionnaire content"));
+};
+
+// GET LS RESULTS
+export const getLearningStyleResults = () => (dispatch, getState) => {
+  axios
+    .get("/api/user/learningstyle", tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_LEARNING_STYLE_RESULTS,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // SUBMIT QUESTIONNAIRE

@@ -4,11 +4,12 @@ import messages from "./messages";
 import auth from "./auth";
 import learning from "./learning";
 import questionnaire from "./questionnaire";
-
+import style from "./style";
 export default combineReducers({
   errors,
   messages,
   auth,
   learning,
   questionnaire,
+  style,
 });

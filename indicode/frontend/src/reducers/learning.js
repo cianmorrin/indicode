@@ -1,4 +1,4 @@
-import { GET_LEARNING, GET_LEARNING_STYLE_RESULTS } from "../actions/types.js";
+import { GET_LEARNING } from "../actions/types.js";
 
 const initialState = {
   learning: [],
@@ -12,11 +12,11 @@ export default function (state = initialState, action) {
         ...state,
         learning: action.payload,
       };
-    case GET_LEARNING_STYLE_RESULTS:
-      return {
-        ...state,
-        learningStyleResults: action.payload,
-      };
+    // case GET_LEARNING_STYLE_RESULTS:
+    //   return {
+    //     ...state,
+    //     learningStyleResults: action.payload,
+    //   };
     default:
       return state;
   }

@@ -5,15 +5,8 @@ import {
   getQuestionnaire,
   submitQuestionnaire,
 } from "../../actions/questionnaire";
-import { getLearningStyleResults } from "../../actions/learning";
 
 export class Questionnaire extends Component {
-  // static propTypes = {
-  //   questionnaire: PropTypes.array.isRequired,
-  //   getQuestionnaire: PropTypes.func.isRequired,
-  //   submitQuestionnaire: PropTypes.func.isRequired,
-  //   getLearningStyleResults: PropTypes.func.isRequired,
-  // };
   constructor(props) {
     super(props);
     this.state = {};
@@ -78,5 +71,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getQuestionnaire,
   submitQuestionnaire,
-  getLearningStyleResults,
 })(Questionnaire);
