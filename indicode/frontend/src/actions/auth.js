@@ -107,7 +107,6 @@ export const tokenConfig = (getState) => {
   // Get token from state
   const token = getState().auth.token;
   // Headers
-  console.log("token", token);
   const config = {
     headers: {
       "Content-Type": "application/json",

@@ -1,47 +1,60 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { SideBarData } from "./SideBarData";
 import { IconContext } from "react-icons";
 import "../css/Navbar.css";
+import { setSidebar } from "../../actions/sidebar";
 
-function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
+export class Navbar extends Component {
+  static propTypes = {
+    sidebar: PropTypes.bool.isRequired,
+    setSidebar: PropTypes.func.isRequired,
+  };
 
-  const showSidebar = () => setSidebar(!sidebar);
-
-  return (
-    <>
-      <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
-          <Link to="#" className="menu-bars">
-            <FaIcons.FaCode onClick={showSidebar} />
-          </Link>
-          <h1>IndiCode</h1>
-        </div>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {SideBarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </IconContext.Provider>
-    </>
-  );
+  render() {
+    console.log(this.props.sidebar);
+    return (
+      <>
+        <IconContext.Provider value={{ color: "#fff" }}>
+          <nav className={this.props.sidebar ? "nav-menu active" : "nav-menu"}>
+            <ul className="nav-menu-items" onClick={this.props.setSidebar}>
+              <li className="navbar-toggle">
+                <Link to="#" className="menu-bars">
+                  <FaIcons.FaCode onClick={this.props.setSidebar} />
+                </Link>
+              </li>
+              {SideBarData.map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    className={
+                      this.props.sidebar ? "nav-text" : "nav-text active"
+                    }
+                  >
+                    <Link to={item.path}>
+                      <span className="icon">{item.icon}</span>
+                      {this.props.sidebar ? (
+                        <span className="linkText">{item.title}</span>
+                      ) : (
+                        ""
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </IconContext.Provider>
+      </>
+    );
+  }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  sidebar: state.sidebar.sidebar,
+});
+
+export default connect(mapStateToProps, { setSidebar })(Navbar);
