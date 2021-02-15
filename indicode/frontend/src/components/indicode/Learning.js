@@ -22,15 +22,15 @@ export class Learning extends Component {
   render() {
     return (
       <Fragment>
-        <div className={this.props.sidebar ? "main-window" : "main-window lg"}>
-          <h2>Learning cContent {}</h2>
-          {this.props.learning.map((learning, index) => (
-            <div key={index}>
-              <div>{learning.module}</div>
-              <div>{learning.ed_content}</div>
-            </div>
-          ))}
-        </div>
+        {/* <div className={this.props.sidebar ? "main-window" : "main-window lg"}> */}
+        <h2>Learning Content {}</h2>
+        {this.props.learning.map((learning, index) => (
+          <div key={index}>
+            <div>{learning.module}</div>
+            <div>{learning.ed_content}</div>
+          </div>
+        ))}
+        {/* </div> */}
       </Fragment>
     );
   }

@@ -1,7 +1,7 @@
 import { SIDE_BAR } from "../actions/types.js";
 
 const initialState = {
-  sidebar: false,
+  sidebar: true,
 };
 
 export default function (state = initialState, action) {

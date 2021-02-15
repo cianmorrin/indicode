@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Questionnaire from "./Questionnaire";
-import QuestionnaireRes from "./QuestionnaireRes";
+import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
 
 export class Dashboard extends Component {
@@ -14,7 +14,6 @@ export class Dashboard extends Component {
 
   componentDidMount() {
     this.props.getLearningStyleResults();
-    console.log("mounted");
   }
 
   render() {
@@ -37,20 +36,12 @@ export class Dashboard extends Component {
     } else if (showResults === true) {
       console.log("showRes true");
       comp = (
-        <QuestionnaireRes
-          learningStyleResults={this.props.learningStyleResults}
-        />
+        <LSResults learningStyleResults={this.props.learningStyleResults} />
       );
     } else {
       console.log("showRes else");
     }
-    return (
-      <Fragment>
-        <div className={this.props.sidebar ? "main-window" : "main-window lg"}>
-          {comp}
-        </div>
-      </Fragment>
-    );
+    return <Fragment>{comp}</Fragment>;
   }
 }
 

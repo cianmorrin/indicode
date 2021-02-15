@@ -15,7 +15,7 @@ import Header from "./layout/Header";
 import Dashboard from "./indicode/Dashboard";
 import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
-import Learning from "./indicode/Learning";
+import Main from "./indicode/Main";
 import Register from "./accounts/Register";
 import PrivateRoute from "./common/PrivateRoute";
 import { Provider } from "react-redux";
@@ -42,9 +42,8 @@ class App extends Component {
               <Navbar />
               <Alerts />
               <div className="container">
+                <Main />
                 <Switch>
-                  <PrivateRoute exact path="/" component={Dashboard} />
-                  <Route exact path="/learning" component={Learning} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                 </Switch>
