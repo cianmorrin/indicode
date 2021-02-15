@@ -5,6 +5,7 @@ import auth from "./auth";
 import learning from "./learning";
 import questionnaire from "./questionnaire";
 import style from "./style";
+import sidebar from "./sidebar";
 export default combineReducers({
   errors,
   messages,
@@ -12,4 +13,5 @@ export default combineReducers({
   learning,
   questionnaire,
   style,
+  sidebar,
 });

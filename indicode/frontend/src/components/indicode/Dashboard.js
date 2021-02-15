@@ -9,6 +9,7 @@ export class Dashboard extends Component {
   static propTypes = {
     learningStyleResults: PropTypes.array.isRequired,
     getLearningStyleResults: PropTypes.func.isRequired,
+    sidebar: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
@@ -43,12 +44,19 @@ export class Dashboard extends Component {
     } else {
       console.log("showRes else");
     }
-    return <Fragment>{comp}</Fragment>;
+    return (
+      <Fragment>
+        <div className={this.props.sidebar ? "main-window" : "main-window lg"}>
+          {comp}
+        </div>
+      </Fragment>
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   learningStyleResults: state.style.learningStyleResults,
+  sidebar: state.sidebar.sidebar,
 });
 
 export default connect(mapStateToProps, { getLearningStyleResults })(Dashboard);

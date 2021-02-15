@@ -22,13 +22,15 @@ export class Learning extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Learning cContent {}</h2>
-        {this.props.learning.map((learning, index) => (
-          <div key={index}>
-            <div>{learning.module}</div>
-            <div>{learning.ed_content}</div>
-          </div>
-        ))}
+        <div className={this.props.sidebar ? "main-window" : "main-window lg"}>
+          <h2>Learning cContent {}</h2>
+          {this.props.learning.map((learning, index) => (
+            <div key={index}>
+              <div>{learning.module}</div>
+              <div>{learning.ed_content}</div>
+            </div>
+          ))}
+        </div>
       </Fragment>
     );
   }
@@ -36,6 +38,7 @@ export class Learning extends Component {
 
 const mapStateToProps = (state) => ({
   learning: state.learning.learning,
+  sidebar: state.sidebar.sidebar,
 });
 
 export default connect(mapStateToProps, { getLearning })(Learning);
