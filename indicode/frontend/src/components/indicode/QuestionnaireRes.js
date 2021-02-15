@@ -4,13 +4,9 @@ import PropTypes from "prop-types";
 import { getLearningStyleResults } from "../../actions/questionnaire";
 
 export class QuestionnaireRes extends Component {
-  static propTypes = {
-    learningStyleResults: PropTypes.array.isRequired,
-    getLearningStyleResults: PropTypes.func.isRequired,
-  };
-
-  componentDidMount() {
-    this.props.getLearningStyleResults();
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
   render() {
@@ -29,6 +25,7 @@ export class QuestionnaireRes extends Component {
               <th>Verbal</th>
               <th>Sequential</th>
               <th>Global</th>
+              <th>Completed</th>
               <th />
             </tr>
           </thead>
@@ -46,6 +43,7 @@ export class QuestionnaireRes extends Component {
                   <td>{learningStyleResult.active_score}</td>
                   <td>{learningStyleResult.sequential_score}</td>
                   <td>{learningStyleResult.global_score}</td>
+                  <td>{learningStyleResult.completed_questionnaire}</td>
                   <td></td>
                 </tr>
               )
@@ -57,10 +55,4 @@ export class QuestionnaireRes extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  learningStyleResults: state.style.learningStyleResults,
-});
-
-export default connect(mapStateToProps, { getLearningStyleResults })(
-  QuestionnaireRes
-);
+export default QuestionnaireRes;

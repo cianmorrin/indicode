@@ -25,7 +25,7 @@ export class Questionnaire extends Component {
   };
 
   onSubmit = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     this.props.submitQuestionnaire(this.state);
   };
 
