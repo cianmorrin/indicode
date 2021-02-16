@@ -1,7 +1,6 @@
 import axios from "axios";
 import { tokenConfig } from "./auth";
-import { returnErrors } from "./messages";
-
+import { returnErrors, createMessage } from "./messages";
 import {
   GET_LEARNING_STYLE_RESULTS,
   GET_QUESTIONNAIRE,
@@ -93,7 +92,7 @@ export const submitQuestionnaire = (questionnaireResults) => (
     }
   }
   let completedQuestionnaire = false;
-  if (results.length === 44) {
+  if (counter >= 43) {
     completedQuestionnaire = true;
   }
   const questionnaireSubmission = {
@@ -114,10 +113,9 @@ export const submitQuestionnaire = (questionnaireResults) => (
       tokenConfig(getState)
     )
     .then((res) => {
-      // dispatch(
-      //   createMessage({ submitQuestionnaire: "Questionnaire Submitted" })
-      // );
-      console.log("res", res.data);
+      dispatch(
+        createMessage({ submitQuestionnaire: "Questionnaire Submitted" })
+      );
       dispatch({
         type: SUBMIIT_QUESTIONNAIRE,
         payload: res.data,

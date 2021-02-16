@@ -15,7 +15,6 @@ export class Learning extends Component {
   }
 
   componentDidMount() {
-    console.log("learning mounted");
     this.props.getLearning();
   }
 

@@ -21,11 +21,6 @@ export class Dashboard extends Component {
     let showResults;
     if (lesResults.length > 0) {
       showResults = true;
-      console.log("lesResults", lesResults);
-      console.log(
-        "lesResults[0].completed_questionnaire",
-        lesResults[0].completed_questionnaire
-      );
     } else {
       showResults = false;
     }
@@ -34,12 +29,9 @@ export class Dashboard extends Component {
     if (showResults === false) {
       comp = <Questionnaire />;
     } else if (showResults === true) {
-      console.log("showRes true");
       comp = (
         <LSResults learningStyleResults={this.props.learningStyleResults} />
       );
-    } else {
-      console.log("showRes else");
     }
     return <Fragment>{comp}</Fragment>;
   }

@@ -5,11 +5,16 @@ import {
   getQuestionnaire,
   submitQuestionnaire,
 } from "../../actions/questionnaire";
+import QuestionPage from "./QuestionPage";
+import Pagination from "./Pagination";
 
 export class Questionnaire extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentPage: 1,
+      questionsPerPage: 8,
+    };
   }
 
   componentDidMount() {
@@ -25,40 +30,52 @@ export class Questionnaire extends Component {
   };
 
   onSubmit = (e) => {
-    //e.preventDefault();
     this.props.submitQuestionnaire(this.state);
   };
 
+  setCurrentPage = (pageNumber) => {
+    this.setState(() => ({
+      currentPage: pageNumber,
+    }));
+  };
+
   render() {
+    const indexOfLastQ = this.state.currentPage * this.state.questionsPerPage;
+    const indexOfFirstQ = indexOfLastQ - this.state.questionsPerPage;
+    const currentQs = this.props.questionnaire.slice(
+      indexOfFirstQ,
+      indexOfLastQ
+    );
+
+    let submitComp = (
+      <div className="form-group">
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </div>
+    );
+
+    let showSubmit = false;
+    if (this.state.currentPage == 6) {
+      showSubmit = true;
+    }
+
     return (
       <div>
-        <h2>Questionnaire</h2>
         <form onSubmit={this.onSubmit}>
-          {this.props.questionnaire.map((questionnaire, index) => (
-            <div key={index}>
-              <h4>{questionnaire.question}</h4>
-              <input
-                type="radio"
-                value="option_A"
-                name={questionnaire.id}
-                onChange={this.onChange}
-              />{" "}
-              {questionnaire.option_A}
-              <input
-                type="radio"
-                value="option_B"
-                name={questionnaire.id}
-                onChange={this.onChange}
-              />{" "}
-              {questionnaire.option_B}
-            </div>
-          ))}
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </div>
+          <h2>Questionnaire</h2>
+          <QuestionPage
+            questions={currentQs}
+            onChange={this.onChange}
+            checked={this.state}
+          />
+          {showSubmit ? submitComp : ""}
         </form>
+        <Pagination
+          questionsPerPage={this.state.questionsPerPage}
+          totalQs={this.props.questionnaire.length}
+          paginate={this.setCurrentPage}
+        />
       </div>
     );
   }
