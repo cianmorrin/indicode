@@ -12,7 +12,7 @@
   position: fixed;
   left: 7rem;
   transition: 650ms;
-  width: 100%;
+  width: 88%;
   height: 93vh;
   overflow: scroll;
 }
@@ -21,4 +21,40 @@
   margin-left: 8rem;
   left: 0;
   transition: 650ms;
+  width: 100%;
+}
+
+.main-card {
+  margin-top: 2vh;
+  width: 95%;
+  box-shadow: 4px 4px 4px;
+  border-radius: 20px;
+  height: 50vh;
+}
+
+.main-panel-header {
+  text-transform: none;
+  height: 30vh;
+  padding-bottom: 1vh;
+  font-size: 60px;
+  border-radius: 20px 20px 0px 0px;
+  background-color: rgb(219, 121, 41);
+  color: white;
+  padding-top: 8vh;
+}
+
+.bottom-panels {
+  border-radius: 20px;
+  background-color: rgb(243, 243, 243);
+  height: 30vh;
+  margin-left: 15px;
+}
+
+.dashbaord-right-side {
+  margin-top: 15vh;
+}
+
+.dashboard-side-panels {
+  margin-bottom: 5vh;
+  height: 20vh;
 }
