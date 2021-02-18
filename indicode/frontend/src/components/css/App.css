@@ -18,7 +18,7 @@
 }
 
 .main-window.lg {
-  margin-left: 8rem;
+  margin-left: 10rem;
   left: 0;
   transition: 650ms;
   width: 100%;
@@ -27,6 +27,7 @@
 .main-card {
   margin-top: 2vh;
   width: 95%;
+  max-width: 50rem;
   box-shadow: 4px 4px 4px;
   border-radius: 20px;
   height: 50vh;
@@ -38,23 +39,52 @@
   padding-bottom: 1vh;
   font-size: 60px;
   border-radius: 20px 20px 0px 0px;
-  background-color: rgb(219, 121, 41);
+  background-color: rgb(253, 148, 62);
   color: white;
   padding-top: 8vh;
 }
 
 .bottom-panels {
+  margin-top: 2vh;
   border-radius: 20px;
   background-color: rgb(243, 243, 243);
   height: 30vh;
   margin-left: 15px;
+  max-width: 22rem;
 }
 
 .dashbaord-right-side {
-  margin-top: 15vh;
+  margin-top: 13vh;
 }
 
 .dashboard-side-panels {
   margin-bottom: 5vh;
+  margin-right: 4rem;
   height: 20vh;
+  transition: 650ms;
+}
+
+.dashboard-side-panels-lg {
+  margin-bottom: 5vh;
+  margin-right: 6rem;
+  margin-left: -8rem;
+  transition: 650ms;
+  height: 20vh;
+  max-width: 22rem;
+}
+
+.learning {
+  display: flex;
+  width: 94%;
+}
+
+.ed-content {
+  width: 50vw;
+  height: 92vh;
+}
+
+.interpreter {
+  width: 60vw;
+  height: 92vh;
+  margin-right: 2rem;
 }

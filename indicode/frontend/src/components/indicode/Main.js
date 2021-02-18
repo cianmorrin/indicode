@@ -13,7 +13,7 @@ export class Main extends Component {
       <div className={this.props.sidebar ? "main-window" : "main-window lg"}>
         <Switch>
           <PrivateRoute exact path="/" component={Dashboard} />
-          <Route exact path="/learning" component={Learning} />
+          <PrivateRoute exact path="/learning" component={Learning} />
         </Switch>
       </div>
     );

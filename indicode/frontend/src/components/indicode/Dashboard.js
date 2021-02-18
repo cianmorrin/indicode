@@ -7,6 +7,7 @@ import { getLearningStyleResults } from "../../actions/questionnaire";
 
 export class Dashboard extends Component {
   static propTypes = {
+    auth: PropTypes.object.isRequired,
     learningStyleResults: PropTypes.array.isRequired,
     getLearningStyleResults: PropTypes.func.isRequired,
     sidebar: PropTypes.bool.isRequired,
@@ -17,6 +18,8 @@ export class Dashboard extends Component {
   }
 
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
     const lesResults = this.props.learningStyleResults;
     let showResults;
     if (lesResults.length > 0) {
@@ -70,13 +73,32 @@ export class Dashboard extends Component {
             </div>
           </div>
           <div className="col-md-3 dashbaord-right-side">
-            <div className="dashboard-side-panels border border-primary">
+            <strong>{user ? `Welcome ${user.username}` : ""}</strong>
+            <div
+              className={
+                this.props.sidebar
+                  ? "dashboard-side-panels border border-primary"
+                  : "dashboard-side-panels-lg border border-primary"
+              }
+            >
               <h1>Row 1</h1>
             </div>
-            <div className="dashboard-side-panels border border-primary">
+            <div
+              className={
+                this.props.sidebar
+                  ? "dashboard-side-panels border border-primary"
+                  : "dashboard-side-panels-lg border border-primary"
+              }
+            >
               <h1>Row 2</h1>
             </div>
-            <div className=" dashboard-side-panels border border-primary">
+            <div
+              className={
+                this.props.sidebar
+                  ? "dashboard-side-panels border border-primary"
+                  : "dashboard-side-panels-lg border border-primary"
+              }
+            >
               <h1>Row 3</h1>
             </div>
           </div>
@@ -89,6 +111,7 @@ export class Dashboard extends Component {
 const mapStateToProps = (state) => ({
   learningStyleResults: state.style.learningStyleResults,
   sidebar: state.sidebar.sidebar,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getLearningStyleResults })(Dashboard);
