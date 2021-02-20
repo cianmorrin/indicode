@@ -7,6 +7,10 @@ import LSOptions from "./LSOptions";
 import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
 import Modal from "./Modal";
+import * as FaIcons from "react-icons/fa";
+import Pencil from "../images/pencil.webp";
+import Calendar from "../images/calendar.webp";
+import Trophy from "../images/trophy.png";
 
 export class Dashboard extends Component {
   static propTypes = {
@@ -83,8 +87,23 @@ export class Dashboard extends Component {
               </div>
               <div className="row mb-2">
                 <div className="col-md-5 bottom-panels border ">
-                  <h4 className="card-title">Continue Learning</h4>
-                  <p className="card-text">Python 3</p>
+                  <h4 className="card-title">Your Learning Style</h4>
+                  <p className="card-text">Review and Updated Your Style</p>
+                  <div
+                    style={BUTTON_WRAPPER_STYLES}
+                    onClick={() => console.log("clicked")}
+                  >
+                    <button onClick={() => this.setIsOpen(true)}>
+                      Open LS Portal
+                    </button>
+
+                    <Modal
+                      open={this.state.isOpen}
+                      onClose={() => this.setIsOpen(false)}
+                    >
+                      Fancy Modal
+                    </Modal>
+                  </div>
                 </div>
                 <div className="col-md-1"></div>
                 <div className="col-md-5 bottom-panels border">
@@ -102,7 +121,8 @@ export class Dashboard extends Component {
                     : "dashboard-side-panels-lg border border-primary"
                 }
               >
-                <h1>Row 1</h1>
+                <h3>Write some code!</h3>
+                <img className="side-panels-img" src={Pencil} />
               </div>
 
               <div
@@ -112,24 +132,8 @@ export class Dashboard extends Component {
                     : "dashboard-side-panels-lg border border-primary"
                 }
               >
-                <h1>Row 2</h1>
-                <div
-                  style={BUTTON_WRAPPER_STYLES}
-                  onClick={() => console.log("clicked")}
-                >
-                  <button onClick={() => this.setIsOpen(true)}>
-                    Open Modal
-                  </button>
-
-                  <Modal
-                    open={this.state.isOpen}
-                    onClose={() => this.setIsOpen(false)}
-                  >
-                    Fancy Modal
-                  </Modal>
-                </div>
-
-                <div style={OTHER_CONTENT_STYLES}>Other Content</div>
+                <h3>10 Day Challenge</h3>
+                <img className="side-panels-img" src={Calendar} />
               </div>
 
               <div
@@ -139,7 +143,8 @@ export class Dashboard extends Component {
                     : "dashboard-side-panels-lg border border-primary"
                 }
               >
-                <h1>Row 3</h1>
+                <h3>Levels</h3>
+                <img className="side-panels-img" src={Trophy} />
               </div>
             </div>
           </div>

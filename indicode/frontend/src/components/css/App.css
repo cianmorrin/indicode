@@ -104,3 +104,9 @@
 .ls-options {
   max-width: 20rem;
 }
+
+.side-panels-img {
+  height: 15vh;
+  padding-top: 0vh;
+  padding-bottom: 4vh;
+}
