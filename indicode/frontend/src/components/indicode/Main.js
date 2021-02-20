@@ -6,6 +6,7 @@ import Login from "../accounts/Login";
 import Learning from "./Learning";
 import Register from "../accounts/Register";
 import PrivateRoute from "../common/PrivateRoute";
+import Questionnaire from "./Questionnaire";
 
 export class Main extends Component {
   render() {
@@ -14,6 +15,7 @@ export class Main extends Component {
         <Switch>
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/learning" component={Learning} />
+          <PrivateRoute exact path="/questionnaire" component={Questionnaire} />
         </Switch>
       </div>
     );

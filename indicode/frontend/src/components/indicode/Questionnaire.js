@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { Link, Redirect } from "react-router-dom";
 import {
   getQuestionnaire,
   submitQuestionnaire,
@@ -14,6 +14,7 @@ export class Questionnaire extends Component {
     this.state = {
       currentPage: 1,
       questionsPerPage: 8,
+      finishedQuestionnaire: false,
     };
   }
 
@@ -30,7 +31,11 @@ export class Questionnaire extends Component {
   };
 
   onSubmit = (e) => {
+    e.preventDefault();
     this.props.submitQuestionnaire(this.state);
+    this.setState(() => ({
+      finishedQuestionnaire: true,
+    }));
   };
 
   setCurrentPage = (pageNumber) => {
@@ -40,6 +45,9 @@ export class Questionnaire extends Component {
   };
 
   render() {
+    if (this.state.finishedQuestionnaire) {
+      return <Redirect to="/" />;
+    }
     const indexOfLastQ = this.state.currentPage * this.state.questionsPerPage;
     const indexOfFirstQ = indexOfLastQ - this.state.questionsPerPage;
     const currentQs = this.props.questionnaire.slice(
