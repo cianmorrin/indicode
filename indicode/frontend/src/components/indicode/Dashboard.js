@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from "react";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Questionnaire from "./Questionnaire";
 import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
+import Modal from "./Modal";
 
 export class Dashboard extends Component {
   static propTypes = {
@@ -16,6 +19,16 @@ export class Dashboard extends Component {
   componentDidMount() {
     this.props.getLearningStyleResults();
   }
+
+  state = {
+    isOpen: false,
+  };
+
+  setIsOpen = (modalState) => {
+    this.setState(() => ({
+      isOpen: modalState,
+    }));
+  };
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -36,6 +49,19 @@ export class Dashboard extends Component {
         <LSResults learningStyleResults={this.props.learningStyleResults} />
       );
     }
+
+    const BUTTON_WRAPPER_STYLES = {
+      position: "relative",
+      zIndex: 1,
+    };
+
+    const OTHER_CONTENT_STYLES = {
+      position: "relative",
+      zIndex: 2,
+      backgroundColor: "red",
+      padding: "10px",
+    };
+
     return (
       <Fragment>
         <div className="row mb-2">
@@ -83,6 +109,7 @@ export class Dashboard extends Component {
             >
               <h1>Row 1</h1>
             </div>
+
             <div
               className={
                 this.props.sidebar
@@ -91,7 +118,23 @@ export class Dashboard extends Component {
               }
             >
               <h1>Row 2</h1>
+              <div
+                style={BUTTON_WRAPPER_STYLES}
+                onClick={() => console.log("clicked")}
+              >
+                <button onClick={() => this.setIsOpen(true)}>Open Modal</button>
+
+                <Modal
+                  open={this.state.isOpen}
+                  onClose={() => this.setIsOpen(false)}
+                >
+                  Fancy Modal
+                </Modal>
+              </div>
+
+              <div style={OTHER_CONTENT_STYLES}>Other Content</div>
             </div>
+
             <div
               className={
                 this.props.sidebar

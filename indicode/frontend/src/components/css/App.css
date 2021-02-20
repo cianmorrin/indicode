@@ -88,3 +88,15 @@
   height: 92vh;
   margin-right: 2rem;
 }
+
+.d-chart {
+  width: 20vw;
+  height: 20vh;
+}
+
+.modal-pie-charts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10vh;
+}
