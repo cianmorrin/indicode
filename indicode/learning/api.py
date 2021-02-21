@@ -1,10 +1,10 @@
 from rest_framework import viewsets, permissions
 from .serializers import LearningModuleSerializer, LearningStyleQuestionnaireSerializer
-from .models import LearningModule, LearningStyleQuestionnaire
+from .models import LearningModuleContent, LearningStyleQuestionnaire
 
 # Learning Viewset
 class LearningViewSet(viewsets.ModelViewSet):
-    queryset = LearningModule.objects.all()
+    queryset = LearningModuleContent.objects.all()
     serializer_class = LearningModuleSerializer
     permission_classes = [permissions.IsAuthenticated]
 
