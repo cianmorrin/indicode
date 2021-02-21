@@ -40,6 +40,8 @@ export class Dashboard extends Component {
     const BUTTON_WRAPPER_STYLES = {
       position: "relative",
       zIndex: 1,
+      display: "inline",
+      padding: "10px",
     };
 
     const OTHER_CONTENT_STYLES = {
@@ -100,9 +102,7 @@ export class Dashboard extends Component {
                     <Modal
                       open={this.state.isOpen}
                       onClose={() => this.setIsOpen(false)}
-                    >
-                      Fancy Modal
-                    </Modal>
+                    ></Modal>
                   </div>
                 </div>
                 <div className="col-md-1"></div>
@@ -123,6 +123,19 @@ export class Dashboard extends Component {
               >
                 <h3>Write some code!</h3>
                 <img className="side-panels-img" src={Pencil} />
+                <div
+                  style={BUTTON_WRAPPER_STYLES}
+                  onClick={() => console.log("clicked")}
+                >
+                  <button onClick={() => this.setIsOpen(true)}>
+                    Open LS Portal
+                  </button>
+
+                  <Modal
+                    open={this.state.isOpen}
+                    onClose={() => this.setIsOpen(false)}
+                  ></Modal>
+                </div>
               </div>
 
               <div
