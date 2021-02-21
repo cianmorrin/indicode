@@ -20,17 +20,25 @@ export class Learning extends Component {
 
   render() {
     return (
-      <Fragment>
-        {/* <div className={this.props.sidebar ? "main-window" : "main-window lg"}> */}
-        <h2>Learning Content {}</h2>
-        {this.props.learning.map((learning, index) => (
-          <div key={index}>
-            <div>{learning.module}</div>
-            <div>{learning.ed_content}</div>
-          </div>
-        ))}
-        {/* </div> */}
-      </Fragment>
+      <div className="learning">
+        <div className="ed-content">
+          <h2>Learning Content {}</h2>
+          {this.props.learning.map((learning, index) => (
+            <div key={index}>
+              <div>{learning.module}</div>
+              <div>{learning.ed_content}</div>
+            </div>
+          ))}
+        </div>
+        <div className="interpreter">
+          <iframe
+            className="interpreter"
+            src="https://trinket.io/embed/python/3d8d7ce66b"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
     );
   }
 }

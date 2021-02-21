@@ -40,7 +40,6 @@ export class LSResults extends Component {
                   <td>{learningStyleResult.intuitive_score}</td>
                   <td>{learningStyleResult.visual_score}</td>
                   <td>{learningStyleResult.verbal_score}</td>
-                  <td>{learningStyleResult.active_score}</td>
                   <td>{learningStyleResult.sequential_score}</td>
                   <td>{learningStyleResult.global_score}</td>
                   <td>{learningStyleResult.completed_questionnaire}</td>
