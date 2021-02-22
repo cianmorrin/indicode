@@ -1,0 +1,87 @@
+Youtube commentary - Variables
+
+So first we are going to look at variables in Python. In python you are going to be dealing with a lot of data.
+In our program we are going to be dealing with all sorts of information, data and values.
+Sometimes the data can be difficult to manage. So in Python, we have a thing called a variable.
+A variable is basically just a container where we can store certain data values, and when we use a variable it makes storing and managing that data a lot easier.
+Variables are extremely helpful in our programs and are a concept you are going to want to master in order to progress with Python.
+
+So here is some code to get us started, here we have four simple sentences that are being printed to the screen.
+Please write these sentences into a new blank interpreter and hit the run button to see the result.
+
+Done? Pretty simple right?
+
+So as we can see our sentences make up a little story about George. So what if we decided we wanted to change the name and age of the main character.
+We could have to change every instance of the name George, and his age, in our story. Imagine this story was 1000 lines long? With the name mentioned 100s of times? That would lead to a lot of updates being needed.
+This is where variables can make our lives a lot easier.
+
+We can use variables to store the character's name and age. We've decided we want to name the character John and change is age to 35.
+
+In order to create a variable in Python we need to give it a couple pieces of information. The first being the name of the variable.
+So we need to assign a name to this container in which we will be storing information.
+
+So in Python when you are naming a variable there a couple points you want to notice, the variable's need to be descriptive and also if there are more than one word in the variable name,
+it is best practice to put an underscore between the words.
+
+The next step is to put a value inside the variable. This is done using the = operator. This is an assignment operator.
+So now we have two variables, character_name = "John", character_age = "35"
+
+In order to utilise our new variable in our story, we do so like so :
+
+print("There once was a name named " + character_name + ", ")
+
+So can you do it for age?
+
+So now you can see the benefit of variables, if we wanted to changed the character's name to Sandra, all we need is to update our variable character_name and it will be updated across our story.
+Also we are not limited to assigning the character_name only once in our program. If we want we can update it mid program, like so :
+It is often the case that you want to modify a variable during the lifecycle of a program.
+
+
+Data Types :
+
+So looking back at your program we can see that we are storing plain text in our variables. This plain text is referred to as a String.
+So there is a data type in Python called a string and is basically going to store plaintext.
+
+Another data type in Python is numbers, so it addition to strings, we can store numbers.
+So for example, rather than saying the character_age = "50", we can say
+character_age = 50. Can you see the difference? There is no longer a need for the quotation marks ("").
+This means the variable character_age is of data type number. This opens up a lot of functionality with numbers, however,
+this would have implications for printing out the character's age.
+
+In addition to storing whole numbers, we can store decimal numbers.
+So you could also store the age as 50.5344.
+
+Also you can store what is called a boolean value. A boolean value is essentially a true or a false value.
+A lot of instances in programming where you are going to want to represent true or false data.
+
+For example you could have a variable called isMale, and this value could represent whether someone is a male or not.
+So as seen we could say is_male = True or is_male = False.
+Booleans are very important data types and are frequently used throughout programs, it will become evident as you move through the levels.
+
+So the three basic data types are Strings, Numbers and Booleans.
+
+
+
+
+Working with Strings:
+
+One of the most common types to be working with are strings.
+So we've seen already how to create and print a string e.g print("Giraffe Academy")
+
+If you wanted to create a new line in this string, this could be done using "\n"
+So you could use it like so : print ("Giraffe\nAcademy")
+
+Now what if you wanted to include quotation marks in your string itself, you can't simply add in the quotation marks because Python will think you are ending your string.
+The way to include a quotation mark is to use the special \ character, which is called the escape character.
+The escape character basically tells Python that what ever character comes after this we want to render it literally and print out the quotation mark.
+
+We can store the string in a variable like so : phrase = "Giraffe Academy"
+Then we can print it out by saying : print(phrase)
+
+A term that is frequently used in concatenation, this basically means appended one string onto another.
+This can be done inside a print statement like so  print(phrase + "is cool")
+
+In addition to this we can use things called functions. Functions are basically blocks of code that we can run and it will perform a specific operation for us.
+We can use functions to modify our strings, we can also use them to get information about our strings.
+
+We are going to run through some of the common functions with strings
