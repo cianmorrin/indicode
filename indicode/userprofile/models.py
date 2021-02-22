@@ -13,3 +13,7 @@ class UserLearningStyle(models.Model):
     verbal_score = models.IntegerField('Verbal Score')
     sequential_score = models.IntegerField('Sequential Score')
     global_score = models.IntegerField('Global Score')
+    act_or_ref = models.CharField(max_length=10, blank=True)
+    sen_or_int = models.CharField(max_length=10, blank=True)
+    vis_or_verb = models.CharField(max_length=10, blank=True)
+    seq_or_glob = models.CharField(max_length=10, blank=True)

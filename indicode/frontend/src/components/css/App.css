@@ -110,3 +110,26 @@
   padding-top: 0vh;
   padding-bottom: 4vh;
 }
+
+.start-learning {
+  margin-top: 20vh;
+  margin-left: 5rem;
+  max-width: 20rem;
+}
+
+.start-learning-hide {
+  display: none;
+}
+
+.show-up {
+  font-size: large;
+}
+
+.no-show {
+  display: none;
+}
+
+.portal-interpreter {
+  width: 100%;
+  height: 50vh;
+}

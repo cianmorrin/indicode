@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 import LSOptions from "./LSOptions";
 import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
-import Modal from "./Modal";
+import LSModal from "./LSModal";
+import InterpreterModal from "./InterpreterModal";
 import * as FaIcons from "react-icons/fa";
 import Pencil from "../images/pencil.webp";
 import Calendar from "../images/calendar.webp";
@@ -25,12 +26,19 @@ export class Dashboard extends Component {
   }
 
   state = {
-    isOpen: false,
+    isLSModalOpen: false,
+    isIntModalOpen: false,
   };
 
-  setIsOpen = (modalState) => {
+  setLSOpen = (lsModalState) => {
     this.setState(() => ({
-      isOpen: modalState,
+      isLSModalOpen: lsModalState,
+    }));
+  };
+
+  setIntOpen = (intModalState) => {
+    this.setState(() => ({
+      isIntModalOpen: intModalState,
     }));
   };
 
@@ -95,14 +103,14 @@ export class Dashboard extends Component {
                     style={BUTTON_WRAPPER_STYLES}
                     onClick={() => console.log("clicked")}
                   >
-                    <button onClick={() => this.setIsOpen(true)}>
+                    <button onClick={() => this.setLSOpen(true)}>
                       Open LS Portal
                     </button>
 
-                    <Modal
-                      open={this.state.isOpen}
-                      onClose={() => this.setIsOpen(false)}
-                    ></Modal>
+                    <LSModal
+                      open={this.state.isLSModalOpen}
+                      onClose={() => this.setLSOpen(false)}
+                    ></LSModal>
                   </div>
                 </div>
                 <div className="col-md-1"></div>
@@ -127,14 +135,14 @@ export class Dashboard extends Component {
                   style={BUTTON_WRAPPER_STYLES}
                   onClick={() => console.log("clicked")}
                 >
-                  <button onClick={() => this.setIsOpen(true)}>
-                    Open LS Portal
+                  <button onClick={() => this.setIntOpen(true)}>
+                    Open Code Portal
                   </button>
 
-                  <Modal
-                    open={this.state.isOpen}
-                    onClose={() => this.setIsOpen(false)}
-                  ></Modal>
+                  <InterpreterModal
+                    open={this.state.isIntModalOpen}
+                    onClose={() => this.setIntOpen(false)}
+                  ></InterpreterModal>
                 </div>
               </div>
 
