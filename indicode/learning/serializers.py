@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from learning.models import LearningModule, LearningStyleQuestionnaire
+from learning.models import LearningModuleContent, LearningStyleQuestionnaire
 
 # Learning Serializer
 class LearningModuleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = LearningModule
+        model = LearningModuleContent
         fields = '__all__'
 
 # Learning Serializer

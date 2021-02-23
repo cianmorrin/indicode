@@ -18,10 +18,11 @@
 }
 
 .main-window.lg {
-  margin-left: 10rem;
+  margin-left: 7rem;
   left: 0;
   transition: 650ms;
   width: 100%;
+  margin-right: 0;
 }
 
 .main-card {
@@ -44,6 +45,25 @@
   padding-top: 8vh;
 }
 
+.main-card-btn {
+  width: 25%;
+  border-radius: 20px;
+  margin-top: -4vh;
+}
+
+.bottom-panel-btn {
+  width: 12rem;
+  border-radius: 20px;
+  color: azure;
+}
+
+.panel-btn {
+  width: 12rem;
+  border-radius: 20px;
+  background-color: rgb(253, 148, 62);
+  color: azure;
+}
+
 .bottom-panels {
   margin-top: 2vh;
   border-radius: 20px;
@@ -59,18 +79,30 @@
 
 .dashboard-side-panels {
   margin-bottom: 5vh;
-  margin-right: 4rem;
+  margin-right: 1rem;
+  margin-left: -3rem;
   height: 20vh;
   transition: 650ms;
 }
 
 .dashboard-side-panels-lg {
   margin-bottom: 5vh;
-  margin-right: 6rem;
-  margin-left: -8rem;
+  margin-right: 1rem;
+  margin-left: -4rem;
   transition: 650ms;
   height: 20vh;
   max-width: 22rem;
+}
+
+.questionnaire-q {
+  margin-top: 0;
+  margin-bottom: -1rem;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.page-link.current {
+  background-color: gray;
 }
 
 .learning {
@@ -79,12 +111,13 @@
 }
 
 .ed-content {
-  width: 50vw;
+  width: 60vw;
   height: 92vh;
+  overflow: auto;
 }
 
 .interpreter {
-  width: 60vw;
+  width: 50vw;
   height: 92vh;
   margin-right: 2rem;
 }
@@ -110,3 +143,74 @@
   padding-top: 0vh;
   padding-bottom: 4vh;
 }
+
+.start-learning {
+  margin-top: 20vh;
+  margin-left: 5rem;
+  max-width: 20rem;
+}
+
+.start-learning-hide {
+  display: none;
+}
+
+.show-up {
+  font-size: large;
+}
+
+.no-show {
+  display: none;
+}
+
+.portal-interpreter {
+  width: 100%;
+  height: 45vh;
+}
+
+.act-ref-img {
+  display: block;
+  margin-left: 2rem;
+  margin-right: auto;
+  height: 30vh;
+  border-radius: 10%;
+  box-shadow: 4px 4px 4px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.visual-images {
+  display: flex;
+}
+
+.vis-img {
+  height: 25vh;
+}
+
+.verbal-images {
+  display: block;
+}
+
+.ver-img {
+  margin-left: 2rem;
+  margin-right: auto;
+  height: 15vh;
+  border-radius: 10%;
+  box-shadow: 4px 4px 4px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.instructions-img {
+  margin-left: -5rem;
+  height: 42vh;
+  margin-top: 1vh;
+}
+
+/* .pagination-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 33%;
+  color: white;
+  text-align: center;
+} */

@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 import LSOptions from "./LSOptions";
 import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
-import Modal from "./Modal";
+import LSModal from "./LSModal";
+import InterpreterModal from "./InterpreterModal";
 import * as FaIcons from "react-icons/fa";
 import Pencil from "../images/pencil.webp";
 import Calendar from "../images/calendar.webp";
@@ -25,12 +26,19 @@ export class Dashboard extends Component {
   }
 
   state = {
-    isOpen: false,
+    isLSModalOpen: false,
+    isIntModalOpen: false,
   };
 
-  setIsOpen = (modalState) => {
+  setLSOpen = (lsModalState) => {
     this.setState(() => ({
-      isOpen: modalState,
+      isLSModalOpen: lsModalState,
+    }));
+  };
+
+  setIntOpen = (intModalState) => {
+    this.setState(() => ({
+      isIntModalOpen: intModalState,
     }));
   };
 
@@ -78,14 +86,15 @@ export class Dashboard extends Component {
                   Python learning
                 </p>
                 <hr className="my-4"></hr>
-                <p className="card-body">
-                  Once your style is determined we can begin the process
-                </p>
-                <p className="card-body">
-                  <a className="btn btn-primary btn-med" href="#" role="button">
+                <div className="card-body">
+                  <a
+                    className="btn btn-primary btn-med main-card-btn"
+                    href="#"
+                    role="button"
+                  >
                     Learn more
                   </a>
-                </p>
+                </div>
               </div>
               <div className="row mb-2">
                 <div className="col-md-5 bottom-panels border ">
@@ -95,14 +104,17 @@ export class Dashboard extends Component {
                     style={BUTTON_WRAPPER_STYLES}
                     onClick={() => console.log("clicked")}
                   >
-                    <button onClick={() => this.setIsOpen(true)}>
+                    <button
+                      className="btn btn-primary btn-med bottom-panel-btn"
+                      onClick={() => this.setLSOpen(true)}
+                    >
                       Open LS Portal
                     </button>
 
-                    <Modal
-                      open={this.state.isOpen}
-                      onClose={() => this.setIsOpen(false)}
-                    ></Modal>
+                    <LSModal
+                      open={this.state.isLSModalOpen}
+                      onClose={() => this.setLSOpen(false)}
+                    ></LSModal>
                   </div>
                 </div>
                 <div className="col-md-1"></div>
@@ -127,14 +139,17 @@ export class Dashboard extends Component {
                   style={BUTTON_WRAPPER_STYLES}
                   onClick={() => console.log("clicked")}
                 >
-                  <button onClick={() => this.setIsOpen(true)}>
-                    Open LS Portal
+                  <button
+                    className="btn btn-primary btn-med panel-btn"
+                    onClick={() => this.setIntOpen(true)}
+                  >
+                    Open Code Portal
                   </button>
 
-                  <Modal
-                    open={this.state.isOpen}
-                    onClose={() => this.setIsOpen(false)}
-                  ></Modal>
+                  <InterpreterModal
+                    open={this.state.isIntModalOpen}
+                    onClose={() => this.setIntOpen(false)}
+                  ></InterpreterModal>
                 </div>
               </div>
 

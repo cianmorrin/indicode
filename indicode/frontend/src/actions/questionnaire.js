@@ -1,4 +1,5 @@
 import axios from "axios";
+import { arrayOf } from "prop-types";
 import { tokenConfig } from "./auth";
 import { returnErrors, createMessage } from "./messages";
 import {
@@ -54,6 +55,8 @@ export const submitQuestionnaire = (questionnaireResults) => (
     sg_b = 0,
     counter = 0;
 
+  let act_or_ref, sen_or_int, vis_or_verb, seq_or_glob;
+
   for (let i = 0; i < 11; i++) {
     for (let j = 0; j < 4; j++) {
       switch (j) {
@@ -95,6 +98,39 @@ export const submitQuestionnaire = (questionnaireResults) => (
   if (counter >= 43) {
     completedQuestionnaire = true;
   }
+
+  if (af_a > af_b) {
+    const temp1 = af_a - af_b;
+    act_or_ref = "act" + temp1.toString();
+  } else if (af_b > af_a) {
+    const temp2 = af_b - af_a;
+    act_or_ref = "ref" + temp2.toString();
+  }
+
+  if (si_a > si_b) {
+    const temp1 = af_a - si_b;
+    sen_or_int = "sen" + temp1.toString();
+  } else if (af_b > si_a) {
+    const temp2 = si_b - si_a;
+    sen_or_int = "int" + temp2.toString();
+  }
+
+  if (vv_a > vv_b) {
+    const temp1 = vv_a - vv_b;
+    vis_or_verb = "vis" + temp1.toString();
+  } else if (af_b > vv_a) {
+    const temp2 = vv_b - vv_a;
+    vis_or_verb = "verb" + temp2.toString();
+  }
+
+  if (sg_a > sg_b) {
+    const temp1 = sg_a - sg_b;
+    seq_or_glob = "seq" + temp1.toString();
+  } else if (af_b > si_a) {
+    const temp2 = sg_b - sg_a;
+    seq_or_glob = "glo" + temp2.toString();
+  }
+
   const questionnaireSubmission = {
     completed_questionnaire: completedQuestionnaire,
     active_score: af_a,
@@ -105,6 +141,10 @@ export const submitQuestionnaire = (questionnaireResults) => (
     verbal_score: vv_b,
     sequential_score: sg_a,
     global_score: sg_b,
+    act_or_ref: act_or_ref,
+    sen_or_int: sen_or_int,
+    vis_or_verb: vis_or_verb,
+    seq_or_glob: seq_or_glob,
   };
   axios
     .post(
