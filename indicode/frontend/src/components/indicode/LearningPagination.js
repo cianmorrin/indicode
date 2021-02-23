@@ -13,20 +13,23 @@ const Pagination = ({
   }
 
   return (
-    <nav>
+    <nav className="pagination-footer">
       <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <li
-            key={number}
-            className={
-              number === currentPage ? "page-item active" : "page-item"
-            }
-          >
-            <a onClick={() => paginate(number)} className="page-link">
-              {number}
-            </a>
-          </li>
-        ))}
+        <li className={currentPage === 1 ? "page-item disabled" : "page-item"}>
+          <a class="page-link" onClick={() => paginate(currentPage - 1)}>
+            &laquo;
+          </a>
+        </li>
+
+        <li
+          className={
+            currentPage === totalLessons ? "page-item disabled" : "page-item"
+          }
+        >
+          <a className="page-link" onClick={() => paginate(currentPage + 1)}>
+            &raquo;
+          </a>
+        </li>
       </ul>
     </nav>
   );

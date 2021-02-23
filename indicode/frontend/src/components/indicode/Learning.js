@@ -14,6 +14,7 @@ import BooleanVisual from "../images/boolean_visual.png";
 import StringVerbal from "../images/verbal_string.png";
 import NumberVerbal from "../images/verbal_number.png";
 import BooleanVerbal from "../images/verbal_bool.png";
+import Instructions from "../images/instructions.png";
 
 export class Learning extends Component {
   state = {
@@ -418,21 +419,22 @@ export class Learning extends Component {
         <div className="ed-content">
           <div
             className={
-              this.state.started
-                ? "card border-secondary mb-3 start-learning-hide"
-                : "card border-secondary mb-3 start-learning"
+              this.state.started ? "start-learning-hide" : "start-learning"
             }
           >
-            <div className="card-body">
-              <h4 className="card-title">Ready?</h4>
-              <p className="card-text">Start your lesson here</p>
-              <span
-                onClick={this.getLearningContent}
-                className="btn btn-primary btn-med"
-              >
-                Go
-              </span>
+            <div className="card border-secondary mb-3">
+              <div className="card-body">
+                <h4 className="card-title">Ready?</h4>
+                <p className="card-text">Start your lesson here</p>
+                <span
+                  onClick={this.getLearningContent}
+                  className="btn btn-primary btn-med"
+                >
+                  Go
+                </span>
+              </div>
             </div>
+            <img className="instructions-img" src={Instructions} />
           </div>
           <div className={this.state.started ? "show-up" : "no-show"}>
             <form onSubmit={this.onFinish}>

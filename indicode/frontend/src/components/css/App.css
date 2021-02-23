@@ -199,3 +199,18 @@
   margin-top: 5vh;
   margin-bottom: 5vh;
 }
+
+.instructions-img {
+  margin-left: -5rem;
+  height: 42vh;
+  margin-top: 1vh;
+}
+
+/* .pagination-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 33%;
+  color: white;
+  text-align: center;
+} */
