@@ -13,7 +13,7 @@ export class Questionnaire extends Component {
     super(props);
     this.state = {
       currentPage: 1,
-      questionsPerPage: 8,
+      questionsPerPage: 6,
       finishedQuestionnaire: false,
     };
   }
@@ -64,14 +64,15 @@ export class Questionnaire extends Component {
     );
 
     let showSubmit = false;
-    if (this.state.currentPage == 6) {
+    if (this.state.currentPage == 8) {
       showSubmit = true;
     }
 
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <h2>Questionnaire</h2>
+          <h1 className="mt-4">Index of Learning Style Questionnaire</h1>
+          <hr></hr>
           <QuestionPage
             questions={currentQs}
             onChange={this.onChange}
@@ -83,6 +84,7 @@ export class Questionnaire extends Component {
           questionsPerPage={this.state.questionsPerPage}
           totalQs={this.props.questionnaire.length}
           paginate={this.setCurrentPage}
+          currentPage={this.state.currentPage}
         />
       </div>
     );

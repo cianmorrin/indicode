@@ -22,6 +22,7 @@
   left: 0;
   transition: 650ms;
   width: 100%;
+  margin-right: 0;
 }
 
 .main-card {
@@ -44,6 +45,25 @@
   padding-top: 8vh;
 }
 
+.main-card-btn {
+  width: 25%;
+  border-radius: 20px;
+  margin-top: -4vh;
+}
+
+.bottom-panel-btn {
+  width: 12rem;
+  border-radius: 20px;
+  color: azure;
+}
+
+.panel-btn {
+  width: 12rem;
+  border-radius: 20px;
+  background-color: rgb(253, 148, 62);
+  color: azure;
+}
+
 .bottom-panels {
   margin-top: 2vh;
   border-radius: 20px;
@@ -59,18 +79,30 @@
 
 .dashboard-side-panels {
   margin-bottom: 5vh;
-  margin-right: 4rem;
+  margin-right: 1rem;
+  margin-left: -3rem;
   height: 20vh;
   transition: 650ms;
 }
 
 .dashboard-side-panels-lg {
   margin-bottom: 5vh;
-  margin-right: 6rem;
-  margin-left: -8rem;
+  margin-right: 1rem;
+  margin-left: -4rem;
   transition: 650ms;
   height: 20vh;
   max-width: 22rem;
+}
+
+.questionnaire-q {
+  margin-top: 0;
+  margin-bottom: -1rem;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.page-link.current {
+  background-color: gray;
 }
 
 .learning {

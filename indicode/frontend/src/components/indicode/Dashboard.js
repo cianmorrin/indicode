@@ -86,14 +86,15 @@ export class Dashboard extends Component {
                   Python learning
                 </p>
                 <hr className="my-4"></hr>
-                <p className="card-body">
-                  Once your style is determined we can begin the process
-                </p>
-                <p className="card-body">
-                  <a className="btn btn-primary btn-med" href="#" role="button">
+                <div className="card-body">
+                  <a
+                    className="btn btn-primary btn-med main-card-btn"
+                    href="#"
+                    role="button"
+                  >
                     Learn more
                   </a>
-                </p>
+                </div>
               </div>
               <div className="row mb-2">
                 <div className="col-md-5 bottom-panels border ">
@@ -103,7 +104,10 @@ export class Dashboard extends Component {
                     style={BUTTON_WRAPPER_STYLES}
                     onClick={() => console.log("clicked")}
                   >
-                    <button onClick={() => this.setLSOpen(true)}>
+                    <button
+                      className="btn btn-primary btn-med bottom-panel-btn"
+                      onClick={() => this.setLSOpen(true)}
+                    >
                       Open LS Portal
                     </button>
 
@@ -135,7 +139,10 @@ export class Dashboard extends Component {
                   style={BUTTON_WRAPPER_STYLES}
                   onClick={() => console.log("clicked")}
                 >
-                  <button onClick={() => this.setIntOpen(true)}>
+                  <button
+                    className="btn btn-primary btn-med panel-btn"
+                    onClick={() => this.setIntOpen(true)}
+                  >
                     Open Code Portal
                   </button>
 
