@@ -7,7 +7,13 @@ import { getLearningStyleResults } from "../../actions/questionnaire";
 import Interpreter from "./Interpreter";
 import LearningContent from "./LearningContent";
 import LearningPagination from "./LearningPagination";
-import Mod_1_1 from "../images/mod_1_1.png";
+import Lesson_1_1_Code from "../images/Lesson_1_1_Code.png";
+import StringVisual from "../images/string_visual.png";
+import NumberVisual from "../images/number_visual.png";
+import BooleanVisual from "../images/boolean_visual.png";
+import StringVerbal from "../images/verbal_string.png";
+import NumberVerbal from "../images/verbal_number.png";
+import BooleanVerbal from "../images/verbal_bool.png";
 
 export class Learning extends Component {
   state = {
@@ -58,6 +64,7 @@ export class Learning extends Component {
     const vis_verb = this.props.learningStyleResults[0].vis_or_verb;
     const seq_glob = this.props.learningStyleResults[0].seq_or_glob;
 
+    console.log(vis_verb);
     let title, submodule, intro;
     let learning_content_comp, header_comp;
 
@@ -85,7 +92,7 @@ export class Learning extends Component {
                     <p>{this.props.learning[0].active_3_1}</p>
                     <div>
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="act-ref-img" src={Lesson_1_1_Code} />
                     </div>
                     <p>{this.props.learning[0].active_3_2}</p>
                   </Fragment>
@@ -101,7 +108,7 @@ export class Learning extends Component {
                     <p>{this.props.learning[0].active_2_1}</p>
                     <div>
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="act-ref-img" src={Lesson_1_1_Code} />
                     </div>
                     <p>{this.props.learning[0].active_2_2}</p>
                   </Fragment>
@@ -118,7 +125,7 @@ export class Learning extends Component {
                     <p>{this.props.learning[0].active_1_2}</p>
                     <div>
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="act-ref-img" src={Lesson_1_1_Code} />
                     </div>
                   </Fragment>
                 </div>
@@ -134,7 +141,7 @@ export class Learning extends Component {
                     <p>{this.props.learning[0].reflective_3_2}</p>
                     <div>
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="act-ref-img" src={Lesson_1_1_Code} />
                     </div>
                   </Fragment>
                 </div>
@@ -150,7 +157,7 @@ export class Learning extends Component {
                     <p>{this.props.learning[0].reflective_2_2}</p>
                     <div>
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="act-ref-img" src={Lesson_1_1_Code} />
                     </div>
                   </Fragment>
                 </div>
@@ -166,7 +173,7 @@ export class Learning extends Component {
                     <p>{this.props.learning[0].reflective_1_2}</p>
                     <div>
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="act-ref-img" src={Lesson_1_1_Code} />
                     </div>
                   </Fragment>
                 </div>
@@ -196,11 +203,17 @@ export class Learning extends Component {
                 <div>
                   {header_comp}
                   <Fragment>
-                    <p>{this.props.learning[1].visual_3_1}</p>
-                    <p>{this.props.learning[1].visual_3_2}</p>
-                    <div>
-                      {" "}
-                      <img src={Mod_1_1} />
+                    <div className="visual-images">
+                      <p>{this.props.learning[1].visual_3_1}</p>{" "}
+                      <img className="vis-img" src={StringVisual} />
+                    </div>
+                    <div className="visual-images">
+                      <img className="vis-img" src={NumberVisual} />
+                      <p>{this.props.learning[1].visual_3_2}</p>
+                    </div>
+                    <div className="visual-images">
+                      <p>{this.props.learning[1].visual_3_3}</p>{" "}
+                      <img className="vis-img" src={BooleanVisual} />
                     </div>
                   </Fragment>
                 </div>
@@ -212,12 +225,14 @@ export class Learning extends Component {
                 <div>
                   {header_comp}
                   <Fragment>
-                    <p>{this.props.learning[1].visual_2_1}</p>
-                    <p>{this.props.learning[1].visual_2_2}</p>
-                    <div>
+                    <p>{this.props.learning[1].visual_3_1}</p>
+                    <div className="visual images">
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="vis-img" src={StringVisual} />
+                      <img className="vis-img" src={NumberVisual} />
+                      <img className="vis-img" src={BooleanVisual} />
                     </div>
+                    <p>{this.props.learning[1].visual_3_2}</p>
                   </Fragment>
                 </div>
               );
@@ -228,31 +243,42 @@ export class Learning extends Component {
                 <div>
                   {header_comp}
                   <Fragment>
-                    <p>{this.props.learning[1].visual_1_1}</p>
-                    <p>{this.props.learning[1].visual_1_2}</p>
-                    <div>
+                    <p>{this.props.learning[1].visual_3_1}</p>
+                    <div className="visual images">
                       {" "}
-                      <img src={Mod_1_1} />
+                      <img className="vis-img" src={StringVisual} />
+                      <img className="vis-img" src={NumberVisual} />
+                      <img className="vis-img" src={BooleanVisual} />
+                    </div>
+                    <p>{this.props.learning[1].visual_3_2}</p>
+                  </Fragment>
+                </div>
+              );
+              break;
+            case "ver11":
+            case "ver9":
+              learning_content_comp = (
+                <div>
+                  {header_comp}
+                  <Fragment>
+                    <div className="verbal-images">
+                      <img className="ver-img" src={StringVerbal} />
+                      <p>{this.props.learning[1].visual_3_1}</p>{" "}
+                    </div>
+                    <div className="verbal-images">
+                      <img className="ver-img" src={NumberVerbal} />
+                      <p>{this.props.learning[1].visual_3_2}</p>
+                    </div>
+                    <div className="ver-images">
+                      <img className="ver-img" src={BooleanVerbal} />
+                      <p>{this.props.learning[1].visual_3_3}</p>{" "}
                     </div>
                   </Fragment>
                 </div>
               );
               break;
-            case "verb11":
-            case "verb9":
-              learning_content_comp = (
-                <div>
-                  {header_comp}
-                  <Fragment>
-                    <p>{this.props.learning[1].verbal_3_1}</p>
-                    <p>{this.props.learning[1].verbal_3_2}</p>
-                    <p>{this.props.learning[1].verbal_3_3}</p>
-                  </Fragment>
-                </div>
-              );
-              break;
-            case "verb7":
-            case "verb5":
+            case "ver7":
+            case "ver5":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -264,8 +290,8 @@ export class Learning extends Component {
                 </div>
               );
               break;
-            case "verb3":
-            case "verb1":
+            case "ver3":
+            case "ver1":
               learning_content_comp = (
                 <div>
                   {header_comp}
