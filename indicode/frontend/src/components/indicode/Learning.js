@@ -78,7 +78,7 @@ export class Learning extends Component {
             <Fragment>
               <h1>{title}</h1>
               <h5>{submodule}</h5>
-              <hr className="my-4"></hr>
+              <hr className="my-2"></hr>
               <p>{intro}</p>
             </Fragment>
           );
@@ -192,7 +192,7 @@ export class Learning extends Component {
             <Fragment>
               <h1>{title}</h1>
               <h5>{submodule}</h5>
-              <hr className="my-4"></hr>
+              <hr className="my-2"></hr>
               <p>{intro}</p>
             </Fragment>
           );
@@ -316,7 +316,7 @@ export class Learning extends Component {
             <Fragment>
               <h1>{title}</h1>
               <h5>{submodule}</h5>
-              <hr className="my-4"></hr>
+              <hr className="my-2"></hr>
               <p>{intro}</p>
             </Fragment>
           );
@@ -443,6 +443,7 @@ export class Learning extends Component {
               lessonsPerPage={this.state.lessonsPerPage}
               totalLessons={3}
               paginate={this.setCurrentPage}
+              currentPage={this.state.currentPage}
             />
           </div>
         </div>
