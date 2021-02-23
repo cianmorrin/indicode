@@ -52,13 +52,6 @@ export class Dashboard extends Component {
       padding: "10px",
     };
 
-    const OTHER_CONTENT_STYLES = {
-      position: "relative",
-      zIndex: 2,
-      backgroundColor: "red",
-      padding: "10px",
-    };
-
     const lesResults = this.props.learningStyleResults;
     let showResults;
     if (lesResults.length > 0) {
@@ -73,19 +66,23 @@ export class Dashboard extends Component {
     } else if (showResults === true) {
       comp = (
         <Fragment>
-          <div className="row mb-2">
-            <div className="col-md-8">
+          <div className={this.props.sidebar ? "dashboard" : "dashboard lg"}>
+            <div className="dash-left">
               <div className="card border-primary mb-3 main-card">
                 <h2 className="card-header main-panel-header">
                   Welcome to IndiCode
                 </h2>
-                <p className="card-body">
-                  IndiCode is desgined with you in mind. We want to teach you
-                  Python but in the way you want to be taught! Fill out out the
-                  questionnaire to determine your learning style and start the
-                  Python learning
+                <p className="text-primary main-panel-text">
+                  <span>
+                    IndiCode is desgined with you in mind. We want to teach you
+                    Python but in the way you want to be taught!
+                  </span>{" "}
+                  <span>
+                    Fill out out the questionnaire to determine your learning
+                    style and start the Python learning
+                  </span>
                 </p>
-                <hr className="my-4"></hr>
+                <hr className="main-panel-hr"></hr>
                 <div className="card-body">
                   <a
                     className="btn btn-primary btn-med main-card-btn"
@@ -96,8 +93,8 @@ export class Dashboard extends Component {
                   </a>
                 </div>
               </div>
-              <div className="row mb-2">
-                <div className="col-md-5 bottom-panels border ">
+              <div className="bottom-row">
+                <div className="bottom-panels border border-primary">
                   <h4 className="card-title">Your Learning Style</h4>
                   <p className="card-text">Review and Updated Your Style</p>
                   <div
@@ -117,15 +114,13 @@ export class Dashboard extends Component {
                     ></LSModal>
                   </div>
                 </div>
-                <div className="col-md-1"></div>
-                <div className="col-md-5 bottom-panels border">
+                <div className="bottom-panels border border-primary">
                   <h4 className="card-title">Your stats</h4>
                   <p className="card-text">Check out your progress</p>
                 </div>
               </div>
             </div>
-            <div className="col-md-3 dashbaord-right-side">
-              <strong>{user ? `Welcome ${user.username}` : ""}</strong>
+            <div className="dash-right">
               <div
                 className={
                   this.props.sidebar

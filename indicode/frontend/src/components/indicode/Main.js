@@ -12,7 +12,7 @@ import Quiz from "./Quiz";
 export class Main extends Component {
   render() {
     return (
-      <div className={this.props.sidebar ? "main-window" : "main-window lg"}>
+      <div className={this.props.sidebar ? "main-window" : "main-window"}>
         <Switch>
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/learning" component={Learning} />
