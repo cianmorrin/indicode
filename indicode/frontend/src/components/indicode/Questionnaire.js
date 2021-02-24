@@ -69,7 +69,7 @@ export class Questionnaire extends Component {
     }
 
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.onSubmit}>
           <h1 className="mt-4">Index of Learning Style Questionnaire</h1>
           <hr></hr>

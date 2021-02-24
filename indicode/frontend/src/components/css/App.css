@@ -7,31 +7,80 @@
   font-family: "Lato", sans-serif;
 }
 
-.main-window {
-  margin-left: 11rem;
-  position: fixed;
-  left: 7rem;
-  transition: 650ms;
-  width: 88%;
-  height: 93vh;
-  overflow: scroll;
+.login-reg-container {
+  padding-top: 10vh;
 }
 
-.main-window.lg {
-  margin-left: 7rem;
-  left: 0;
-  transition: 650ms;
+.main-window {
+  position: fixed;
   width: 100%;
+  height: 93vh;
+  transition: 650ms;
+  overflow: scroll;
   margin-right: 0;
+  background-color: rgba(238, 238, 238, 0.7);
+  z-index: -1;
+}
+
+.ls-options-main {
+  margin-left: 11rem;
+  transition: 650ms;
+}
+
+.ls-options-main-lg {
+  margin-left: 15rem;
+  transition: 650ms;
+}
+
+.ls-options-text {
+  text-align: center;
+}
+
+.ls-option-panels {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.ls-option-card-header {
+  width: 100%;
+}
+.dashboard {
+  margin-top: 5vh;
+  margin-left: 15rem;
+  transition: 650ms;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.dashboard.lg {
+  margin-left: 10rem;
+  transition: 650ms;
 }
 
 .main-card {
-  margin-top: 2vh;
-  width: 95%;
   max-width: 50rem;
   box-shadow: 4px 4px 4px;
   border-radius: 20px;
   height: 50vh;
+}
+
+.main-panel-text {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0;
+}
+
+.main-panel-text span {
+  display: block;
+  font-size: 19px;
+}
+
+.main-panel-hr {
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 
 .main-panel-header {
@@ -51,6 +100,12 @@
   margin-top: -4vh;
 }
 
+.bottom-row {
+  margin-top: 4vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .bottom-panel-btn {
   width: 12rem;
   border-radius: 20px;
@@ -65,33 +120,35 @@
 }
 
 .bottom-panels {
-  margin-top: 2vh;
   border-radius: 20px;
-  background-color: rgb(243, 243, 243);
+  background-color: white;
   height: 30vh;
-  margin-left: 15px;
-  max-width: 22rem;
+  width: 24rem;
+  border-radius: 20px;
 }
 
-.dashbaord-right-side {
+.dash-left {
+  width: 55%;
+}
+
+.dash-right {
   margin-top: 13vh;
+  margin-right: 15rem;
+  justify-content: space-around;
+  transition: 650ms;
+}
+
+.dash-right.lg {
+  padding-left: 2rem;
+  transition: 650ms;
 }
 
 .dashboard-side-panels {
   margin-bottom: 5vh;
-  margin-right: 1rem;
-  margin-left: -3rem;
+  border-radius: 20px;
   height: 20vh;
+  background-color: white;
   transition: 650ms;
-}
-
-.dashboard-side-panels-lg {
-  margin-bottom: 5vh;
-  margin-right: 1rem;
-  margin-left: -4rem;
-  transition: 650ms;
-  height: 20vh;
-  max-width: 22rem;
 }
 
 .questionnaire-q {
@@ -107,19 +164,41 @@
 
 .learning {
   display: flex;
-  width: 94%;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: left;
 }
 
 .ed-content {
-  width: 60vw;
+  padding-left: 16rem;
+  transition: 650ms;
+  width: 53vw;
   height: 92vh;
   overflow: auto;
+  max-width: 50rem;
+  padding-right: 1rem;
+  background-color: white;
+}
+
+.ed-content.lg {
+  padding-left: 6rem;
+  transition: 650ms;
+}
+
+.interpreter-div {
+  width: 46%;
+  height: 92vh;
+  transition: 650ms;
+}
+
+.interpreter-div.lg {
+  transition: 650ms;
 }
 
 .interpreter {
-  width: 50vw;
+  width: 100%;
   height: 92vh;
-  margin-right: 2rem;
+  transition: 650ms;
 }
 
 .d-chart {
@@ -145,9 +224,9 @@
 }
 
 .start-learning {
-  margin-top: 20vh;
+  /* margin-top: 20vh;
   margin-left: 5rem;
-  max-width: 20rem;
+  max-width: 20rem; */
 }
 
 .start-learning-hide {
@@ -162,6 +241,13 @@
   display: none;
 }
 
+.learning-content-header {
+}
+
+.learning-content-body {
+  padding-bottom: 10vh;
+}
+
 .portal-interpreter {
   width: 100%;
   height: 45vh;
@@ -172,6 +258,17 @@
   margin-left: 2rem;
   margin-right: auto;
   height: 30vh;
+  border-radius: 10%;
+  box-shadow: 4px 4px 4px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.ref-img {
+  display: block;
+  margin-left: 2rem;
+  margin-right: auto;
+  height: 15vh;
   border-radius: 10%;
   box-shadow: 4px 4px 4px;
   margin-top: 5vh;
@@ -193,7 +290,7 @@
 .ver-img {
   margin-left: 2rem;
   margin-right: auto;
-  height: 15vh;
+  height: 10vh;
   border-radius: 10%;
   box-shadow: 4px 4px 4px;
   margin-top: 5vh;
@@ -201,16 +298,35 @@
 }
 
 .instructions-img {
-  margin-left: -5rem;
+  margin-left: auto;
+  margin-right: auto;
   height: 42vh;
   margin-top: 1vh;
 }
 
-/* .pagination-footer {
+.start-lesson-card {
+  margin-top: 2vh;
+  margin-left: 6rem;
+  margin-right: auto;
+  width: 15vw;
+}
+
+.learning-pag-footer {
   position: fixed;
-  left: 0;
+  /* left: 0; */
+  margin-left: -6rem;
   bottom: 0;
-  width: 33%;
+  width: 53vw;
+  /* background-color: rgba(238, 238, 238, 0.1); */
   color: white;
   text-align: center;
-} */
+}
+
+.learning-nav-link {
+  background-color: rgb(255 255 255 / 50%);
+  font-size: 36px;
+}
+
+.l-pag-icons {
+  justify-content: center;
+}

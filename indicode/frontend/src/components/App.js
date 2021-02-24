@@ -42,7 +42,7 @@ class App extends Component {
               <Header />
               <Navbar />
               <Alerts />
-              <div className="container">
+              <div>
                 <Main />
                 <Switch>
                   <Route exact path="/register" component={Register} />
