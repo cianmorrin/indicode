@@ -13,10 +13,13 @@ const Pagination = ({
   }
 
   return (
-    <nav className="pagination-footer">
-      <ul className="pagination">
+    <nav className="learning-pag-footer">
+      <ul className="pagination l-pag-icons">
         <li className={currentPage === 1 ? "page-item disabled" : "page-item"}>
-          <a class="page-link" onClick={() => paginate(currentPage - 1)}>
+          <a
+            class="page-link learning-nav-link"
+            onClick={() => paginate(currentPage - 1)}
+          >
             &laquo;
           </a>
         </li>
@@ -26,7 +29,10 @@ const Pagination = ({
             currentPage === totalLessons ? "page-item disabled" : "page-item"
           }
         >
-          <a className="page-link" onClick={() => paginate(currentPage + 1)}>
+          <a
+            className="page-link learning-nav-link"
+            onClick={() => paginate(currentPage + 1)}
+          >
             &raquo;
           </a>
         </li>

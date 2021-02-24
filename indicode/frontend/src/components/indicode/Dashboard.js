@@ -120,14 +120,10 @@ export class Dashboard extends Component {
                 </div>
               </div>
             </div>
-            <div className="dash-right">
-              <div
-                className={
-                  this.props.sidebar
-                    ? "dashboard-side-panels border border-primary"
-                    : "dashboard-side-panels-lg border border-primary"
-                }
-              >
+            <div
+              className={this.props.sidebar ? "dash-right" : "dash-right lg"}
+            >
+              <div className="dashboard-side-panels border border-primary">
                 <h3>Write some code!</h3>
                 <img className="side-panels-img" src={Pencil} />
                 <div
@@ -148,24 +144,12 @@ export class Dashboard extends Component {
                 </div>
               </div>
 
-              <div
-                className={
-                  this.props.sidebar
-                    ? "dashboard-side-panels border border-primary"
-                    : "dashboard-side-panels-lg border border-primary"
-                }
-              >
+              <div className="dashboard-side-panels border border-primary">
                 <h3>10 Day Challenge</h3>
                 <img className="side-panels-img" src={Calendar} />
               </div>
 
-              <div
-                className={
-                  this.props.sidebar
-                    ? "dashboard-side-panels border border-primary"
-                    : "dashboard-side-panels-lg border border-primary"
-                }
-              >
+              <div className="dashboard-side-panels border border-primary">
                 <h3>Levels</h3>
                 <img className="side-panels-img" src={Trophy} />
               </div>
