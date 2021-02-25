@@ -1,4 +1,4 @@
-import { GET_LEARNING, GET_MCQUIZ } from "../actions/types.js";
+import { GET_LEARNING, GET_MCQUIZ, SUBMIT_QUIZ } from "../actions/types.js";
 
 const initialState = {
   learning: [],
@@ -16,6 +16,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         mcquiz: action.payload,
+      };
+    case SUBMIT_QUIZ:
+      return {
+        ...state,
+        mcquiz: [...state.mcquiz, action.payload],
       };
     default:
       return state;

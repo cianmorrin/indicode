@@ -1,56 +1,158 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 
-const MCQuizPage = ({ questions, onChange, checked }) => {
-  return (
-    <ul className="list-group mb-4">
-      {questions.map((question) => (
-        <li key={question.id} className="list-group-item">
-          <p className="questionnaire-q">{question.question}</p>
-          <br></br>
-          <div className="custom-control custom-radio">
-            <input
-              type="radio"
-              value="option_A"
-              name={question.id}
-              checked={checked[question.id] === "option_A"}
-              onChange={onChange}
-            />
-            {"  "}
-            {question.option_A} <br></br>
-            <input
-              type="radio"
-              value="option_B"
-              name={question.id}
-              checked={checked[question.id] === "option_B"}
-              onChange={onChange}
-            />
-            {"  "}
-            {question.option_B}
-            <br></br>
-            <input
-              type="radio"
-              value="option_C"
-              name={question.id}
-              checked={checked[question.id] === "option_C"}
-              onChange={onChange}
-            />
-            {"  "}
-            {question.option_C}
-            <br></br>
-            <input
-              type="radio"
-              value="option_D"
-              name={question.id}
-              checked={checked[question.id] === "option_D"}
-              onChange={onChange}
-            />
-            {"  "}
-            {question.option_D}
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
-};
+export class MCQuizPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  onSelected = (option) => {
+    this.props.onSelectedAnswer(option);
+  };
+
+  increaseScore = () => {
+    this.props.increaseScore();
+  };
+
+  onClickMCQButton = (e) => {
+    e.preventDefault();
+
+    if (this.props.selected) {
+      this.props.onClickMCQBtn(
+        this.props.selected,
+        this.props.questions[0]["correct"]
+      );
+    }
+  };
+
+  render() {
+    let buttonText = "Check Answer";
+    if (this.props.answerChecked) {
+      if (this.props.currentPage === 5) {
+        buttonText = "Finish Quiz";
+      } else {
+        buttonText = "Next Question";
+      }
+    }
+
+    return (
+      <div>
+        <ul className="list-group mb-4">
+          {this.props.questions.map((question) => (
+            <li key={question.id} className="list-group-item">
+              <p className="questionnaire-q">{question.question}</p> <br></br>
+              <p className="questionnaire-q">{question.question_1}</p>
+              <br></br>
+              <div
+                id={
+                  this.props.answerChecked &&
+                  this.props.selected === "option_A" &&
+                  this.props.selected === question.correct
+                    ? "ans-bg-correct"
+                    : this.props.answerChecked &&
+                      this.props.selected === "option_A"
+                    ? "ans-bg-incorrect"
+                    : this.props.answerChecked &&
+                      "option_A" === question.correct
+                    ? "ans-bg-correct"
+                    : "ans-bg"
+                }
+                className={
+                  this.props.selected === "option_A"
+                    ? "quiz-answers selected"
+                    : "quiz-answers"
+                }
+                onClick={() => this.onSelected("option_A")}
+              >
+                <span>{question.option_A}</span>
+                <span>{question.option_A_1}</span>
+              </div>
+              <div
+                id={
+                  this.props.answerChecked &&
+                  this.props.selected === "option_B" &&
+                  this.props.selected === question.correct
+                    ? "ans-bg-correct"
+                    : this.props.answerChecked &&
+                      this.props.selected === "option_B"
+                    ? "ans-bg-incorrect"
+                    : this.props.answerChecked &&
+                      "option_B" === question.correct
+                    ? "ans-bg-correct"
+                    : "ans-bg"
+                }
+                className={
+                  this.props.selected === "option_B"
+                    ? "quiz-answers selected"
+                    : "quiz-answers"
+                }
+                onClick={() => this.onSelected("option_B")}
+              >
+                <span>{question.option_B}</span>
+                <span>{question.option_B_1}</span>
+              </div>
+              <div
+                id={
+                  this.props.answerChecked &&
+                  this.props.selected === "option_C" &&
+                  this.props.selected === question.correct
+                    ? "ans-bg-correct"
+                    : this.props.answerChecked &&
+                      this.props.selected === "option_C"
+                    ? "ans-bg-incorrect"
+                    : this.props.answerChecked &&
+                      "option_C" === question.correct
+                    ? "ans-bg-correct"
+                    : "ans-bg"
+                }
+                className={
+                  this.props.selected === "option_C"
+                    ? "quiz-answers selected"
+                    : "quiz-answers"
+                }
+                onClick={() => this.onSelected("option_C")}
+              >
+                <span>{question.option_C}</span>
+                <span>{question.option_C_1}</span>
+              </div>
+              <div
+                id={
+                  this.props.answerChecked &&
+                  this.props.selected === "option_D" &&
+                  this.props.selected === question.correct
+                    ? "ans-bg-correct"
+                    : this.props.answerChecked &&
+                      this.props.selected === "option_D"
+                    ? "ans-bg-incorrect"
+                    : this.props.answerChecked &&
+                      "option_D" === question.correct
+                    ? "ans-bg-correct"
+                    : "ans-bg"
+                }
+                className={
+                  this.props.selected === "option_D"
+                    ? "quiz-answers selected"
+                    : "quiz-answers"
+                }
+                onClick={() => this.onSelected("option_D")}
+              >
+                <span>{question.option_D}</span>
+                <span>{question.option_D_1}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <button
+          onClick={this.onClickMCQButton}
+          className={
+            this.props.selected ? "btn btn-primary" : "btn btn-primary disabled"
+          }
+        >
+          {buttonText}
+        </button>
+      </div>
+    );
+  }
+}
 
 export default MCQuizPage;

@@ -78,6 +78,33 @@
   font-size: 19px;
 }
 
+.quiz-answers {
+  height: 14vh;
+  margin-top: 2vh;
+  border: 5px solid red;
+  cursor: pointer;
+}
+.quiz-answers.selected {
+  border: 5px solid blue;
+}
+
+#ans-bg {
+  background-color: white;
+}
+
+#ans-bg-correct {
+  background-color: green;
+}
+
+#ans-bg-incorrect {
+  background-color: red;
+}
+
+.quiz-answers span {
+  display: block;
+  font-size: 16px;
+}
+
 .main-panel-hr {
   margin-top: 0;
   margin-bottom: 2rem;

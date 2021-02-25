@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import { getMCQuiz } from "../../actions/learning";
+import { getMCQuiz, submitQuiz } from "../../actions/learning";
 import MCQuizPage from "./MCQuizPage";
-import Pagination from "./Pagination";
 import { setSidebar } from "../../actions/sidebar";
 
 export class MCQuiz extends Component {
@@ -12,7 +11,10 @@ export class MCQuiz extends Component {
     this.state = {
       currentPage: 1,
       questionsPerPage: 1,
-      finishedQuix: false,
+      finishedQuiz: false,
+      score: 0,
+      selected: "",
+      answerChecked: false,
     };
   }
 
@@ -23,21 +25,39 @@ export class MCQuiz extends Component {
     }
   }
 
-  onChange = (e) => {
-    const { name, value } = e.target;
-
-    this.setState({
-      [name]: value,
-    });
+  onSelectedAnswer = (option) => {
+    this.setState(() => ({
+      selected: option,
+    }));
   };
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    console.log("submit");
-    // this.props.submitQuestionnaire(this.state);
-    // this.setState(() => ({
-    //   finishedQuestionnaire: true,
-    // }));
+  onClickMCQBtn = (option, correctAnswer) => {
+    if (!this.state.answerChecked) {
+      this.setState({
+        answerChecked: true,
+      });
+
+      if (option === correctAnswer) {
+        this.setState({
+          score: this.state.score + 1,
+        });
+      }
+    } else if (this.state.currentPage === 5) {
+      this.props.submitQuiz(this.state.score);
+      this.setState({
+        finishedQuiz: true,
+      });
+    } else {
+      this.setState({
+        currentPage: this.state.currentPage + 1,
+      });
+      this.setState({
+        answerChecked: false,
+      });
+      this.setState({
+        selected: "",
+      });
+    }
   };
 
   setCurrentPage = (pageNumber) => {
@@ -47,6 +67,10 @@ export class MCQuiz extends Component {
   };
 
   render() {
+    if (this.state.finishedQuiz) {
+      return <Redirect to="/" />;
+    }
+
     const indexOfLastQ = this.state.currentPage * this.state.questionsPerPage;
     const indexOfFirstQ = indexOfLastQ - this.state.questionsPerPage;
     const currentQs = this.props.mcquiz.slice(indexOfFirstQ, indexOfLastQ);
@@ -60,27 +84,25 @@ export class MCQuiz extends Component {
     );
 
     let showSubmit = false;
-    if (this.state.currentPage == 6) {
+    if (this.state.currentPage == 5) {
       showSubmit = true;
     }
 
     return (
       <div className="container">
         <h1>UPDATED This is the Variables and Data Types Quiz!</h1>
-        <form onSubmit={this.onSubmit}>
+        {/* <form onSubmit={this.onSubmit}> */}
+        <form>
           <h2>QUIZ</h2>
           <MCQuizPage
             questions={currentQs}
-            onChange={this.onChange}
-            checked={this.state}
+            onSelectedAnswer={this.onSelectedAnswer}
+            onClickMCQBtn={this.onClickMCQBtn}
+            selected={this.state.selected}
+            answerChecked={this.state.answerChecked}
+            currentPage={this.state.currentPage}
           />
-          {showSubmit ? submitComp : ""}
         </form>
-        <Pagination
-          questionsPerPage={this.state.questionsPerPage}
-          totalQs={this.props.mcquiz.length}
-          paginate={this.setCurrentPage}
-        />
       </div>
     );
   }
@@ -91,4 +113,6 @@ const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
 });
 
-export default connect(mapStateToProps, { getMCQuiz, setSidebar })(MCQuiz);
+export default connect(mapStateToProps, { getMCQuiz, setSidebar, submitQuiz })(
+  MCQuiz
+);
