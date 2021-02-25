@@ -69,3 +69,13 @@ class LearningStyleQuestionnaire(models.Model):
     question = models.TextField(max_length=1000)
     option_A = models.TextField(max_length=1000)
     option_B = models.TextField(max_length=1000)
+
+
+class MCQuiz(models.Model):
+    moduleNum = models.IntegerField()
+    question = models.TextField(max_length=1000)
+    option_A = models.TextField( blank=True)
+    option_B = models.TextField( blank=True)
+    option_C = models.TextField( blank=True)
+    option_D = models.TextField( blank=True)
+    correct = models.TextField(max_length=1000)

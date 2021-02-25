@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
-from .serializers import LearningModuleSerializer, LearningStyleQuestionnaireSerializer
-from .models import LearningModuleContent, LearningStyleQuestionnaire
+from .serializers import LearningModuleSerializer, LearningStyleQuestionnaireSerializer, MCQuizSerializer
+from .models import LearningModuleContent, LearningStyleQuestionnaire, MCQuiz
 
 # Learning Viewset
 class LearningViewSet(viewsets.ModelViewSet):
@@ -12,4 +12,10 @@ class LearningViewSet(viewsets.ModelViewSet):
 class LearningStyleQuestionnaireViewSet(viewsets.ModelViewSet):
     queryset = LearningStyleQuestionnaire.objects.all()
     serializer_class = LearningStyleQuestionnaireSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class MCQuizViewSet(viewsets.ModelViewSet):
+    queryset = MCQuiz.objects.all()
+    serializer_class = MCQuizSerializer
     permission_classes = [permissions.IsAuthenticated]

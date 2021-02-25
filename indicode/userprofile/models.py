@@ -17,3 +17,11 @@ class UserLearningStyle(models.Model):
     sen_or_int = models.CharField(max_length=10, blank=True)
     vis_or_verb = models.CharField(max_length=10, blank=True)
     seq_or_glob = models.CharField(max_length=10, blank=True)
+
+
+class QuizResults(models.Model):
+    user_quizres = models.ForeignKey(User, related_name="mcquizresults", on_delete=models.CASCADE, null=True)
+    quiz_no = models.IntegerField()
+    score = models.IntegerField()
+    trophy = models.BooleanField(default=False)
+    
