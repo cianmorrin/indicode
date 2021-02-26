@@ -6,7 +6,9 @@ import PropTypes from "prop-types";
 import LSOptions from "./LSOptions";
 import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
+import { getUserQuizResults } from "../../actions/learning";
 import LSModal from "./LSModal";
+import QuizResultsModal from "./QuizResultsModal";
 import InterpreterModal from "./InterpreterModal";
 import * as FaIcons from "react-icons/fa";
 import Pencil from "../images/pencil.webp";
@@ -17,17 +19,20 @@ export class Dashboard extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     learningStyleResults: PropTypes.array.isRequired,
+    quizResults: PropTypes.array.isRequired,
     getLearningStyleResults: PropTypes.func.isRequired,
     sidebar: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
     this.props.getLearningStyleResults();
+    this.props.getUserQuizResults();
   }
 
   state = {
     isLSModalOpen: false,
     isIntModalOpen: false,
+    isQRModalOpen: false,
   };
 
   setLSOpen = (lsModalState) => {
@@ -41,8 +46,23 @@ export class Dashboard extends Component {
       isIntModalOpen: intModalState,
     }));
   };
+  setQROpen = (qrModalState) => {
+    this.setState(() => ({
+      isQRModalOpen: qrModalState,
+    }));
+  };
 
   render() {
+    let trophies = 0;
+    if (this.props.quizResults.length > 0) {
+      for (let i = 0; i < this.props.quizResults.length; i++) {
+        if (this.props.quizResults[i]["trophy"] === true) {
+          trophies++;
+        }
+      }
+    }
+    trophies = trophies.toString();
+
     const { isAuthenticated, user } = this.props.auth;
 
     const BUTTON_WRAPPER_STYLES = {
@@ -117,6 +137,23 @@ export class Dashboard extends Component {
                 <div className="bottom-panels border border-primary">
                   <h4 className="card-title">Your stats</h4>
                   <p className="card-text">Check out your progress</p>
+                  <div
+                    style={BUTTON_WRAPPER_STYLES}
+                    onClick={() => console.log("clicked")}
+                  >
+                    <button
+                      className="btn btn-primary btn-med bottom-panel-btn"
+                      onClick={() => this.setQROpen(true)}
+                    >
+                      View Quiz Results
+                    </button>
+
+                    <QuizResultsModal
+                      open={this.state.isQRModalOpen}
+                      onClose={() => this.setQROpen(false)}
+                      quizResults={this.props.quizResults}
+                    ></QuizResultsModal>
+                  </div>
                 </div>
               </div>
             </div>
@@ -152,6 +189,7 @@ export class Dashboard extends Component {
               <div className="dashboard-side-panels border border-primary">
                 <h3>Levels</h3>
                 <img className="side-panels-img" src={Trophy} />
+                {trophies}
               </div>
             </div>
           </div>
@@ -166,7 +204,11 @@ export class Dashboard extends Component {
 const mapStateToProps = (state) => ({
   learningStyleResults: state.style.learningStyleResults,
   sidebar: state.sidebar.sidebar,
+  quizResults: state.learning.quizResults,
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getLearningStyleResults })(Dashboard);
+export default connect(mapStateToProps, {
+  getLearningStyleResults,
+  getUserQuizResults,
+})(Dashboard);

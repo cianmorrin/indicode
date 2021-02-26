@@ -16,3 +16,4 @@ export const GET_LEARNING_STYLE_RESULTS = "GET_LEARNING_STYLE_RESULTS";
 export const SIDE_BAR = "SIDE_BAR";
 export const GET_MCQUIZ = "GET_MCQUIZ";
 export const SUBMIT_QUIZ = "SUBMIT_QUIZ";
+export const GET_QUIZ_RESULTS = "GET_QUIZ_RESULTS";

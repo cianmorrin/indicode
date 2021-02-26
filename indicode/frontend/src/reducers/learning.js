@@ -1,8 +1,14 @@
-import { GET_LEARNING, GET_MCQUIZ, SUBMIT_QUIZ } from "../actions/types.js";
+import {
+  GET_LEARNING,
+  GET_MCQUIZ,
+  SUBMIT_QUIZ,
+  GET_QUIZ_RESULTS,
+} from "../actions/types.js";
 
 const initialState = {
   learning: [],
   mcquiz: [],
+  quizResults: [],
 };
 
 export default function (state = initialState, action) {
@@ -21,6 +27,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         mcquiz: [...state.mcquiz, action.payload],
+      };
+    case GET_QUIZ_RESULTS:
+      return {
+        ...state,
+        quizResults: action.payload,
       };
     default:
       return state;

@@ -2,7 +2,12 @@ import axios from "axios";
 import { tokenConfig } from "./auth";
 import { returnErrors, createMessage } from "./messages";
 
-import { GET_LEARNING, GET_MCQUIZ, SUBMIT_QUIZ } from "./types";
+import {
+  GET_LEARNING,
+  GET_MCQUIZ,
+  SUBMIT_QUIZ,
+  GET_QUIZ_RESULTS,
+} from "./types";
 
 // GET LEARNING MATERIAL
 export const getLearning = () => (dispatch, getState) => {
@@ -31,9 +36,14 @@ export const getMCQuiz = () => (dispatch, getState) => {
 };
 
 export const submitQuiz = (quizResults) => (dispatch, getState) => {
+  let trophy = false;
+  if (quizResults > 3) {
+    trophy = true;
+  }
   const userQuizRes = {
     quiz_no: 1,
     score: quizResults,
+    trophy: trophy,
   };
 
   axios
@@ -48,4 +58,16 @@ export const submitQuiz = (quizResults) => (dispatch, getState) => {
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
     );
+};
+
+export const getUserQuizResults = () => (dispatch, getState) => {
+  axios
+    .get("/api/user/quizresults", tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_QUIZ_RESULTS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
 };
