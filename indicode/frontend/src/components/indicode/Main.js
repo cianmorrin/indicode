@@ -7,7 +7,7 @@ import Learning from "./Learning";
 import Register from "../accounts/Register";
 import PrivateRoute from "../common/PrivateRoute";
 import Questionnaire from "./Questionnaire";
-import Quiz from "./Quiz";
+import MCQuiz from "./MCQuiz";
 
 export class Main extends Component {
   render() {
@@ -17,7 +17,7 @@ export class Main extends Component {
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/learning" component={Learning} />
           <PrivateRoute exact path="/questionnaire" component={Questionnaire} />
-          <PrivateRoute exact path="/quiz" component={Quiz} />
+          <PrivateRoute exact path="/quiz" component={MCQuiz} />
         </Switch>
       </div>
     );

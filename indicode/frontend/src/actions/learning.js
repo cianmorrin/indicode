@@ -1,7 +1,13 @@
 import axios from "axios";
 import { tokenConfig } from "./auth";
+import { returnErrors, createMessage } from "./messages";
 
-import { GET_LEARNING } from "./types";
+import {
+  GET_LEARNING,
+  GET_MCQUIZ,
+  SUBMIT_QUIZ,
+  GET_QUIZ_RESULTS,
+} from "./types";
 
 // GET LEARNING MATERIAL
 export const getLearning = () => (dispatch, getState) => {
@@ -14,4 +20,54 @@ export const getLearning = () => (dispatch, getState) => {
       });
     })
     .catch((err) => console.log("error retreiving learning content"));
+};
+
+// GET MCQUIZ MATERIAL
+export const getMCQuiz = () => (dispatch, getState) => {
+  axios
+    .get("/api/learning/mcquiz/", tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_MCQUIZ,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log("error retreiving quiz content"));
+};
+
+export const submitQuiz = (quizResults) => (dispatch, getState) => {
+  let trophy = false;
+  if (quizResults > 3) {
+    trophy = true;
+  }
+  const userQuizRes = {
+    quiz_no: 1,
+    score: quizResults,
+    trophy: trophy,
+  };
+
+  axios
+    .post("/api/user/quizresults/", userQuizRes, tokenConfig(getState))
+    .then((res) => {
+      dispatch(createMessage({ submitQuiz: "Quiz Posted" }));
+      dispatch({
+        type: SUBMIT_QUIZ,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
+export const getUserQuizResults = () => (dispatch, getState) => {
+  axios
+    .get("/api/user/quizresults", tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_QUIZ_RESULTS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
 };

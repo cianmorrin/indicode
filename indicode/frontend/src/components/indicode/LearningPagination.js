@@ -17,7 +17,7 @@ const Pagination = ({
       <ul className="pagination l-pag-icons">
         <li className={currentPage === 1 ? "page-item disabled" : "page-item"}>
           <a
-            class="page-link learning-nav-link"
+            className="page-link learning-nav-link"
             onClick={() => paginate(currentPage - 1)}
           >
             &laquo;
