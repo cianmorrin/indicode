@@ -108,9 +108,9 @@ export const submitQuestionnaire = (questionnaireResults) => (
   }
 
   if (si_a > si_b) {
-    const temp1 = af_a - si_b;
+    const temp1 = si_a - si_b;
     sen_or_int = "sen" + temp1.toString();
-  } else if (af_b > si_a) {
+  } else if (si_b > si_a) {
     const temp2 = si_b - si_a;
     sen_or_int = "int" + temp2.toString();
   }
@@ -118,7 +118,7 @@ export const submitQuestionnaire = (questionnaireResults) => (
   if (vv_a > vv_b) {
     const temp1 = vv_a - vv_b;
     vis_or_verb = "vis" + temp1.toString();
-  } else if (af_b > vv_a) {
+  } else if (vv_b > vv_a) {
     const temp2 = vv_b - vv_a;
     vis_or_verb = "verb" + temp2.toString();
   }
@@ -126,7 +126,7 @@ export const submitQuestionnaire = (questionnaireResults) => (
   if (sg_a > sg_b) {
     const temp1 = sg_a - sg_b;
     seq_or_glob = "seq" + temp1.toString();
-  } else if (af_b > si_a) {
+  } else if (sg_b > sg_a) {
     const temp2 = sg_b - sg_a;
     seq_or_glob = "glo" + temp2.toString();
   }

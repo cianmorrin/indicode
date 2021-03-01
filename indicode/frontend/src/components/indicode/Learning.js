@@ -71,11 +71,12 @@ export class Learning extends Component {
     const vis_verb = this.props.learningStyleResults[0].vis_or_verb;
     const seq_glob = this.props.learningStyleResults[0].seq_or_glob;
 
-    console.log(vis_verb);
     let title, submodule, intro;
     let learning_content_comp, header_comp;
 
     if (this.props.learning.length > 0) {
+      console.log("lsRes", this.props.learningStyleResults);
+      console.log("act_ref", act_ref);
       switch (this.state.currentPage) {
         case 1:
           title = this.props.learning[0].module;
