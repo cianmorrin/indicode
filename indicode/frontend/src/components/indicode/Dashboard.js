@@ -117,10 +117,7 @@ export class Dashboard extends Component {
                 <div className="bottom-panels border border-primary">
                   <h4 className="card-title">Your Learning Style</h4>
                   <p className="card-text">Review and Updated Your Style</p>
-                  <div
-                    style={BUTTON_WRAPPER_STYLES}
-                    onClick={() => console.log("clicked")}
-                  >
+                  <div style={BUTTON_WRAPPER_STYLES}>
                     <button
                       className="btn btn-primary btn-med bottom-panel-btn"
                       onClick={() => this.setLSOpen(true)}
@@ -137,10 +134,7 @@ export class Dashboard extends Component {
                 <div className="bottom-panels border border-primary">
                   <h4 className="card-title">Your stats</h4>
                   <p className="card-text">Check out your progress</p>
-                  <div
-                    style={BUTTON_WRAPPER_STYLES}
-                    onClick={() => console.log("clicked")}
-                  >
+                  <div style={BUTTON_WRAPPER_STYLES}>
                     <button
                       className="btn btn-primary btn-med bottom-panel-btn"
                       onClick={() => this.setQROpen(true)}
@@ -163,10 +157,7 @@ export class Dashboard extends Component {
               <div className="dashboard-side-panels border border-primary">
                 <h3>Write some code!</h3>
                 <img className="side-panels-img" src={Pencil} />
-                <div
-                  style={BUTTON_WRAPPER_STYLES}
-                  onClick={() => console.log("clicked")}
-                >
+                <div style={BUTTON_WRAPPER_STYLES}>
                   <button
                     className="btn btn-primary btn-med panel-btn"
                     onClick={() => this.setIntOpen(true)}
