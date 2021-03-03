@@ -233,11 +233,26 @@
   height: 20vh;
 }
 
+.ls-res-content {
+  display: flex;
+}
+
+.charts-all {
+  width: 80%;
+}
+
 .modal-pie-charts {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-bottom: 10vh;
+  justify-content: left;
+  padding-bottom: 7vh;
+  margin-left: 5rem;
+  justify-content: space-around;
+}
+
+.ls-modal-submit {
+  position: absolute;
+  top: 50%;
 }
 
 .ls-options {
@@ -356,4 +371,27 @@
 
 .l-pag-icons {
   justify-content: center;
+}
+
+.pie-slider {
+  display: block;
+}
+
+#customRange {
+  width: 45%;
+  padding-left: 10%;
+}
+
+.slider-whole {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-left: 7rem;
+  margin-top: 2vh;
+}
+
+.leftlabel,
+.rightlabel {
+  font-size: 13px;
+  text-align: center;
 }

@@ -65,10 +65,15 @@ export class Learning extends Component {
     if (this.state.finishedModule) {
       return <Redirect to="/quiz" />;
     }
-    const act_ref = this.props.learningStyleResults[0].act_or_ref;
-    const sen_int = this.props.learningStyleResults[0].sen_or_int;
-    const vis_verb = this.props.learningStyleResults[0].vis_or_verb;
-    const seq_glob = this.props.learningStyleResults[0].seq_or_glob;
+
+    const styleArrlen = this.props.learningStyleResults.length;
+
+    const act_ref = this.props.learningStyleResults[styleArrlen - 1].act_or_ref;
+    const sen_int = this.props.learningStyleResults[styleArrlen - 1].sen_or_int;
+    const vis_verb = this.props.learningStyleResults[styleArrlen - 1]
+      .vis_or_verb;
+    const seq_glob = this.props.learningStyleResults[styleArrlen - 1]
+      .seq_or_glob;
 
     let title, submodule, intro;
     let learning_content_comp, header_comp;
@@ -278,8 +283,8 @@ export class Learning extends Component {
                 </div>
               );
               break;
-            case "ver11":
-            case "ver9":
+            case "verb11":
+            case "verb9":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -304,8 +309,8 @@ export class Learning extends Component {
                 </div>
               );
               break;
-            case "ver7":
-            case "ver5":
+            case "verb7":
+            case "verb5":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -330,8 +335,8 @@ export class Learning extends Component {
                 </div>
               );
               break;
-            case "ver3":
-            case "ver1":
+            case "verb3":
+            case "verb1":
               learning_content_comp = (
                 <div>
                   {header_comp}
