@@ -72,7 +72,6 @@ export class Learning extends Component {
 
     let whichModule = 0;
 
-    console.log("quizResults", this.props.quizResults);
     if (this.props.quizResults.length > 0) {
       whichModule = this.props.quizResults.length * 3;
     }
@@ -84,10 +83,14 @@ export class Learning extends Component {
       firstActiveImg = Lesson_2_1_Code;
       firstReflectiveImg = Lesson_2_Operators;
     }
-    const act_ref = this.props.learningStyleResults[0].act_or_ref;
-    const sen_int = this.props.learningStyleResults[0].sen_or_int;
-    const vis_verb = this.props.learningStyleResults[0].vis_or_verb;
-    const seq_glob = this.props.learningStyleResults[0].seq_or_glob;
+
+    const styleArrlen = this.props.learningStyleResults.length;
+    const act_ref = this.props.learningStyleResults[styleArrlen - 1].act_or_ref;
+    const sen_int = this.props.learningStyleResults[styleArrlen - 1].sen_or_int;
+    const vis_verb = this.props.learningStyleResults[styleArrlen - 1]
+      .vis_or_verb;
+    const seq_glob = this.props.learningStyleResults[styleArrlen - 1]
+      .seq_or_glob;
 
     let title, submodule, intro;
     let learning_content_comp, header_comp;
