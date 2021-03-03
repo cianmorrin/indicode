@@ -9,6 +9,8 @@ import Interpreter from "./Interpreter";
 import LearningContent from "./LearningContent";
 import LearningPagination from "./LearningPagination";
 import Lesson_1_1_Code from "../images/Lesson_1_1_Code.png";
+import Lesson_2_1_Code from "../images/Lesson_2_1_code.png";
+import Lesson_2_Operators from "../images/Lesson_2_operators.png";
 import Var_Assignment from "../images/var_assignment.png";
 import Var_Print from "../images/var_print_out.png";
 import StringVisual from "../images/string_visual.png";
@@ -74,9 +76,14 @@ export class Learning extends Component {
     if (this.props.quizResults.length > 0) {
       whichModule = this.props.quizResults.length * 3;
     }
-
-    console.log("whichModule", whichModule);
-
+    let showExtraImg = false;
+    let firstActiveImg = Lesson_1_1_Code;
+    let firstReflectiveImg = Var_Assignment;
+    if (whichModule === 3) {
+      showExtraImg = true;
+      firstActiveImg = Lesson_2_1_Code;
+      firstReflectiveImg = Lesson_2_Operators;
+    }
     const act_ref = this.props.learningStyleResults[0].act_or_ref;
     const sen_int = this.props.learningStyleResults[0].sen_or_int;
     const vis_verb = this.props.learningStyleResults[0].vis_or_verb;
@@ -109,9 +116,27 @@ export class Learning extends Component {
                     <p>{this.props.learning[whichModule].active_3_1}</p>
                     <div>
                       {" "}
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={
+                          showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                        }
+                        src={firstActiveImg}
+                      />
                     </div>
                     <p>{this.props.learning[whichModule].active_3_2}</p>
+                    {showExtraImg ? (
+                      <div>
+                        {" "}
+                        <img
+                          className={
+                            showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                          }
+                          src={Lesson_2_Operators}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                     <p>{this.props.learning[whichModule].active_3_3}</p>
                   </div>
                 </div>
@@ -127,9 +152,27 @@ export class Learning extends Component {
                     <p>{this.props.learning[whichModule].active_2_1}</p>
                     <div>
                       {" "}
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={
+                          showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                        }
+                        src={firstActiveImg}
+                      />
                     </div>
                     <p>{this.props.learning[whichModule].active_2_2}</p>
+                    {showExtraImg ? (
+                      <div>
+                        {" "}
+                        <img
+                          className={
+                            showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                          }
+                          src={Lesson_2_Operators}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                     <p>{this.props.learning[whichModule].active_2_3}</p>
                   </div>
                 </div>
@@ -145,8 +188,26 @@ export class Learning extends Component {
                     <p>{this.props.learning[whichModule].active_1_1}</p>
                     <p>{this.props.learning[whichModule].active_1_2}</p>
                     <div>
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={
+                          showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                        }
+                        src={firstActiveImg}
+                      />
                     </div>
+                    {showExtraImg ? (
+                      <div>
+                        {" "}
+                        <img
+                          className={
+                            showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                          }
+                          src={Lesson_2_Operators}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                     <p>{this.props.learning[whichModule].active_1_3}</p>
                   </div>
                 </div>
@@ -161,12 +222,20 @@ export class Learning extends Component {
                     <p>{intro}</p>
                     <p>{this.props.learning[whichModule].reflective_3_1}</p>
                     <div>
-                      <img className="ref-img" src={Var_Assignment} />
+                      <img
+                        className={showExtraImg ? "ref-img sml" : "ref-img"}
+                        src={firstReflectiveImg}
+                      />
                     </div>
                     <p>{this.props.learning[whichModule].reflective_3_2}</p>
-                    <div>
-                      <img className="ref-img" src={Var_Print} />
-                    </div>
+
+                    {showExtraImg ? (
+                      ""
+                    ) : (
+                      <div>
+                        <img className="ref-img" src={Var_Print} />
+                      </div>
+                    )}
                     <p>{this.props.learning[whichModule].reflective_3_3}</p>
                   </div>
                 </div>
@@ -181,12 +250,19 @@ export class Learning extends Component {
                     <p>{intro}</p>
                     <p>{this.props.learning[whichModule].reflective_2_1}</p>
                     <div>
-                      <img className="ref-img" src={Var_Assignment} />
+                      <img
+                        className={showExtraImg ? "ref-img sml" : "act-ref-img"}
+                        src={firstReflectiveImg}
+                      />
                     </div>
                     <p>{this.props.learning[whichModule].reflective_2_2}</p>
-                    <div>
-                      <img className="ref-img" src={Var_Print} />
-                    </div>
+                    {showExtraImg ? (
+                      ""
+                    ) : (
+                      <div>
+                        <img className="ref-img" src={Var_Print} />
+                      </div>
+                    )}
                     <p>{this.props.learning[whichModule].reflective_2_3}</p>
                   </div>
                 </div>
@@ -203,7 +279,10 @@ export class Learning extends Component {
                     <p>{this.props.learning[whichModule].reflective_1_2}</p>
                     <div>
                       {" "}
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={showExtraImg ? "ref-img sml" : "act-ref-img"}
+                        src={firstReflectiveImg}
+                      />
                     </div>
                     <p>{this.props.learning[whichModule].reflective_1_3}</p>
                   </div>
@@ -298,8 +377,8 @@ export class Learning extends Component {
                 </div>
               );
               break;
-            case "ver11":
-            case "ver9":
+            case "verb11":
+            case "verb9":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -334,8 +413,8 @@ export class Learning extends Component {
                 </div>
               );
               break;
-            case "ver7":
-            case "ver5":
+            case "verb7":
+            case "verb5":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -370,8 +449,8 @@ export class Learning extends Component {
                 </div>
               );
               break;
-            case "ver3":
-            case "ver1":
+            case "verb3":
+            case "verb1":
               learning_content_comp = (
                 <div>
                   {header_comp}

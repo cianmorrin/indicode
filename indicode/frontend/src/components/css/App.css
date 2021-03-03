@@ -291,6 +291,10 @@
   margin-bottom: 5vh;
 }
 
+.act-ref-img.sml {
+  height: 20vh;
+}
+
 .ref-img {
   display: block;
   margin-left: 2rem;
@@ -300,6 +304,10 @@
   box-shadow: 4px 4px 4px;
   margin-top: 5vh;
   margin-bottom: 5vh;
+}
+
+.ref-img.sml {
+  height: 20vh;
 }
 
 .visual-images {
