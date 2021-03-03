@@ -3,10 +3,21 @@ import { Link, Redirect } from "react-router-dom";
 import { Questionnaire } from "./Questionnaire";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import LSModal from "./LSModal";
 
 export class LSOptions extends Component {
   static propTypes = {
     sidebar: PropTypes.bool.isRequired,
+  };
+
+  state = {
+    isLSModalOpen: false,
+  };
+
+  setLSOpen = (lsModalState) => {
+    this.setState(() => ({
+      isLSModalOpen: lsModalState,
+    }));
   };
 
   render() {
@@ -53,9 +64,17 @@ export class LSOptions extends Component {
                 categories your learning style and have a fully immersed
                 learning experience
               </p>
-              <Link to={"./questionnaire"}>
-                <span className="btn btn-primary btn-med">Go</span>
-              </Link>
+              <button
+                className="btn btn-primary btn-med bottom-panel-btn"
+                onClick={() => this.setLSOpen(true)}
+              >
+                Open LS Portal
+              </button>
+
+              <LSModal
+                open={this.state.isLSModalOpen}
+                onClose={() => this.setLSOpen(false)}
+              ></LSModal>
             </div>
           </div>
           <div className="card border-secondary mb-3 ls-options">

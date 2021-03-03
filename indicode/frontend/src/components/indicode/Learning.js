@@ -64,7 +64,6 @@ export class Learning extends Component {
     if (this.props.learningStyleResults.length === 0) {
       return <Redirect to="/" />;
     }
-    console.log();
     if (this.state.finishedModule) {
       return <Redirect to="/quiz" />;
     }
@@ -87,8 +86,6 @@ export class Learning extends Component {
     let learning_content_comp, header_comp;
 
     if (this.props.learning.length > 0) {
-      console.log("lsRes", this.props.learningStyleResults);
-      console.log("act_ref", act_ref);
       switch (this.state.currentPage) {
         case 1:
           title = this.props.learning[whichModule].module;
