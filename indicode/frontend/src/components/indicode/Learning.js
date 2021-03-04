@@ -3,11 +3,14 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getLearning } from "../../actions/learning";
+import { getUserQuizResults } from "../../actions/learning";
 import { getLearningStyleResults } from "../../actions/questionnaire";
 import Interpreter from "./Interpreter";
 import LearningContent from "./LearningContent";
 import LearningPagination from "./LearningPagination";
 import Lesson_1_1_Code from "../images/Lesson_1_1_Code.png";
+import Lesson_2_1_Code from "../images/Lesson_2_1_code.png";
+import Lesson_2_Operators from "../images/Lesson_2_operators.png";
 import Var_Assignment from "../images/var_assignment.png";
 import Var_Print from "../images/var_print_out.png";
 import StringVisual from "../images/string_visual.png";
@@ -37,6 +40,7 @@ export class Learning extends Component {
   componentDidMount() {
     this.props.getLearningStyleResults();
     this.props.getLearning();
+    this.props.getUserQuizResults();
   }
 
   getLearningContent = () => {
@@ -66,8 +70,21 @@ export class Learning extends Component {
       return <Redirect to="/quiz" />;
     }
 
-    const styleArrlen = this.props.learningStyleResults.length;
+    let whichModule = 0;
 
+    if (this.props.quizResults.length > 0) {
+      whichModule = this.props.quizResults.length * 3;
+    }
+    let showExtraImg = false;
+    let firstActiveImg = Lesson_1_1_Code;
+    let firstReflectiveImg = Var_Assignment;
+    if (whichModule === 3) {
+      showExtraImg = true;
+      firstActiveImg = Lesson_2_1_Code;
+      firstReflectiveImg = Lesson_2_Operators;
+    }
+
+    const styleArrlen = this.props.learningStyleResults.length;
     const act_ref = this.props.learningStyleResults[styleArrlen - 1].act_or_ref;
     const sen_int = this.props.learningStyleResults[styleArrlen - 1].sen_or_int;
     const vis_verb = this.props.learningStyleResults[styleArrlen - 1]
@@ -81,9 +98,9 @@ export class Learning extends Component {
     if (this.props.learning.length > 0) {
       switch (this.state.currentPage) {
         case 1:
-          title = this.props.learning[0].module;
-          submodule = this.props.learning[0].sub_module;
-          intro = this.props.learning[0].intro;
+          title = this.props.learning[whichModule].module;
+          submodule = this.props.learning[whichModule].sub_module;
+          intro = this.props.learning[whichModule].intro;
           header_comp = (
             <div className="learning-content-header">
               <h1>{title}</h1>
@@ -99,13 +116,31 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[0].active_3_1}</p>
+                    <p>{this.props.learning[whichModule].active_3_1}</p>
                     <div>
                       {" "}
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={
+                          showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                        }
+                        src={firstActiveImg}
+                      />
                     </div>
-                    <p>{this.props.learning[0].active_3_2}</p>
-                    <p>{this.props.learning[0].active_3_3}</p>
+                    <p>{this.props.learning[whichModule].active_3_2}</p>
+                    {showExtraImg ? (
+                      <div>
+                        {" "}
+                        <img
+                          className={
+                            showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                          }
+                          src={Lesson_2_Operators}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    <p>{this.props.learning[whichModule].active_3_3}</p>
                   </div>
                 </div>
               );
@@ -117,13 +152,31 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[0].active_2_1}</p>
+                    <p>{this.props.learning[whichModule].active_2_1}</p>
                     <div>
                       {" "}
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={
+                          showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                        }
+                        src={firstActiveImg}
+                      />
                     </div>
-                    <p>{this.props.learning[0].active_2_2}</p>
-                    <p>{this.props.learning[0].active_2_3}</p>
+                    <p>{this.props.learning[whichModule].active_2_2}</p>
+                    {showExtraImg ? (
+                      <div>
+                        {" "}
+                        <img
+                          className={
+                            showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                          }
+                          src={Lesson_2_Operators}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    <p>{this.props.learning[whichModule].active_2_3}</p>
                   </div>
                 </div>
               );
@@ -135,12 +188,30 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[0].active_1_1}</p>
-                    <p>{this.props.learning[0].active_1_2}</p>
+                    <p>{this.props.learning[whichModule].active_1_1}</p>
+                    <p>{this.props.learning[whichModule].active_1_2}</p>
                     <div>
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={
+                          showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                        }
+                        src={firstActiveImg}
+                      />
                     </div>
-                    <p>{this.props.learning[0].active_1_3}</p>
+                    {showExtraImg ? (
+                      <div>
+                        {" "}
+                        <img
+                          className={
+                            showExtraImg ? "act-ref-img sml" : "act-ref-img"
+                          }
+                          src={Lesson_2_Operators}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    <p>{this.props.learning[whichModule].active_1_3}</p>
                   </div>
                 </div>
               );
@@ -152,15 +223,23 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[0].reflective_3_1}</p>
+                    <p>{this.props.learning[whichModule].reflective_3_1}</p>
                     <div>
-                      <img className="ref-img" src={Var_Assignment} />
+                      <img
+                        className={showExtraImg ? "ref-img sml" : "ref-img"}
+                        src={firstReflectiveImg}
+                      />
                     </div>
-                    <p>{this.props.learning[0].reflective_3_2}</p>
-                    <div>
-                      <img className="ref-img" src={Var_Print} />
-                    </div>
-                    <p>{this.props.learning[0].reflective_3_3}</p>
+                    <p>{this.props.learning[whichModule].reflective_3_2}</p>
+
+                    {showExtraImg ? (
+                      ""
+                    ) : (
+                      <div>
+                        <img className="ref-img" src={Var_Print} />
+                      </div>
+                    )}
+                    <p>{this.props.learning[whichModule].reflective_3_3}</p>
                   </div>
                 </div>
               );
@@ -172,15 +251,22 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[0].reflective_2_1}</p>
+                    <p>{this.props.learning[whichModule].reflective_2_1}</p>
                     <div>
-                      <img className="ref-img" src={Var_Assignment} />
+                      <img
+                        className={showExtraImg ? "ref-img sml" : "act-ref-img"}
+                        src={firstReflectiveImg}
+                      />
                     </div>
-                    <p>{this.props.learning[0].reflective_2_2}</p>
-                    <div>
-                      <img className="ref-img" src={Var_Print} />
-                    </div>
-                    <p>{this.props.learning[0].reflective_2_3}</p>
+                    <p>{this.props.learning[whichModule].reflective_2_2}</p>
+                    {showExtraImg ? (
+                      ""
+                    ) : (
+                      <div>
+                        <img className="ref-img" src={Var_Print} />
+                      </div>
+                    )}
+                    <p>{this.props.learning[whichModule].reflective_2_3}</p>
                   </div>
                 </div>
               );
@@ -192,13 +278,16 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[0].reflective_1_1}</p>
-                    <p>{this.props.learning[0].reflective_1_2}</p>
+                    <p>{this.props.learning[whichModule].reflective_1_1}</p>
+                    <p>{this.props.learning[whichModule].reflective_1_2}</p>
                     <div>
                       {" "}
-                      <img className="act-ref-img" src={Lesson_1_1_Code} />
+                      <img
+                        className={showExtraImg ? "ref-img sml" : "act-ref-img"}
+                        src={firstReflectiveImg}
+                      />
                     </div>
-                    <p>{this.props.learning[0].reflective_1_3}</p>
+                    <p>{this.props.learning[whichModule].reflective_1_3}</p>
                   </div>
                 </div>
               );
@@ -209,9 +298,9 @@ export class Learning extends Component {
           }
           break;
         case 2:
-          title = this.props.learning[1].module;
-          submodule = this.props.learning[1].sub_module;
-          intro = this.props.learning[1].intro;
+          title = this.props.learning[whichModule + 1].module;
+          submodule = this.props.learning[whichModule + 1].sub_module;
+          intro = this.props.learning[whichModule + 1].intro;
           header_comp = (
             <Fragment>
               <div className="learning-content-header">
@@ -230,15 +319,15 @@ export class Learning extends Component {
                   <div className="learning-content-body">
                     <p>{intro}</p>
                     <div className="visual-images">
-                      <p>{this.props.learning[1].visual_3_1}</p>{" "}
+                      <p>{this.props.learning[whichModule + 1].visual_3_1}</p>{" "}
                       <img className="vis-img" src={StringVisual} />
                     </div>
                     <div className="visual-images">
                       <img className="vis-img" src={NumberVisual} />
-                      <p>{this.props.learning[1].visual_3_2}</p>
+                      <p>{this.props.learning[whichModule + 1].visual_3_2}</p>
                     </div>
                     <div className="visual-images">
-                      <p>{this.props.learning[1].visual_3_3}</p>{" "}
+                      <p>{this.props.learning[whichModule + 1].visual_3_3}</p>{" "}
                       <img className="vis-img" src={BooleanVisual} />
                     </div>
                   </div>
@@ -252,14 +341,18 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[1].visual_3_1}</p>
-                    <div className="visual images">
-                      {" "}
+                    <div className="visual-images">
+                      <p>{this.props.learning[whichModule + 1].visual_3_1}</p>{" "}
                       <img className="vis-img" src={StringVisual} />
+                    </div>
+                    <div className="visual-images">
                       <img className="vis-img" src={NumberVisual} />
+                      <p>{this.props.learning[whichModule + 1].visual_3_2}</p>
+                    </div>
+                    <div className="visual-images">
+                      <p>{this.props.learning[whichModule + 1].visual_3_3}</p>{" "}
                       <img className="vis-img" src={BooleanVisual} />
                     </div>
-                    <p>{this.props.learning[1].visual_3_2}</p>
                   </div>
                 </div>
               );
@@ -271,14 +364,18 @@ export class Learning extends Component {
                   {header_comp}
                   <div className="learning-content-body">
                     <p>{intro}</p>
-                    <p>{this.props.learning[1].visual_3_1}</p>
-                    <div className="visual images">
-                      {" "}
+                    <div className="visual-images">
+                      <p>{this.props.learning[whichModule + 1].visual_3_1}</p>{" "}
                       <img className="vis-img" src={StringVisual} />
+                    </div>
+                    <div className="visual-images">
                       <img className="vis-img" src={NumberVisual} />
+                      <p>{this.props.learning[whichModule + 1].visual_3_2}</p>
+                    </div>
+                    <div className="visual-images">
+                      <p>{this.props.learning[whichModule + 1].visual_3_3}</p>{" "}
                       <img className="vis-img" src={BooleanVisual} />
                     </div>
-                    <p>{this.props.learning[1].visual_3_2}</p>
                   </div>
                 </div>
               );
@@ -291,19 +388,29 @@ export class Learning extends Component {
                   <div className="learning-content-body">
                     <p>{intro}</p>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_1}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_1}
+                      </h4>
                       <img className="ver-img" src={StringVerbal} />
-                      <p>{this.props.learning[1].visual_3_1}</p>{" "}
+                      <p>
+                        {this.props.learning[whichModule + 1].visual_3_1}
+                      </p>{" "}
                     </div>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_2}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_2}
+                      </h4>
                       <img className="ver-img" src={NumberVerbal} />
-                      <p>{this.props.learning[1].verbal_3_2}</p>
+                      <p>{this.props.learning[whichModule + 1].verbal_3_2}</p>
                     </div>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_3}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_3}
+                      </h4>
                       <img className="ver-img" src={BooleanVerbal} />
-                      <p>{this.props.learning[1].verbal_3_3}</p>{" "}
+                      <p>
+                        {this.props.learning[whichModule + 1].verbal_3_3}
+                      </p>{" "}
                     </div>
                   </div>
                 </div>
@@ -317,19 +424,29 @@ export class Learning extends Component {
                   <div className="learning-content-body">
                     <p>{intro}</p>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_1}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_1}
+                      </h4>
                       <img className="ver-img" src={StringVerbal} />
-                      <p>{this.props.learning[1].visual_3_1}</p>{" "}
+                      <p>
+                        {this.props.learning[whichModule + 1].visual_3_1}
+                      </p>{" "}
                     </div>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_2}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_2}
+                      </h4>
                       <img className="ver-img" src={NumberVerbal} />
-                      <p>{this.props.learning[1].verbal_3_2}</p>
+                      <p>{this.props.learning[whichModule + 1].verbal_3_2}</p>
                     </div>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_3}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_3}
+                      </h4>
                       <img className="ver-img" src={BooleanVerbal} />
-                      <p>{this.props.learning[1].verbal_3_3}</p>{" "}
+                      <p>
+                        {this.props.learning[whichModule + 1].verbal_3_3}
+                      </p>{" "}
                     </div>
                   </div>
                 </div>
@@ -343,19 +460,29 @@ export class Learning extends Component {
                   <div className="learning-content-body">
                     <p>{intro}</p>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_1}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_1}
+                      </h4>
                       <img className="ver-img" src={StringVerbal} />
-                      <p>{this.props.learning[1].visual_3_1}</p>{" "}
+                      <p>
+                        {this.props.learning[whichModule + 1].visual_3_1}
+                      </p>{" "}
                     </div>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_2}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_2}
+                      </h4>
                       <img className="ver-img" src={NumberVerbal} />
-                      <p>{this.props.learning[1].verbal_3_2}</p>
+                      <p>{this.props.learning[whichModule + 1].verbal_3_2}</p>
                     </div>
                     <div className="verbal-images">
-                      <h4>{this.props.learning[1].verbal_title_3}</h4>
+                      <h4>
+                        {this.props.learning[whichModule + 1].verbal_title_3}
+                      </h4>
                       <img className="ver-img" src={BooleanVerbal} />
-                      <p>{this.props.learning[1].verbal_3_3}</p>{" "}
+                      <p>
+                        {this.props.learning[whichModule + 1].verbal_3_3}
+                      </p>{" "}
                     </div>
                   </div>
                 </div>
@@ -367,9 +494,9 @@ export class Learning extends Component {
           }
           break;
         case 3:
-          title = this.props.learning[2].module;
-          submodule = this.props.learning[2].sub_module;
-          intro = this.props.learning[2].intro;
+          title = this.props.learning[whichModule + 2].module;
+          submodule = this.props.learning[whichModule + 2].sub_module;
+          intro = this.props.learning[whichModule + 2].intro;
           header_comp = (
             <div className="learning-content-header">
               <h1>{title}</h1>
@@ -391,7 +518,7 @@ export class Learning extends Component {
                     <p>{intro}</p>
                     <h4 className="mt-2">Challenge 1</h4>
                     <hr className="my-2"></hr>
-                    <p>{this.props.learning[2].sensing_1}</p>
+                    <p>{this.props.learning[whichModule + 2].sensing_1}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -406,13 +533,17 @@ export class Learning extends Component {
                     </p>
                     <div className="collapse" id="collapseExample">
                       <div className="card card-body">
-                        <p>{this.props.learning[2].code_answer_1_1}</p>
-                        <p>{this.props.learning[2].code_answer_1_2}</p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_1_1}
+                        </p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_1_2}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 2</h4>
                     <hr className="my-2"></hr>
-                    <p>{this.props.learning[2].sensing_2}</p>
+                    <p>{this.props.learning[whichModule + 2].sensing_2}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -427,13 +558,17 @@ export class Learning extends Component {
                     </p>
                     <div className="collapse" id="collapseExample2">
                       <div className="card card-body">
-                        <p>{this.props.learning[2].code_answer_2_1}</p>
-                        <p>{this.props.learning[2].code_answer_2_2}</p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_2_1}
+                        </p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_2_2}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 3</h4>
                     <hr className="my-2"></hr>
-                    <p>{this.props.learning[2].sensing_3}</p>
+                    <p>{this.props.learning[whichModule + 2].sensing_3}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -448,8 +583,12 @@ export class Learning extends Component {
                     </p>
                     <div className="collapse" id="collapseExample3">
                       <div className="card card-body">
-                        <p>{this.props.learning[2].code_answer_3_1}</p>
-                        <p>{this.props.learning[2].code_answer_3_2}</p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_3_1}
+                        </p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_3_2}
+                        </p>
                       </div>
                     </div>
                     <div className="form-group">
@@ -477,7 +616,7 @@ export class Learning extends Component {
                     <p>{intro}</p>
                     <h4 className="mt-4">Challenge 1</h4>
                     <hr className="my-2"></hr>
-                    <p>{this.props.learning[2].intuitive_1}</p>
+                    <p>{this.props.learning[whichModule + 2].intuitive_1}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -492,13 +631,17 @@ export class Learning extends Component {
                     </p>
                     <div className="collapse" id="collapseExample">
                       <div className="card card-body">
-                        <p>{this.props.learning[2].code_answer_1_1}</p>
-                        <p>{this.props.learning[2].code_answer_1_2}</p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_1_1}
+                        </p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_1_2}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 2</h4>
                     <hr className="my-2"></hr>
-                    <p>{this.props.learning[2].intuitive_2}</p>
+                    <p>{this.props.learning[whichModule + 2].intuitive_2}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -513,13 +656,17 @@ export class Learning extends Component {
                     </p>
                     <div className="collapse" id="collapseExample2">
                       <div className="card card-body">
-                        <p>{this.props.learning[2].code_answer_2_1}</p>
-                        <p>{this.props.learning[2].code_answer_2_2}</p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_2_1}
+                        </p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_2_2}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 3</h4>
                     <hr className="my-2"></hr>
-                    <p>{this.props.learning[2].intuitive_3}</p>
+                    <p>{this.props.learning[whichModule + 2].intuitive_3}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -534,8 +681,12 @@ export class Learning extends Component {
                     </p>
                     <div className="collapse" id="collapseExample3">
                       <div className="card card-body">
-                        <p>{this.props.learning[2].code_answer_3_1}</p>
-                        <p>{this.props.learning[2].code_answer_3_2}</p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_3_1}
+                        </p>
+                        <p>
+                          {this.props.learning[whichModule + 2].code_answer_3_2}
+                        </p>
                       </div>
                     </div>
                     <div className="form-group">
@@ -620,9 +771,11 @@ const mapStateToProps = (state) => ({
   learning: state.learning.learning,
   sidebar: state.sidebar.sidebar,
   learningStyleResults: state.style.learningStyleResults,
+  quizResults: state.learning.quizResults,
 });
 
 export default connect(mapStateToProps, {
   getLearning,
   getLearningStyleResults,
+  getUserQuizResults,
 })(Learning);
