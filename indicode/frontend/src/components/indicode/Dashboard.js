@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import LSOptions from "./LSOptions";
 import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
-import { getUserQuizResults } from "../../actions/learning";
+import { getUserQuizResults, isStreakOn } from "../../actions/learning";
 import LSModal from "./LSModal";
 import QuizResultsModal from "./QuizResultsModal";
 import InterpreterModal from "./InterpreterModal";
@@ -27,12 +27,52 @@ export class Dashboard extends Component {
   componentDidMount() {
     this.props.getLearningStyleResults();
     this.props.getUserQuizResults();
+
+    let yesterDay = new Date(Date.now() - 1000 * 3600 * 24 * 1);
+    let year = yesterDay.getFullYear();
+    let month = yesterDay.getMonth() + 1;
+    let date = yesterDay.getDate();
+
+    if (month < 10) {
+      month = `0${month}`;
+    }
+    if (date < 10) {
+      date = `0${date}`;
+    }
+    const yesterdayStr = `${year}-${month}-${date}`;
+    let quizResultDate;
+
+    let trophies = 0;
+    if (this.props.quizResults.length > 0) {
+      for (let i = 0; i < this.props.quizResults.length; i++) {
+        if (this.props.quizResults[i]["trophy"] === true) {
+          trophies++;
+        }
+        quizResultDate = this.props.quizResults[i]["date"];
+      }
+    }
+    this.setState(() => ({
+      trophies: trophies.toString(),
+    }));
+
+    if (yesterdayStr === quizResultDate) {
+      this.props.isStreakOn(true);
+      console.log("DASH STREAK IS ON ");
+      let currentStreakScore = 0;
+      for (let i = 0; i < this.props.quizResults.length; i++) {
+        currentStreakScore = this.props.quizResults[i]["streak"];
+      }
+      console.log("currentStreakScore", currentStreakScore);
+    } else {
+      this.props.isStreakOn(false);
+    }
   }
 
   state = {
     isLSModalOpen: false,
     isIntModalOpen: false,
     isQRModalOpen: false,
+    trophies: "",
   };
 
   setLSOpen = (lsModalState) => {
@@ -53,16 +93,6 @@ export class Dashboard extends Component {
   };
 
   render() {
-    let trophies = 0;
-    if (this.props.quizResults.length > 0) {
-      for (let i = 0; i < this.props.quizResults.length; i++) {
-        if (this.props.quizResults[i]["trophy"] === true) {
-          trophies++;
-        }
-      }
-    }
-    trophies = trophies.toString();
-
     const { isAuthenticated, user } = this.props.auth;
 
     const BUTTON_WRAPPER_STYLES = {
@@ -173,7 +203,7 @@ export class Dashboard extends Component {
               </div>
 
               <div className="dashboard-side-panels border border-primary">
-                <h3>10 Day Challenge</h3>
+                <h3>IndiCoding Streak</h3>
                 <img className="side-panels-img" src={Calendar} />
               </div>
 
@@ -202,4 +232,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getLearningStyleResults,
   getUserQuizResults,
+  isStreakOn,
 })(Dashboard);
