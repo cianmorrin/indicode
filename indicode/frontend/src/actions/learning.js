@@ -78,8 +78,6 @@ export const getUserQuizResults = () => (dispatch, getState) => {
 };
 
 export const isStreakOn = (streakOn) => (dispatch, getState) => {
-  console.log("isStreakOn");
-
   dispatch({
     type: STREAK,
     payload: streakOn,

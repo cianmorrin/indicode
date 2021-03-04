@@ -27,7 +27,9 @@ export class Dashboard extends Component {
   componentDidMount() {
     this.props.getLearningStyleResults();
     this.props.getUserQuizResults();
+  }
 
+  componentDidUpdate() {
     let yesterDay = new Date(Date.now() - 1000 * 3600 * 24 * 1);
     let year = yesterDay.getFullYear();
     let month = yesterDay.getMonth() + 1;
@@ -40,20 +42,17 @@ export class Dashboard extends Component {
       date = `0${date}`;
     }
     const yesterdayStr = `${year}-${month}-${date}`;
-    let quizResultDate;
+    let quizResultDate = "";
 
-    let trophies = 0;
     if (this.props.quizResults.length > 0) {
       for (let i = 0; i < this.props.quizResults.length; i++) {
-        if (this.props.quizResults[i]["trophy"] === true) {
-          trophies++;
-        }
         quizResultDate = this.props.quizResults[i]["date"];
       }
     }
-    this.setState(() => ({
-      trophies: trophies.toString(),
-    }));
+    console.log("dashboard mount");
+
+    console.log("quizResultDate", quizResultDate);
+    console.log("yesterdayStr", yesterdayStr);
 
     if (yesterdayStr === quizResultDate) {
       this.props.isStreakOn(true);
@@ -64,15 +63,14 @@ export class Dashboard extends Component {
       }
       console.log("currentStreakScore", currentStreakScore);
     } else {
+      console.log("DASH STREAK IS NOTTTT ON ");
       this.props.isStreakOn(false);
     }
   }
-
   state = {
     isLSModalOpen: false,
     isIntModalOpen: false,
     isQRModalOpen: false,
-    trophies: "",
   };
 
   setLSOpen = (lsModalState) => {
@@ -101,6 +99,16 @@ export class Dashboard extends Component {
       display: "inline",
       padding: "10px",
     };
+
+    let trophies = 0;
+    if (this.props.quizResults.length > 0) {
+      for (let i = 0; i < this.props.quizResults.length; i++) {
+        if (this.props.quizResults[i]["trophy"] === true) {
+          trophies++;
+        }
+      }
+    }
+    trophies = trophies.toString();
 
     const lesResults = this.props.learningStyleResults;
     let showResults;
