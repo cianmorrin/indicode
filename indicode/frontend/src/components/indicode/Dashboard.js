@@ -50,14 +50,9 @@ export class Dashboard extends Component {
       }
     }
 
-    console.log("quizResultDate", quizResultDate);
-    console.log("yesterdayStr", yesterdayStr);
-
     if (yesterdayStr === quizResultDate) {
       this.props.isStreakOn(true);
-      console.log("DASH STREAK IS ON ");
     } else {
-      console.log("DASH STREAK IS NOTTTT ON ");
       this.props.isStreakOn(false);
     }
   }
