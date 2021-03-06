@@ -189,7 +189,6 @@ export class Learning extends Component {
                   <div className="learning-content-body">
                     <p>{intro}</p>
                     <p>{this.props.learning[whichModule].active_1_1}</p>
-                    <p>{this.props.learning[whichModule].active_1_2}</p>
                     <div>
                       <img
                         className={
@@ -198,6 +197,8 @@ export class Learning extends Component {
                         src={firstActiveImg}
                       />
                     </div>
+                    <p>{this.props.learning[whichModule].active_1_2}</p>
+
                     {showExtraImg ? (
                       <div>
                         {" "}
