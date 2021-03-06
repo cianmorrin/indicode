@@ -49,7 +49,6 @@ export class Dashboard extends Component {
         quizResultDate = this.props.quizResults[i]["date"];
       }
     }
-    console.log("dashboard mount");
 
     console.log("quizResultDate", quizResultDate);
     console.log("yesterdayStr", yesterdayStr);
@@ -57,11 +56,6 @@ export class Dashboard extends Component {
     if (yesterdayStr === quizResultDate) {
       this.props.isStreakOn(true);
       console.log("DASH STREAK IS ON ");
-      let currentStreakScore = 0;
-      for (let i = 0; i < this.props.quizResults.length; i++) {
-        currentStreakScore = this.props.quizResults[i]["streak"];
-      }
-      console.log("currentStreakScore", currentStreakScore);
     } else {
       console.log("DASH STREAK IS NOTTTT ON ");
       this.props.isStreakOn(false);
@@ -93,6 +87,14 @@ export class Dashboard extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
+    let currentStreakScore = 0;
+
+    if (this.props.streak) {
+      for (let i = 0; i < this.props.quizResults.length; i++) {
+        currentStreakScore = this.props.quizResults[i]["streak"];
+      }
+    }
+    currentStreakScore += 1;
     const BUTTON_WRAPPER_STYLES = {
       position: "relative",
       zIndex: 1,
@@ -213,6 +215,7 @@ export class Dashboard extends Component {
               <div className="dashboard-side-panels border border-primary">
                 <h3>IndiCoding Streak</h3>
                 <img className="side-panels-img" src={Calendar} />
+                {currentStreakScore}
               </div>
 
               <div className="dashboard-side-panels border border-primary">
@@ -235,6 +238,7 @@ const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
   quizResults: state.learning.quizResults,
   auth: state.auth,
+  streak: state.learning.streak,
 });
 
 export default connect(mapStateToProps, {
