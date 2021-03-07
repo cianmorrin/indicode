@@ -394,7 +394,7 @@ export class Learning extends Component {
                       </h4>
                       <img className="ver-img" src={StringVerbal} />
                       <p>
-                        {this.props.learning[whichModule + 1].visual_3_1}
+                        {this.props.learning[whichModule + 1].verbal_3_1}
                       </p>{" "}
                     </div>
                     <div className="verbal-images">
