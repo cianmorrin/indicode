@@ -7,6 +7,7 @@ import {
   GET_MCQUIZ,
   SUBMIT_QUIZ,
   GET_QUIZ_RESULTS,
+  STREAK,
 } from "./types";
 
 // GET LEARNING MATERIAL
@@ -35,7 +36,10 @@ export const getMCQuiz = () => (dispatch, getState) => {
     .catch((err) => console.log("error retreiving quiz content"));
 };
 
-export const submitQuiz = (quizResults) => (dispatch, getState) => {
+export const submitQuiz = (quizResults, streakScore) => (
+  dispatch,
+  getState
+) => {
   let trophy = false;
   if (quizResults > 3) {
     trophy = true;
@@ -44,6 +48,7 @@ export const submitQuiz = (quizResults) => (dispatch, getState) => {
     quiz_no: 1,
     score: quizResults,
     trophy: trophy,
+    streak: streakScore,
   };
 
   axios
@@ -70,4 +75,11 @@ export const getUserQuizResults = () => (dispatch, getState) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+export const isStreakOn = (streakOn) => (dispatch, getState) => {
+  dispatch({
+    type: STREAK,
+    payload: streakOn,
+  });
 };

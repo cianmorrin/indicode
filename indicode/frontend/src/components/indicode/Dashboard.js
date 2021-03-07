@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import LSOptions from "./LSOptions";
 import LSResults from "./LSResults";
 import { getLearningStyleResults } from "../../actions/questionnaire";
-import { getUserQuizResults } from "../../actions/learning";
+import { getUserQuizResults, isStreakOn } from "../../actions/learning";
 import LSModal from "./LSModal";
 import QuizResultsModal from "./QuizResultsModal";
 import InterpreterModal from "./InterpreterModal";
@@ -29,6 +29,33 @@ export class Dashboard extends Component {
     this.props.getUserQuizResults();
   }
 
+  componentDidUpdate() {
+    let yesterDay = new Date(Date.now() - 1000 * 3600 * 24 * 1);
+    let year = yesterDay.getFullYear();
+    let month = yesterDay.getMonth() + 1;
+    let date = yesterDay.getDate();
+
+    if (month < 10) {
+      month = `0${month}`;
+    }
+    if (date < 10) {
+      date = `0${date}`;
+    }
+    const yesterdayStr = `${year}-${month}-${date}`;
+    let quizResultDate = "";
+
+    if (this.props.quizResults.length > 0) {
+      for (let i = 0; i < this.props.quizResults.length; i++) {
+        quizResultDate = this.props.quizResults[i]["date"];
+      }
+    }
+
+    if (yesterdayStr === quizResultDate) {
+      this.props.isStreakOn(true);
+    } else {
+      this.props.isStreakOn(false);
+    }
+  }
   state = {
     isLSModalOpen: false,
     isIntModalOpen: false,
@@ -53,6 +80,23 @@ export class Dashboard extends Component {
   };
 
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    let currentStreakScore = 0;
+
+    if (this.props.streak) {
+      for (let i = 0; i < this.props.quizResults.length; i++) {
+        currentStreakScore = this.props.quizResults[i]["streak"];
+      }
+    }
+    currentStreakScore += 1;
+    const BUTTON_WRAPPER_STYLES = {
+      position: "relative",
+      zIndex: 1,
+      display: "inline",
+      padding: "10px",
+    };
+
     let trophies = 0;
     if (this.props.quizResults.length > 0) {
       for (let i = 0; i < this.props.quizResults.length; i++) {
@@ -62,15 +106,6 @@ export class Dashboard extends Component {
       }
     }
     trophies = trophies.toString();
-
-    const { isAuthenticated, user } = this.props.auth;
-
-    const BUTTON_WRAPPER_STYLES = {
-      position: "relative",
-      zIndex: 1,
-      display: "inline",
-      padding: "10px",
-    };
 
     const lesResults = this.props.learningStyleResults;
     let showResults;
@@ -115,7 +150,7 @@ export class Dashboard extends Component {
               </div>
               <div className="bottom-row">
                 <div className="bottom-panels border border-primary">
-                  <h4 className="card-title">Your Learning Style</h4>
+                  <h3>Your Learning Style</h3>
                   <p className="card-text">Review and Updated Your Style</p>
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
@@ -132,7 +167,7 @@ export class Dashboard extends Component {
                   </div>
                 </div>
                 <div className="bottom-panels border border-primary">
-                  <h4 className="card-title">Your stats</h4>
+                  <h3>Your stats</h3>
                   <p className="card-text">Check out your progress</p>
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
@@ -173,8 +208,9 @@ export class Dashboard extends Component {
               </div>
 
               <div className="dashboard-side-panels border border-primary">
-                <h3>10 Day Challenge</h3>
+                <h3>IndiCoding Streak</h3>
                 <img className="side-panels-img" src={Calendar} />
+                {currentStreakScore}
               </div>
 
               <div className="dashboard-side-panels border border-primary">
@@ -197,9 +233,11 @@ const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
   quizResults: state.learning.quizResults,
   auth: state.auth,
+  streak: state.learning.streak,
 });
 
 export default connect(mapStateToProps, {
   getLearningStyleResults,
   getUserQuizResults,
+  isStreakOn,
 })(Dashboard);

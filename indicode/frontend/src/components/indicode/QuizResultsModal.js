@@ -28,6 +28,21 @@ const OVERLAY_STYLES = {
 function QuizResultsModal({ open, onClose, quizResults }) {
   if (!open) return null;
 
+  let results = Array(5).fill(0);
+
+  if (quizResults.length > 0) {
+    console.log("quizResults", quizResults);
+
+    quizResults.forEach(function (entry) {
+      if (entry.quiz_no === 1) {
+        results[0] = entry.score;
+      }
+      if (entry.quiz_no === 2) {
+        results[1] = entry.score;
+      }
+    });
+  }
+
   const data = {
     type: "bar",
     labels: [
@@ -38,7 +53,7 @@ function QuizResultsModal({ open, onClose, quizResults }) {
     ],
     datasets: [
       {
-        data: [quizResults[0].score, 2, 5, 4],
+        data: [results[0], results[1], results[2], results[3]],
         backgroundColor: [
           "rgba(255, 99, 132, 0.8)",
           "rgba(255, 159, 64, 0.8)",

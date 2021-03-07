@@ -1,7 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import { getMCQuiz, submitQuiz } from "../../actions/learning";
+import {
+  getMCQuiz,
+  submitQuiz,
+  getUserQuizResults,
+} from "../../actions/learning";
+
 import MCQuizPage from "./MCQuizPage";
 import { setSidebar } from "../../actions/sidebar";
 
@@ -20,6 +25,8 @@ export class MCQuiz extends Component {
 
   componentDidMount() {
     this.props.getMCQuiz();
+    this.props.getUserQuizResults();
+
     if (this.props.sidebar) {
       this.props.setSidebar();
     }
@@ -43,7 +50,17 @@ export class MCQuiz extends Component {
         });
       }
     } else if (this.state.currentPage === 5) {
-      this.props.submitQuiz(this.state.score);
+      let streakScore = 0;
+      if (this.props.streak) {
+        if (this.props.quizResults.length > 0) {
+          for (let i = 0; i < this.props.quizResults.length; i++) {
+            streakScore = this.props.quizResults[i]["streak"];
+          }
+        }
+      }
+      streakScore += 1;
+
+      this.props.submitQuiz(this.state.score, streakScore);
       this.setState({
         finishedQuiz: true,
       });
@@ -70,6 +87,8 @@ export class MCQuiz extends Component {
     if (this.state.finishedQuiz) {
       return <Redirect to="/" />;
     }
+
+    console.log("MCQUIZ streak is : ", this.props.streak);
 
     const indexOfLastQ = this.state.currentPage * this.state.questionsPerPage;
     const indexOfFirstQ = indexOfLastQ - this.state.questionsPerPage;
@@ -111,8 +130,13 @@ export class MCQuiz extends Component {
 const mapStateToProps = (state) => ({
   mcquiz: state.learning.mcquiz,
   sidebar: state.sidebar.sidebar,
+  quizResults: state.learning.quizResults,
+  streak: state.learning.streak,
 });
 
-export default connect(mapStateToProps, { getMCQuiz, setSidebar, submitQuiz })(
-  MCQuiz
-);
+export default connect(mapStateToProps, {
+  getUserQuizResults,
+  getMCQuiz,
+  setSidebar,
+  submitQuiz,
+})(MCQuiz);
