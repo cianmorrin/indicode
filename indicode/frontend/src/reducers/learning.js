@@ -3,12 +3,14 @@ import {
   GET_MCQUIZ,
   SUBMIT_QUIZ,
   GET_QUIZ_RESULTS,
+  STREAK,
 } from "../actions/types.js";
 
 const initialState = {
   learning: [],
   mcquiz: [],
   quizResults: [],
+  streak: false,
 };
 
 export default function (state = initialState, action) {
@@ -32,6 +34,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         quizResults: action.payload,
+      };
+    case STREAK:
+      return {
+        ...state,
+        streak: action.payload,
       };
     default:
       return state;

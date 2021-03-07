@@ -183,7 +183,7 @@ function LSModal({
                   <Doughnut data={data_ar} options={options} />
                 </div>
                 <div className="slider-whole">
-                  <span class="leftlabel">Active</span>
+                  <span className="leftlabel">Active</span>
                   <input
                     type="range"
                     className="custom-range"
@@ -195,7 +195,7 @@ function LSModal({
                     min={0}
                     max={11}
                   ></input>
-                  <span class="rightlabel">Reflective</span>
+                  <span className="rightlabel">Reflective</span>
                 </div>
               </div>
               <div className="pie-slider">
@@ -204,7 +204,7 @@ function LSModal({
                   <Doughnut data={data_si} options={options} />
                 </div>
                 <div className="slider-whole">
-                  <span class="leftlabel">Sensing</span>
+                  <span className="leftlabel">Sensing</span>
                   <input
                     type="range"
                     className="custom-range"
@@ -216,7 +216,7 @@ function LSModal({
                     min={0}
                     max={11}
                   ></input>
-                  <span class="rightlabel">Intuitive</span>
+                  <span className="rightlabel">Intuitive</span>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@ function LSModal({
                   <Doughnut data={data_vv} options={options} />
                 </div>
                 <div className="slider-whole">
-                  <span class="leftlabel">Visual</span>
+                  <span className="leftlabel">Visual</span>
                   <input
                     type="range"
                     className="custom-range"
@@ -239,7 +239,7 @@ function LSModal({
                     min={0}
                     max={11}
                   ></input>
-                  <span class="rightlabel">Verbal</span>
+                  <span className="rightlabel">Verbal</span>
                 </div>
               </div>
               <div className="pie-slider">
@@ -247,7 +247,7 @@ function LSModal({
                   <Doughnut data={data_sg} options={options} />
                 </div>
                 <div className="slider-whole">
-                  <span class="leftlabel">Sequential</span>
+                  <span className="leftlabel">Sequential</span>
                   <input
                     type="range"
                     className="custom-range"
@@ -259,7 +259,7 @@ function LSModal({
                     min={0}
                     max={11}
                   ></input>
-                  <span class="rightlabel">Global</span>
+                  <span className="rightlabel">Global</span>
                 </div>
               </div>
             </div>
