@@ -2,8 +2,11 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getLearning } from "../../actions/learning";
-import { getUserQuizResults } from "../../actions/learning";
+import {
+  getLearning,
+  getUserQuizResults,
+  whatQuiz,
+} from "../../actions/learning";
 import { getLearningStyleResults } from "../../actions/questionnaire";
 import Interpreter from "./Interpreter";
 import LearningContent from "./LearningContent";
@@ -71,15 +74,19 @@ export class Learning extends Component {
     if (this.props.learningStyleResults.length === 0) {
       return <Redirect to="/" />;
     }
-    if (this.state.finishedModule) {
-      return <Redirect to="/quiz" />;
-    }
 
     let whichModule = 0;
 
     if (this.props.quizResults.length > 0) {
       whichModule = this.props.quizResults.length * 3;
     }
+
+    if (this.state.finishedModule) {
+      console.log("learning comp whichModule", whichModule);
+      this.props.whatQuiz(whichModule);
+      return <Redirect to="/quiz" />;
+    }
+
     let showExtraImg = false;
     let firstActiveImg = Lesson_1_1_Code;
     let firstReflectiveImg = Var_Assignment;
@@ -110,7 +117,10 @@ export class Learning extends Component {
     let title, submodule, intro;
     let learning_content_comp, header_comp;
 
+    console.log("learning learning", this.props.learning);
+
     if (this.props.learning.length > 0) {
+      console.log("in the if");
       switch (this.state.currentPage) {
         case 1:
           title = this.props.learning[whichModule].module;
@@ -672,11 +682,16 @@ export class Learning extends Component {
                         <p>
                           {this.props.learning[whichModule + 2].code_answer_1_2}
                         </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].active_1_3}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 2</h4>
                     <hr className="my-2"></hr>
                     <p>{this.props.learning[whichModule + 2].sensing_2}</p>
+                    <p>{this.props.learning[whichModule + 2].verbal_2_1}</p>
+                    <p>{this.props.learning[whichModule + 2].verbal_2_2}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -697,11 +712,22 @@ export class Learning extends Component {
                         <p>
                           {this.props.learning[whichModule + 2].code_answer_2_2}
                         </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].active_2_3}
+                        </p>
+                        <p className="else">
+                          {this.props.learning[whichModule + 2].active_3_1}
+                        </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].active_3_2}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 3</h4>
                     <hr className="my-2"></hr>
                     <p>{this.props.learning[whichModule + 2].sensing_3}</p>
+                    <p>{this.props.learning[whichModule + 2].verbal_3_1}</p>
+                    <p>{this.props.learning[whichModule + 2].verbal_3_2}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -721,6 +747,15 @@ export class Learning extends Component {
                         </p>
                         <p>
                           {this.props.learning[whichModule + 2].code_answer_3_2}
+                        </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].reflective_1_3}
+                        </p>
+                        <p className="else">
+                          {this.props.learning[whichModule + 2].reflective_2_1}
+                        </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].reflective_2_2}
                         </p>
                       </div>
                     </div>
@@ -750,6 +785,7 @@ export class Learning extends Component {
                     <h4 className="mt-4">Challenge 1</h4>
                     <hr className="my-2"></hr>
                     <p>{this.props.learning[whichModule + 2].intuitive_1}</p>
+                    <p>{this.props.learning[whichModule + 2].verbal_title_1}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -770,11 +806,16 @@ export class Learning extends Component {
                         <p>
                           {this.props.learning[whichModule + 2].code_answer_1_2}
                         </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].active_1_3}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 2</h4>
                     <hr className="my-2"></hr>
                     <p>{this.props.learning[whichModule + 2].intuitive_2}</p>
+                    <p>{this.props.learning[whichModule + 2].verbal_1_1}</p>
+                    <p>{this.props.learning[whichModule + 2].verbal_1_2}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -795,11 +836,22 @@ export class Learning extends Component {
                         <p>
                           {this.props.learning[whichModule + 2].code_answer_2_2}
                         </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].active_2_3}
+                        </p>
+                        <p className="else">
+                          {this.props.learning[whichModule + 2].active_3_1}
+                        </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].active_3_2}
+                        </p>
                       </div>
                     </div>
                     <h4 className="mt-4">Challenge 3</h4>
                     <hr className="my-2"></hr>
                     <p>{this.props.learning[whichModule + 2].intuitive_3}</p>
+                    <p>{this.props.learning[whichModule + 2].visual_3_1}</p>
+                    <p>{this.props.learning[whichModule + 2].visual_3_2}</p>
                     <p>
                       <button
                         className="btn btn-info"
@@ -819,6 +871,15 @@ export class Learning extends Component {
                         </p>
                         <p>
                           {this.props.learning[whichModule + 2].code_answer_3_2}
+                        </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].reflective_1_3}
+                        </p>
+                        <p className="else">
+                          {this.props.learning[whichModule + 2].reflective_2_1}
+                        </p>
+                        <p className="indent">
+                          {this.props.learning[whichModule + 2].reflective_2_2}
                         </p>
                       </div>
                     </div>
@@ -911,4 +972,5 @@ export default connect(mapStateToProps, {
   getLearning,
   getLearningStyleResults,
   getUserQuizResults,
+  whatQuiz,
 })(Learning);

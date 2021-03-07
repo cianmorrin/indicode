@@ -18,3 +18,4 @@ export const GET_MCQUIZ = "GET_MCQUIZ";
 export const SUBMIT_QUIZ = "SUBMIT_QUIZ";
 export const GET_QUIZ_RESULTS = "GET_QUIZ_RESULTS";
 export const STREAK = "STREAK";
+export const WHAT_QUIZ = "WHAT_QUIZ";

@@ -379,6 +379,24 @@
   margin-bottom: 5vh;
 }
 
+.indent {
+  margin-left: 2rem;
+  margin-top: -1rem;
+}
+
+.q-indent {
+  margin-left: 2rem;
+}
+
+.else {
+  margin-top: -1rem;
+}
+
+.final-q {
+  height: 35vh;
+  margin-left: 25rem;
+}
+
 .instructions-img {
   margin-left: auto;
   margin-right: auto;

@@ -4,6 +4,7 @@ import {
   SUBMIT_QUIZ,
   GET_QUIZ_RESULTS,
   STREAK,
+  WHAT_QUIZ,
 } from "../actions/types.js";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   mcquiz: [],
   quizResults: [],
   streak: false,
+  lessonNum: 0,
 };
 
 export default function (state = initialState, action) {
@@ -40,6 +42,12 @@ export default function (state = initialState, action) {
         ...state,
         streak: action.payload,
       };
+    case WHAT_QUIZ:
+      return {
+        ...state,
+        lessonNum: action.payload,
+      };
+
     default:
       return state;
   }

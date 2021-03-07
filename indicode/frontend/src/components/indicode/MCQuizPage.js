@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import FinalQ from "../images/final_q1.png";
 
 export class MCQuizPage extends Component {
   constructor(props) {
@@ -27,12 +28,19 @@ export class MCQuizPage extends Component {
 
   render() {
     let buttonText = "Check Answer";
+    let showFinalImg = false;
     if (this.props.answerChecked) {
       if (this.props.currentPage === 5) {
         buttonText = "Finish Quiz";
       } else {
         buttonText = "Next Question";
       }
+    }
+
+    let showIndent = this.props.indent;
+    if (this.props.currentPage === 5 && this.props.indent) {
+      showFinalImg = true;
+      showIndent = false;
     }
 
     return (
@@ -42,6 +50,14 @@ export class MCQuizPage extends Component {
             <li key={question.id} className="list-group-item">
               <p className="questionnaire-q">{question.question}</p> <br></br>
               <p className="questionnaire-q">{question.question_1}</p>
+              {showFinalImg ? (
+                <div>
+                  {" "}
+                  <img className="final-q" src={FinalQ} />
+                </div>
+              ) : (
+                ""
+              )}
               <br></br>
               <div
                 id={
@@ -65,7 +81,9 @@ export class MCQuizPage extends Component {
                 onClick={() => this.onSelected("option_A")}
               >
                 <span>{question.option_A}</span>
-                <span>{question.option_A_1}</span>
+                <span className={showIndent ? "q-indent" : ""}>
+                  {question.option_A_1}
+                </span>
               </div>
               <div
                 id={
@@ -89,7 +107,9 @@ export class MCQuizPage extends Component {
                 onClick={() => this.onSelected("option_B")}
               >
                 <span>{question.option_B}</span>
-                <span>{question.option_B_1}</span>
+                <span className={showIndent ? "q-indent" : ""}>
+                  {question.option_B_1}
+                </span>
               </div>
               <div
                 id={
@@ -113,7 +133,9 @@ export class MCQuizPage extends Component {
                 onClick={() => this.onSelected("option_C")}
               >
                 <span>{question.option_C}</span>
-                <span>{question.option_C_1}</span>
+                <span className={showIndent ? "q-indent" : ""}>
+                  {question.option_C_1}
+                </span>
               </div>
               <div
                 id={
@@ -137,7 +159,9 @@ export class MCQuizPage extends Component {
                 onClick={() => this.onSelected("option_D")}
               >
                 <span>{question.option_D}</span>
-                <span>{question.option_D_1}</span>
+                <span className={showIndent ? "q-indent" : ""}>
+                  {question.option_D_1}
+                </span>
               </div>
             </li>
           ))}

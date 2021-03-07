@@ -8,6 +8,7 @@ import {
   SUBMIT_QUIZ,
   GET_QUIZ_RESULTS,
   STREAK,
+  WHAT_QUIZ,
 } from "./types";
 
 // GET LEARNING MATERIAL
@@ -81,5 +82,13 @@ export const isStreakOn = (streakOn) => (dispatch, getState) => {
   dispatch({
     type: STREAK,
     payload: streakOn,
+  });
+};
+
+export const whatQuiz = (lessonNum) => (dispatch, getState) => {
+  console.log("lessonNum in action ", lessonNum);
+  dispatch({
+    type: WHAT_QUIZ,
+    payload: lessonNum,
   });
 };

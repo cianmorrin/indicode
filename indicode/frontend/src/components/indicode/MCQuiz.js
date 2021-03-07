@@ -88,11 +88,17 @@ export class MCQuiz extends Component {
       return <Redirect to="/" />;
     }
 
-    console.log("MCQUIZ streak is : ", this.props.streak);
+    let mcqs = this.props.mcquiz.slice(0, 4);
+    let indent = false;
+
+    if (this.props.lessonNum === 3) {
+      mcqs = this.props.mcquiz.slice(5, 10);
+      indent = true;
+    }
 
     const indexOfLastQ = this.state.currentPage * this.state.questionsPerPage;
     const indexOfFirstQ = indexOfLastQ - this.state.questionsPerPage;
-    const currentQs = this.props.mcquiz.slice(indexOfFirstQ, indexOfLastQ);
+    const currentQs = mcqs.slice(indexOfFirstQ, indexOfLastQ);
 
     let submitComp = (
       <div className="form-group">
@@ -120,6 +126,7 @@ export class MCQuiz extends Component {
             selected={this.state.selected}
             answerChecked={this.state.answerChecked}
             currentPage={this.state.currentPage}
+            indent={indent}
           />
         </form>
       </div>
@@ -132,6 +139,7 @@ const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
   quizResults: state.learning.quizResults,
   streak: state.learning.streak,
+  lessonNum: state.learning.lessonNum,
 });
 
 export default connect(mapStateToProps, {
