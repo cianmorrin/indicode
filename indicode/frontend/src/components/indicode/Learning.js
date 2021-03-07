@@ -78,7 +78,10 @@ export class Learning extends Component {
     let whichModule = 0;
 
     if (this.props.quizResults.length > 0) {
-      whichModule = this.props.quizResults.length * 3;
+      let qrLen = this.props.quizResults.length;
+      if (this.props.quizResults[qrLen - 1].quiz_no === 1) {
+        whichModule = 3;
+      }
     }
 
     if (this.state.finishedModule) {
@@ -117,12 +120,11 @@ export class Learning extends Component {
     let title, submodule, intro;
     let learning_content_comp, header_comp;
 
-    console.log("learning learning", this.props.learning);
-
     if (this.props.learning.length > 0) {
-      console.log("in the if");
+      console.log(whichModule);
       switch (this.state.currentPage) {
         case 1:
+          console.log("Learning Comp learning array", this.props.learning);
           title = this.props.learning[whichModule].module;
           submodule = this.props.learning[whichModule].sub_module;
           intro = this.props.learning[whichModule].intro;

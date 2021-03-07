@@ -37,7 +37,7 @@ export const getMCQuiz = () => (dispatch, getState) => {
     .catch((err) => console.log("error retreiving quiz content"));
 };
 
-export const submitQuiz = (quizResults, streakScore) => (
+export const submitQuiz = (quizResults, lessonNum, streakScore) => (
   dispatch,
   getState
 ) => {
@@ -45,8 +45,10 @@ export const submitQuiz = (quizResults, streakScore) => (
   if (quizResults > 3) {
     trophy = true;
   }
+  let quizNum = 1;
+  lessonNum === 3 ? (quizNum = 2) : (quizNum = 1);
   const userQuizRes = {
-    quiz_no: 1,
+    quiz_no: quizNum,
     score: quizResults,
     trophy: trophy,
     streak: streakScore,

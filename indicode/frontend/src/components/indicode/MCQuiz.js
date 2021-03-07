@@ -60,7 +60,11 @@ export class MCQuiz extends Component {
       }
       streakScore += 1;
 
-      this.props.submitQuiz(this.state.score, streakScore);
+      this.props.submitQuiz(
+        this.state.score,
+        this.props.lessonNum,
+        streakScore
+      );
       this.setState({
         finishedQuiz: true,
       });
@@ -88,7 +92,7 @@ export class MCQuiz extends Component {
       return <Redirect to="/" />;
     }
 
-    let mcqs = this.props.mcquiz.slice(0, 4);
+    let mcqs = this.props.mcquiz.slice(0, 5);
     let indent = false;
 
     if (this.props.lessonNum === 3) {
