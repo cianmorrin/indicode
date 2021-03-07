@@ -329,8 +329,34 @@
   display: flex;
 }
 
+.if-code {
+  height: 20vh;
+  border-radius: 25px;
+  margin-bottom: 5vh;
+}
+
+.if-else-code {
+  height: 25vh;
+  margin-left: 2rem;
+  margin-bottom: 3vh;
+  border-radius: 25px;
+}
+
+.if-else-code {
+  height: 25vh;
+  margin-left: 0rem;
+  margin-right: 2rem;
+  margin-bottom: 3vh;
+  border-radius: 25px;
+}
+
 .vis-img {
   height: 25vh;
+}
+
+.vis-img.lg {
+  height: 50vh;
+  margin-top: -4vh;
 }
 
 .verbal-images {
@@ -344,6 +370,12 @@
   border-radius: 10%;
   box-shadow: 4px 4px 4px;
   margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+.syntax-img {
+  margin-left: 2rem;
+  margin-right: auto;
+  height: 26vh;
   margin-bottom: 5vh;
 }
 
