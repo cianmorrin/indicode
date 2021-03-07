@@ -150,7 +150,7 @@ export class Dashboard extends Component {
               </div>
               <div className="bottom-row">
                 <div className="bottom-panels border border-primary">
-                  <h4 className="card-title">Your Learning Style</h4>
+                  <h3>Your Learning Style</h3>
                   <p className="card-text">Review and Updated Your Style</p>
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
@@ -167,7 +167,7 @@ export class Dashboard extends Component {
                   </div>
                 </div>
                 <div className="bottom-panels border border-primary">
-                  <h4 className="card-title">Your stats</h4>
+                  <h3>Your stats</h3>
                   <p className="card-text">Check out your progress</p>
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
