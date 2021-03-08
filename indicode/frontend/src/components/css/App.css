@@ -63,9 +63,10 @@
 
 .main-card {
   max-width: 50rem;
-  box-shadow: 4px 4px 4px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 50%);
   border-radius: 20px;
   height: 50vh;
+  border: 0;
 }
 
 .main-panel-text {
@@ -159,7 +160,8 @@
   background-color: white;
   height: 30vh;
   width: 24rem;
-  border-radius: 20px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 50%);
+  border: 0;
 }
 
 .dash-left {
@@ -184,6 +186,8 @@
   height: 20vh;
   background-color: white;
   transition: 650ms;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 50%);
+  border: 0;
 }
 
 .questionnaire-q {

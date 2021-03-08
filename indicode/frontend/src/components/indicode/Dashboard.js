@@ -156,7 +156,7 @@ export class Dashboard extends Component {
                 </div>
               </div>
               <div className="bottom-row">
-                <div className="bottom-panels border border-primary">
+                <div className="bottom-panels">
                   <h3>Your Learning Style</h3>
                   <p className="card-text">Review and Updated Your Style</p>
                   <div style={BUTTON_WRAPPER_STYLES}>
@@ -173,7 +173,7 @@ export class Dashboard extends Component {
                     ></LSModal>
                   </div>
                 </div>
-                <div className="bottom-panels border border-primary">
+                <div className="bottom-panels">
                   <h3>Your stats</h3>
                   <p className="card-text">Check out your progress</p>
                   <div style={BUTTON_WRAPPER_STYLES}>
@@ -196,7 +196,7 @@ export class Dashboard extends Component {
             <div
               className={this.props.sidebar ? "dash-right" : "dash-right lg"}
             >
-              <div className="dashboard-side-panels border border-primary">
+              <div className="dashboard-side-panels ">
                 <h3>Write some code!</h3>
                 <img className="side-panels-img" src={Pencil} />
                 <div style={BUTTON_WRAPPER_STYLES}>
@@ -214,13 +214,13 @@ export class Dashboard extends Component {
                 </div>
               </div>
 
-              <div className="dashboard-side-panels border border-primary">
+              <div className="dashboard-side-panels">
                 <h3>IndiCoding Streak</h3>
                 <img className="side-panels-img" src={Calendar} />
                 {currentStreakScore}
               </div>
 
-              <div className="dashboard-side-panels border border-primary">
+              <div className="dashboard-side-panels">
                 <h3>Levels</h3>
                 <img className="side-panels-img" src={Trophy} />
                 {trophies}
