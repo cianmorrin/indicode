@@ -7,6 +7,8 @@ import {
 } from "../../actions/questionnaire";
 import QuestionPage from "./QuestionPage";
 import Pagination from "./Pagination";
+import { setSidebar } from "../../actions/sidebar";
+import * as BiIcons from "react-icons/bi";
 
 export class Questionnaire extends Component {
   constructor(props) {
@@ -20,6 +22,9 @@ export class Questionnaire extends Component {
 
   componentDidMount() {
     this.props.getQuestionnaire();
+    if (this.props.sidebar) {
+      this.props.setSidebar();
+    }
   }
 
   onChange = (e) => {
@@ -41,6 +46,12 @@ export class Questionnaire extends Component {
   setCurrentPage = (pageNumber) => {
     this.setState(() => ({
       currentPage: pageNumber,
+    }));
+  };
+
+  arrowClick = () => {
+    this.setState(() => ({
+      finishedQuestionnaire: true,
     }));
   };
 
@@ -71,8 +82,13 @@ export class Questionnaire extends Component {
     return (
       <div className="container">
         <form onSubmit={this.onSubmit}>
-          <h1 className="mt-4">Index of Learning Style Questionnaire</h1>
-          <hr></hr>
+          <div className="header-arrow">
+            <span className="back-arrow" onClick={this.arrowClick}>
+              {<BiIcons.BiArrowBack />}
+            </span>
+            <h1 className="mt-4">Index of Learning Style Questionnaire</h1>
+          </div>
+          <hr className="questionnaire-hr"></hr>
           <QuestionPage
             questions={currentQs}
             onChange={this.onChange}
@@ -93,9 +109,11 @@ export class Questionnaire extends Component {
 
 const mapStateToProps = (state) => ({
   questionnaire: state.questionnaire.questionnaire,
+  sidebar: state.sidebar.sidebar,
 });
 
 export default connect(mapStateToProps, {
   getQuestionnaire,
   submitQuestionnaire,
+  setSidebar,
 })(Questionnaire);

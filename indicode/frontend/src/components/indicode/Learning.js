@@ -85,7 +85,6 @@ export class Learning extends Component {
     }
 
     if (this.state.finishedModule) {
-      console.log("learning comp whichModule", whichModule);
       this.props.whatQuiz(whichModule);
       return <Redirect to="/quiz" />;
     }

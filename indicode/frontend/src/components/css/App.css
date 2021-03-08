@@ -265,11 +265,12 @@
   padding-bottom: 4vh;
 }
 
-.start-learning {
+/* .start-learning {
   /* margin-top: 20vh;
   margin-left: 5rem;
-  max-width: 20rem; */
+  max-width: 20rem; 
 }
+*/
 
 .start-learning-hide {
   display: none;
@@ -281,9 +282,6 @@
 
 .no-show {
   display: none;
-}
-
-.learning-content-header {
 }
 
 .learning-content-body {
@@ -452,4 +450,25 @@
 .rightlabel {
   font-size: 13px;
   text-align: center;
+}
+
+.header-arrow {
+  display: flex;
+}
+
+.back-arrow {
+  margin-top: 2.5vh;
+  margin-right: 2rem;
+  cursor: pointer;
+  /* color: white; */
+  font-size: 30px;
+  color: #1f9bcf;
+}
+
+.back-arrow:hover {
+  color: #062f41;
+}
+
+.questionnaire-hr {
+  margin-top: 0;
 }

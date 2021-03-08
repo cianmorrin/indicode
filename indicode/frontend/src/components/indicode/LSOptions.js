@@ -4,6 +4,7 @@ import { Questionnaire } from "./Questionnaire";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LSModal from "./LSModal";
+import { submitLearningStyle } from "../../actions/questionnaire";
 
 export class LSOptions extends Component {
   static propTypes = {
@@ -18,6 +19,22 @@ export class LSOptions extends Component {
     this.setState(() => ({
       isLSModalOpen: lsModalState,
     }));
+  };
+
+  submitStandard = () => {
+    console.log("submit Standard");
+    const learningStyleSubmission = {
+      af_a: 6,
+      af_b: 5,
+      si_a: 6,
+      si_b: 5,
+      vv_a: 6,
+      vv_b: 5,
+      sg_a: 6,
+      sg_b: 5,
+    };
+    this.props.submitLearningStyle(learningStyleSubmission);
+    window.location.reload();
   };
 
   render() {
@@ -51,7 +68,9 @@ export class LSOptions extends Component {
                 learning experience
               </p>
               <Link to={"./questionnaire"}>
-                <span className="btn btn-primary btn-med">Go</span>
+                <span className="btn btn-primary btn-med bottom-panel-btn">
+                  Do Questionnaire
+                </span>
               </Link>
             </div>
           </div>
@@ -60,9 +79,9 @@ export class LSOptions extends Component {
             <div className="card-body">
               <h4 className="card-title">Interactive Portal</h4>
               <p className="card-text">
-                Fill out the Index of Learning Style Questionnaire in order to
-                categories your learning style and have a fully immersed
-                learning experience
+                Use our interactive Learning Style Portal and adjust your style
+                as you see fit. Check out our explore page to understand the
+                learning style domains!
               </p>
               <button
                 className="btn btn-primary btn-med bottom-panel-btn"
@@ -82,13 +101,16 @@ export class LSOptions extends Component {
             <div className="card-body">
               <h4 className="card-title">Standard Approach</h4>
               <p className="card-text">
-                Fill out the Index of Learning Style Questionnaire in order to
-                categories your learning style and have a fully immersed
-                learning experience
+                This standard learning experience style touches on all learning
+                domains. You can always update your style at any time with the
+                interactive portal!
               </p>
-              <Link to={"./questionnaire"}>
-                <span className="btn btn-primary btn-med">Go</span>
-              </Link>
+              <span
+                className="btn btn-primary btn-med bottom-panel-btn"
+                onClick={this.submitStandard}
+              >
+                Use Standard
+              </span>
             </div>
           </div>
         </div>
@@ -101,4 +123,4 @@ const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
 });
 
-export default connect(mapStateToProps, {})(LSOptions);
+export default connect(mapStateToProps, { submitLearningStyle })(LSOptions);
