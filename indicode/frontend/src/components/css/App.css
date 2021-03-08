@@ -116,6 +116,10 @@
   font-size: 16px;
 }
 
+.int-hr {
+  margin-top: 0;
+}
+
 .main-panel-hr {
   margin-top: 0;
   margin-bottom: 2rem;
@@ -127,7 +131,7 @@
   padding-bottom: 1vh;
   font-size: 60px;
   border-radius: 20px 20px 0px 0px;
-  background: linear-gradient(359deg, #ffa726, #fb8c00);
+  background: linear-gradient(359deg, #ffa726, #de7c00);
   color: white;
   padding-top: 8vh;
 }
@@ -146,11 +150,20 @@
 }
 .bottom-panel-btn {
   float: right;
-  margin-right: 1rem;
+  margin-right: 2rem;
   margin-top: 2vh;
   border: 1px solid lightgray;
   border-radius: 5px;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 60%);
+}
+
+.submit-intls-btn {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 60%);
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
 }
 
 .side-panel-div {
@@ -285,11 +298,6 @@
   justify-content: space-around;
 }
 
-.ls-modal-submit {
-  position: absolute;
-  top: 50%;
-}
-
 .ls-options {
   max-width: 20rem;
 }
@@ -316,6 +324,7 @@
 
 .trophy-table-div {
   margin-top: 4vh;
+  margin-right: 1rem;
 }
 
 .bottom-panel-title {
@@ -328,7 +337,7 @@
   width: 20rem;
   height: 20vh;
   font-size: large;
-  background: linear-gradient(360deg, #26c6da, #00acc1);
+  background: linear-gradient(340deg, #26c6da, #007280);
   color: white;
   border: 0;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
@@ -347,7 +356,7 @@
 }
 
 .bottom-panel-title.stats {
-  background: linear-gradient(360deg, #ef5350, #e53935);
+  background: linear-gradient(353deg, #ff0400, #980400);
 }
 
 .btm-panel-icon {
@@ -374,11 +383,11 @@
   text-align: center;
 }
 .side-panel-title.streak {
-  background: linear-gradient(360deg, #26c6da, #00acc1);
+  background: linear-gradient(338deg, #26c6da, #016c79);
 }
 
 .side-panel-title.trophy {
-  background: linear-gradient(360deg, #ab47bc, #8e24aa);
+  background: linear-gradient(335deg, #ab47bc, #6c0388);
 }
 
 .coding-panel-title {
@@ -437,7 +446,7 @@
 
 .portal-interpreter {
   width: 100%;
-  height: 45vh;
+  height: 63vh;
 }
 
 .act-ref-img {
@@ -589,7 +598,7 @@
   display: flex;
   margin: auto;
   justify-content: center;
-  margin-left: 7rem;
+  margin-left: 4rem;
   margin-top: 2vh;
 }
 

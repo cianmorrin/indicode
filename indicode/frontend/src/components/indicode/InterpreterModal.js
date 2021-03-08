@@ -6,7 +6,7 @@ const MODAL_STYLES = {
   top: "50%",
   left: "50%",
   width: "80%",
-  height: "70vh",
+  height: "85vh",
   transform: "translate(-50%, -50%)",
   backgroundColor: "#FFF",
   padding: "50px",
@@ -40,7 +40,7 @@ function InterpreterModal({ open, onClose }) {
           <span aria-hidden="true">&times;</span>
         </button>
         <h2>Code</h2>
-        <hr className="my-4"></hr>{" "}
+        <hr className="int-hr"></hr>{" "}
         <p>Utilise Trinket's Interpeter to practice your coding skills!</p>
         <div>
           <iframe
