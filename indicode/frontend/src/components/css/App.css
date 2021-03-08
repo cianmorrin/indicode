@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
+  text-transform: none;
 }
 
 .login-reg-container {
@@ -80,24 +81,31 @@
 
 .quiz-answers {
   height: 12vh;
-  margin-top: 2vh;
-  border: 5px solid red;
+  border: 2px solid cornflowerblue;
   cursor: pointer;
-}
-.quiz-answers.selected {
-  border: 5px solid blue;
-}
-
-#ans-bg {
+  margin: auto;
+  display: flex;
+  margin-top: 2vh;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  border-radius: 25px;
   background-color: white;
 }
 
+.quiz-answers.selected {
+  background-color: cornflowerblue;
+  color: white;
+}
+
 #ans-bg-correct {
-  background-color: green;
+  background-color: rgba(16, 209, 13);
+  color: white;
 }
 
 #ans-bg-incorrect {
-  background-color: red;
+  background-color: rgba(232, 26, 60);
+  color: white;
 }
 
 .quiz-answers span {
