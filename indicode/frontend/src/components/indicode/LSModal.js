@@ -9,7 +9,7 @@ const MODAL_STYLES = {
   top: "50%",
   left: "50%",
   width: "80%",
-  height: "75vh",
+  height: "80vh",
   transform: "translate(-50%, -50%)",
   backgroundColor: "#FFF",
   padding: "50px",
@@ -266,7 +266,7 @@ function LSModal({
           </div>
           <div>
             <button
-              className="btn btn-primary btn-lg ls-modal-submit"
+              className=" btn btn-lg btn-secondary submit-intls-btn"
               onClick={updatedLearningStyle}
             >
               Update Learning Style
