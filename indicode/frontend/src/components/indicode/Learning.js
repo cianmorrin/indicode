@@ -977,7 +977,10 @@ export class Learning extends Component {
                 >
                   Conditions & If Statements{" "}
                   {module2Completed ? (
-                    <span className="badge"> {<TiIcons.TiTickOutline />}</span>
+                    <span className="badge compeleted-icon">
+                      {" "}
+                      {<TiIcons.TiTickOutline />}
+                    </span>
                   ) : (
                     ""
                   )}
