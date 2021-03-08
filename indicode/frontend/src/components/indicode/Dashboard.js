@@ -98,13 +98,20 @@ export class Dashboard extends Component {
     };
 
     let trophies = 0;
-    if (this.props.quizResults.length > 0) {
-      for (let i = 0; i < this.props.quizResults.length; i++) {
-        if (this.props.quizResults[i]["trophy"] === true) {
-          trophies++;
+
+    this.props.quizResults.forEach(function (entry) {
+      if (entry.quiz_no === 1) {
+        if (entry.trophy === true) {
+          trophies = 1;
         }
       }
-    }
+      if (entry.quiz_no === 2) {
+        if (entry.trophy === true) {
+          trophies = 2;
+        }
+      }
+    });
+
     trophies = trophies.toString();
 
     const lesResults = this.props.learningStyleResults;
