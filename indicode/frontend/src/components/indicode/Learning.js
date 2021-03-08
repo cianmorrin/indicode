@@ -38,6 +38,7 @@ export class Learning extends Component {
     lessonsPerPage: 1,
     finishedModule: false,
     whichModule: 0,
+    actualModuleNum: 0,
   };
 
   static propTypes = {
@@ -75,16 +76,17 @@ export class Learning extends Component {
 
   moduleClicked = (modNum) => {
     let chosenModule = modNum.currentTarget.dataset.id;
-    console.log("chosenModule", chosenModule);
 
     if (chosenModule === "2") {
-      console.log("should be setting whichmodule state");
       this.setState(() => ({
         whichModule: 3,
       }));
     }
     this.setState(() => ({
       chosenMod: true,
+    }));
+    this.setState(() => ({
+      actualModuleNum: chosenModule,
     }));
   };
 
@@ -145,14 +147,15 @@ export class Learning extends Component {
       .vis_or_verb;
     const seq_glob = this.props.learningStyleResults[styleArrlen - 1]
       .seq_or_glob;
+    let globalPerson = false;
+    if (seq_glob[0] === "g") {
+      globalPerson = true;
+    }
 
     let title, submodule, intro;
     let learning_content_comp, header_comp;
-
     let theMod = this.state.whichModule;
-    console.log("this.state.whichModule", this.state.whichModule);
     if (this.props.learning.length > 0) {
-      console.log("theMod", theMod);
       switch (this.state.currentPage) {
         case 1:
           console.log("Learning Comp learning array", this.props.learning);
@@ -161,8 +164,12 @@ export class Learning extends Component {
           intro = this.props.learning[theMod].intro;
           header_comp = (
             <div className="learning-content-header">
-              <h1>{title}</h1>
-              <h5>{submodule}</h5>
+              <h1>
+                {globalPerson
+                  ? title
+                  : `${this.state.actualModuleNum}. ${title}`}
+              </h1>
+              <span className="sub-mod">i. {submodule}</span>{" "}
               <hr className="my-2"></hr>
             </div>
           );
@@ -363,8 +370,12 @@ export class Learning extends Component {
           header_comp = (
             <Fragment>
               <div className="learning-content-header">
-                <h1>{title}</h1>
-                <h5>{submodule}</h5>
+                <h1>
+                  {globalPerson
+                    ? title
+                    : `${this.state.actualModuleNum}. ${title}`}
+                </h1>
+                <span className="sub-mod">ii. {submodule}</span>
                 <hr className="my-2"></hr>
               </div>
             </Fragment>
@@ -657,8 +668,12 @@ export class Learning extends Component {
           intro = this.props.learning[theMod + 2].intro;
           header_comp = (
             <div className="learning-content-header">
-              <h1>{title}</h1>
-              <h5>{submodule}</h5>
+              <h1>
+                {globalPerson
+                  ? title
+                  : `${this.state.actualModuleNum}. ${title}`}
+              </h1>
+              <span className="sub-mod">iii. {submodule}</span>
               <hr className="my-2"></hr>
             </div>
           );
@@ -900,7 +915,30 @@ export class Learning extends Component {
     if (this.state.currentPage == 3) {
       showFinish = true;
     }
-
+    let introduction = "";
+    if (globalPerson) {
+      if (module1Completed) {
+        introduction =
+          "Congratulations! 'Variables and Data Types' are a core concept in programming, feel free to revisit the lesson at any time. Next up is 'Conditions & If Statements'";
+      } else if (module2Completed) {
+        introduction =
+          "You are making great progress. With two lessons completed you can move onto 'Loops' or revist some old material to refresh your memory";
+      } else {
+        introduction =
+          "Once you've completed a lesson the next will unlock. You can always revisit any lesson!";
+      }
+    } else {
+      if (module1Completed) {
+        introduction =
+          "Great start! Lesson 1 on Variable & Data Types is complete. Next up is 'Conditions & If Statements'";
+      } else if (module2Completed) {
+        introduction =
+          "Congratulations! You have completed 2/5 lessons. Next is lesson 3 : 'Loops'";
+      } else {
+        introduction =
+          "There are five lessons in the IndiCode learning path. Each lesson will take you on step closer to being a Python programmer.";
+      }
+    }
     return (
       <div className="learning">
         <div className={this.props.sidebar ? "ed-content" : "ed-content lg"}>
@@ -917,15 +955,16 @@ export class Learning extends Component {
                   <hr className="my-2"></hr>
                 </div>
                 <img className="instructions-img" src={Instructions} />
+                <hr className="my-2"></hr>
                 <div className="card start-lesson-card border-secondary mb-3">
-                  <div className="card-body">
-                    <h4 className="card-title">Ready?</h4>
+                  <div>
+                    <h4 className="go-card-title">Ready?</h4>
                     <p className="card-text">Start your lesson here</p>
                     <span
                       onClick={this.getLearningContent}
-                      className="btn btn-primary btn-med"
+                      className="btn btn-success btn-med"
                     >
-                      Go
+                      Start
                     </span>
                   </div>
                 </div>
@@ -949,13 +988,16 @@ export class Learning extends Component {
                 <h5>Chose your lesson</h5>
                 <hr className="my-2"></hr>
               </div>
+              {introduction}
               <ul className="list-group mt-3">
                 <li
                   className="list-group-item d-flex justify-content-between align-items-center module-choice-clickable"
                   onClick={this.moduleClicked.bind(this)}
                   data-id="1"
                 >
-                  Variables & Data Types
+                  {globalPerson
+                    ? "Variables & Data Types"
+                    : "1. Variables & Data Types"}
                   {module1Completed ? (
                     <span className="badge compeleted-icon">
                       {<TiIcons.TiTickOutline />}
@@ -975,7 +1017,9 @@ export class Learning extends Component {
                   }
                   data-id="2"
                 >
-                  Conditions & If Statements{" "}
+                  {globalPerson
+                    ? "Conditions & If Statements"
+                    : "2. Conditions & If Statements"}
                   {module2Completed ? (
                     <span className="badge compeleted-icon">
                       {" "}
@@ -997,7 +1041,7 @@ export class Learning extends Component {
                   }
                   data-id="3"
                 >
-                  Loops{" "}
+                  {globalPerson ? "Loops" : "3. Loops"}
                   {module3Completed ? <span className="badge">Tick</span> : ""}
                 </li>
               </ul>
