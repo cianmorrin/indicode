@@ -169,7 +169,9 @@ export class Learning extends Component {
                   ? title
                   : `${this.state.actualModuleNum}. ${title}`}
               </h1>
-              <span className="sub-mod">i. {submodule}</span>{" "}
+              <span className="sub-mod">
+                {globalPerson ? submodule : `i. ${submodule}`}
+              </span>
               <hr className="my-2"></hr>
             </div>
           );
@@ -375,7 +377,9 @@ export class Learning extends Component {
                     ? title
                     : `${this.state.actualModuleNum}. ${title}`}
                 </h1>
-                <span className="sub-mod">ii. {submodule}</span>
+                <span className="sub-mod">
+                  {globalPerson ? submodule : `ii. ${submodule}`}
+                </span>
                 <hr className="my-2"></hr>
               </div>
             </Fragment>
@@ -673,7 +677,9 @@ export class Learning extends Component {
                   ? title
                   : `${this.state.actualModuleNum}. ${title}`}
               </h1>
-              <span className="sub-mod">iii. {submodule}</span>
+              <span className="sub-mod">
+                {globalPerson ? submodule : `iii. ${submodule}`}
+              </span>
               <hr className="my-2"></hr>
             </div>
           );
