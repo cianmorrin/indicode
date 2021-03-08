@@ -10,6 +10,7 @@ import { getUserQuizResults, isStreakOn } from "../../actions/learning";
 import LSModal from "./LSModal";
 import QuizResultsModal from "./QuizResultsModal";
 import InterpreterModal from "./InterpreterModal";
+import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
 import Pencil from "../images/pencil.webp";
 import Calendar from "../images/calendar.webp";
@@ -95,6 +96,7 @@ export class Dashboard extends Component {
       zIndex: 1,
       display: "inline",
       padding: "10px",
+      border: "1px lightgray",
     };
 
     let trophies = 0;
@@ -112,7 +114,47 @@ export class Dashboard extends Component {
       }
     });
 
-    trophies = trophies.toString();
+    if (trophies === 0) {
+      trophies = <div className="no-trophy">Nothing yet!</div>;
+    } else {
+      if (trophies === 1) {
+        trophies = (
+          <div className="trophy-table-div">
+            <table className="awards-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <BsIcons.BsAward />
+                  </td>
+                  <td>Data Types and Variables</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      } else {
+        trophies = (
+          <div className="trophy-table-div">
+            <table className="awards-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <BsIcons.BsAward />
+                  </td>
+                  <td>Data Types and Variables</td>
+                </tr>
+                <tr>
+                  <td>
+                    <BsIcons.BsAward />
+                  </td>
+                  <td>Conditional and If Statements</td>
+                </tr>{" "}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+    }
 
     const lesResults = this.props.learningStyleResults;
     let showResults;
@@ -130,7 +172,7 @@ export class Dashboard extends Component {
         <Fragment>
           <div className={this.props.sidebar ? "dashboard" : "dashboard lg"}>
             <div className="dash-left">
-              <div className="card border-primary mb-3 main-card">
+              <div className="card border-primary main-card">
                 <h2 className="card-header main-panel-header">
                   Welcome to IndiCode
                 </h2>
@@ -146,22 +188,27 @@ export class Dashboard extends Component {
                 </p>
                 <hr className="main-panel-hr"></hr>
                 <div className="card-body">
-                  <a
+                  {/* <a
                     className="btn btn-primary btn-med main-card-btn"
                     href="#"
                     role="button"
                   >
                     Learn more
-                  </a>
+                  </a> */}
                 </div>
               </div>
               <div className="bottom-row">
                 <div className="bottom-panels">
-                  <h3>Your Learning Style</h3>
-                  <p className="card-text">Review and Updated Your Style</p>
+                  <div className="bottom-panel-title">
+                    <div className="btm-panel-icon">
+                      <FaIcons.FaChartPie />
+                    </div>
+                    <div className="btm-panel-text">Learning Style Portal</div>
+                  </div>
+                  {/* <p className="card-text">Review and Updated Your Style</p> */}
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
-                      className="btn btn-primary btn-med bottom-panel-btn"
+                      className="btn lg btn-secondary bottom-panel-btn"
                       onClick={() => this.setLSOpen(true)}
                     >
                       Open LS Portal
@@ -174,11 +221,18 @@ export class Dashboard extends Component {
                   </div>
                 </div>
                 <div className="bottom-panels">
-                  <h3>Your stats</h3>
-                  <p className="card-text">Check out your progress</p>
+                  <div className="bottom-panel-title stats">
+                    <div className="btm-panel-icon chart">
+                      <FaIcons.FaChartBar />
+                    </div>
+                    <div className="btm-panel-text quiz">
+                      Quiz<br></br> Results
+                    </div>
+                  </div>
+                  {/* <p className="card-text">Check out your progress</p> */}
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
-                      className="btn btn-primary btn-med bottom-panel-btn"
+                      className="btn lg btn-secondary bottom-panel-btn"
                       onClick={() => this.setQROpen(true)}
                     >
                       View Quiz Results
@@ -196,17 +250,16 @@ export class Dashboard extends Component {
             <div
               className={this.props.sidebar ? "dash-right" : "dash-right lg"}
             >
-              <div className="dashboard-side-panels ">
-                <h3>Write some code!</h3>
+              <div className="dashboard-side-panels">
+                <div className="side-panel-title">Write some code!</div>
                 <img className="side-panels-img" src={Pencil} />
-                <div style={BUTTON_WRAPPER_STYLES}>
+                <div className="side-panel-div">
                   <button
-                    className="btn btn-primary btn-med panel-btn"
+                    className="btn lg btn-secondary side-panel-btn"
                     onClick={() => this.setIntOpen(true)}
                   >
-                    Open Code Portal
+                    Open Coding Portal
                   </button>
-
                   <InterpreterModal
                     open={this.state.isIntModalOpen}
                     onClose={() => this.setIntOpen(false)}
@@ -215,15 +268,24 @@ export class Dashboard extends Component {
               </div>
 
               <div className="dashboard-side-panels">
-                <h3>IndiCoding Streak</h3>
-                <img className="side-panels-img" src={Calendar} />
-                {currentStreakScore}
+                <div className="side-panel-title streak">IndiCoding Streak</div>
+                <div className="side-panel-streak-content">
+                  <img className="side-panels-img" src={Calendar} />
+                  <div className="streak-panel-num">
+                    {currentStreakScore}
+                    <span className="streak-text">
+                      {currentStreakScore > 1 ? `days` : `day`}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <div className="dashboard-side-panels">
-                <h3>Levels</h3>
-                <img className="side-panels-img" src={Trophy} />
-                {trophies}
+                <div className="side-panel-title trophy">Awards Won</div>
+                <div className="side-panel-streak-content">
+                  <img className="side-panels-img t" src={Trophy} />
+                  {trophies}
+                </div>
               </div>
             </div>
           </div>
