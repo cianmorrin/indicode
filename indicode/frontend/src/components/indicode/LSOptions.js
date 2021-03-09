@@ -68,7 +68,10 @@ export class LSOptions extends Component {
                 learning experience
               </p>
               <Link to={"./questionnaire"}>
-                <span className="btn btn-primary btn-med bottom-panel-btn">
+                <span
+                  id="doQuestionnaire"
+                  className="btn btn-primary btn-med bottom-panel-btn"
+                >
                   Do Questionnaire
                 </span>
               </Link>

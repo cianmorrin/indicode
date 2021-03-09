@@ -87,7 +87,11 @@ export class Register extends Component {
                 />
               </div>
               <div className="form-group">
-                <button type="submit" className="btn btn-primary">
+                <button
+                  type="submit"
+                  id="submitFormRegisterBtn"
+                  className="btn btn-primary"
+                >
                   Register
                 </button>
               </div>

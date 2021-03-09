@@ -208,6 +208,7 @@ export class Dashboard extends Component {
                   {/* <p className="card-text">Review and Updated Your Style</p> */}
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
+                      id="openLSPortal"
                       className="btn lg btn-secondary bottom-panel-btn"
                       onClick={() => this.setLSOpen(true)}
                     >
@@ -232,6 +233,7 @@ export class Dashboard extends Component {
                   {/* <p className="card-text">Check out your progress</p> */}
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
+                      id="openQuizPortal"
                       className="btn lg btn-secondary bottom-panel-btn"
                       onClick={() => this.setQROpen(true)}
                     >
@@ -255,6 +257,7 @@ export class Dashboard extends Component {
                 <img className="side-panels-img pencil" src={Pencil} />
                 <div className="side-panel-div">
                   <button
+                    id="openCodePortal"
                     className="btn lg btn-secondary side-panel-btn"
                     onClick={() => this.setIntOpen(true)}
                   >
