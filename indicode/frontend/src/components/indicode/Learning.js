@@ -7,6 +7,8 @@ import {
   getUserQuizResults,
   whatQuiz,
 } from "../../actions/learning";
+import { setSidebar } from "../../actions/sidebar";
+
 import { getLearningStyleResults } from "../../actions/questionnaire";
 import Interpreter from "./Interpreter";
 import LearningContent from "./LearningContent";
@@ -53,6 +55,9 @@ export class Learning extends Component {
     this.props.getLearningStyleResults();
     this.props.getLearning();
     this.props.getUserQuizResults();
+    if (this.props.sidebar) {
+      this.props.setSidebar();
+    }
   }
 
   getLearningContent = () => {
@@ -1100,6 +1105,7 @@ const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
   learningStyleResults: state.style.learningStyleResults,
   quizResults: state.learning.quizResults,
+  sidebar: state.sidebar.sidebar,
 });
 
 export default connect(mapStateToProps, {
@@ -1107,4 +1113,5 @@ export default connect(mapStateToProps, {
   getLearningStyleResults,
   getUserQuizResults,
   whatQuiz,
+  setSidebar,
 })(Learning);
