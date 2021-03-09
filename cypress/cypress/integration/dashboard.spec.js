@@ -4,15 +4,15 @@ describe("Test Dashboard Portals", () => {
     cy.contains("Login");
     cy.url().should("include", "/login");
     cy.get(":nth-child(1) > .form-control")
-      .type("TestUser")
-      .should("have.value", "TestUser");
+      .type("TestUser1")
+      .should("have.value", "TestUser1");
 
     cy.get(":nth-child(2) > .form-control")
       .type("testing123")
       .should("have.value", "testing123");
 
     cy.get("#loginBtn").click();
-    cy.contains("Welcome TestUser");
+    cy.contains("Welcome TestUser1");
   });
 
   it("Opens Learning Style Portal", () => {

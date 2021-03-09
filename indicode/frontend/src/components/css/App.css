@@ -643,6 +643,23 @@
   margin-top: 0;
 }
 
+.awards-table {
+  border-collapse: collapse;
+  margin-top: -2vh;
+}
+
+.awards-table td {
+  padding-bottom: 1vh;
+}
+
+.table-text {
+  padding-left: 2rem;
+}
+
+.award-icon {
+  color: orange;
+}
+
 /* .list-group-item {
   height: 10vh;
 } */
@@ -713,6 +730,9 @@
     width: 50%;
   }
 }
+
+/* padding-left: 2rem;
+padding-top: 1vh; */
 
 @media only screen and (max-width: 1550px) {
   .main-card {

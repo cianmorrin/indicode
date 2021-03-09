@@ -101,7 +101,8 @@ export class Learning extends Component {
 
     let module1Clickable = true,
       module2Clickable = false,
-      module3Clickable = false;
+      module3Clickable = false,
+      module45Clickable = false;
 
     if (this.props.quizResults.length > 0) {
       this.props.quizResults.forEach(function (entry) {
@@ -1048,6 +1049,34 @@ export class Learning extends Component {
                   data-id="3"
                 >
                   {globalPerson ? "Loops" : "3. Loops"}
+                  {module3Completed ? <span className="badge">Tick</span> : ""}
+                </li>
+                <li
+                  className={
+                    module45Clickable
+                      ? "list-group-item d-flex justify-content-between align-items-center module-choice-clickable"
+                      : "list-group-item d-flex justify-content-between align-items-center module-choice"
+                  }
+                  onClick={
+                    module45Clickable ? this.moduleClicked.bind(this) : () => {}
+                  }
+                  data-id="4"
+                >
+                  {globalPerson ? "Strings" : "4. Strings"}
+                  {module3Completed ? <span className="badge">Tick</span> : ""}
+                </li>
+                <li
+                  className={
+                    module45Clickable
+                      ? "list-group-item d-flex justify-content-between align-items-center module-choice-clickable"
+                      : "list-group-item d-flex justify-content-between align-items-center module-choice"
+                  }
+                  onClick={
+                    module45Clickable ? this.moduleClicked.bind(this) : () => {}
+                  }
+                  data-id="5"
+                >
+                  {globalPerson ? "Lists & Tuples" : "5. Lists & Tuples"}
                   {module3Completed ? <span className="badge">Tick</span> : ""}
                 </li>
               </ul>

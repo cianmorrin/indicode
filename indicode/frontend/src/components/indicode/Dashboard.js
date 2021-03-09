@@ -99,34 +99,56 @@ export class Dashboard extends Component {
       border: "1px lightgray",
     };
 
-    let trophies = 0;
-
+    let quiz1trophy = false;
+    let quiz2trophy = false;
+    let trophies = "Trophies";
     this.props.quizResults.forEach(function (entry) {
       if (entry.quiz_no === 1) {
         if (entry.trophy === true) {
-          trophies = 1;
+          quiz1trophy = true;
         }
       }
       if (entry.quiz_no === 2) {
         if (entry.trophy === true) {
-          trophies = 2;
+          quiz2trophy = true;
         }
       }
     });
 
-    if (trophies === 0) {
+    if (quiz1trophy === false && quiz2trophy === false) {
       trophies = <div className="no-trophy">Nothing yet!</div>;
     } else {
-      if (trophies === 1) {
+      if (quiz1trophy && quiz2trophy) {
         trophies = (
           <div className="trophy-table-div">
             <table className="awards-table">
               <tbody>
                 <tr>
-                  <td>
+                  <td className="award-icon">
                     <BsIcons.BsAward />
                   </td>
-                  <td>Data Types and Variables</td>
+                  <td className="table-text">Data Types and Variables</td>
+                </tr>
+                <tr>
+                  <td className="award-icon">
+                    <BsIcons.BsAward />
+                  </td>
+                  <td className="table-text">Conditional and If Statements</td>
+                </tr>{" "}
+              </tbody>
+            </table>
+          </div>
+        );
+      } else if (quiz1trophy === true && quiz2trophy === false) {
+        trophies = (
+          <div className="trophy-table-div">
+            <table className="awards-table">
+              <tbody>
+                <tr>
+                  <td className="award-icon">
+                    <BsIcons.BsAward />
+                  </td>
+                  <td className="table-text">Data Types and Variables</td>
                 </tr>
               </tbody>
             </table>
@@ -138,17 +160,11 @@ export class Dashboard extends Component {
             <table className="awards-table">
               <tbody>
                 <tr>
-                  <td>
+                  <td className="award-icon">
                     <BsIcons.BsAward />
                   </td>
-                  <td>Data Types and Variables</td>
+                  <td className="table-text">Conditional and If Statements</td>
                 </tr>
-                <tr>
-                  <td>
-                    <BsIcons.BsAward />
-                  </td>
-                  <td>Conditional and If Statements</td>
-                </tr>{" "}
               </tbody>
             </table>
           </div>
