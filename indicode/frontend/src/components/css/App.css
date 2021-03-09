@@ -121,8 +121,8 @@
 }
 
 .main-panel-hr {
-  margin-top: 0;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
 }
 
 .main-panel-header {
@@ -135,12 +135,6 @@
   color: white;
   padding-top: 8vh;
   padding-left: 4rem;
-}
-
-.main-card-btn {
-  width: 25%;
-  border-radius: 20px;
-  margin-top: -4vh;
 }
 
 .bottom-row {
@@ -156,6 +150,27 @@
   border: 1px solid lightgray;
   border-radius: 5px;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 60%);
+}
+
+.main-cb {
+  padding-bottom: 1.5rem;
+}
+
+.main-panel-btn {
+  float: left;
+  margin-left: 2rem;
+  margin-bottom: 3vh;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 80%);
+}
+
+.main-panel-arrow {
+  float: left;
+  margin-left: 2rem;
+  margin-top: 1.5vh;
+  font-size: 18px;
+  color: #55595c;
 }
 
 .submit-intls-btn {

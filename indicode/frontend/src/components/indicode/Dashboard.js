@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Popup from "reactjs-popup";
+import { Link, Redirect } from "react-router-dom";
 import "reactjs-popup/dist/index.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -12,6 +13,7 @@ import QuizResultsModal from "./QuizResultsModal";
 import InterpreterModal from "./InterpreterModal";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
+import * as AsIcons from "react-icons/ai";
 import Pencil from "../images/pencil.webp";
 import Calendar from "../images/calendar.webp";
 import Trophy from "../images/trophy.png";
@@ -61,6 +63,7 @@ export class Dashboard extends Component {
     isLSModalOpen: false,
     isIntModalOpen: false,
     isQRModalOpen: false,
+    goLearning: false,
   };
 
   setLSOpen = (lsModalState) => {
@@ -77,6 +80,12 @@ export class Dashboard extends Component {
   setQROpen = (qrModalState) => {
     this.setState(() => ({
       isQRModalOpen: qrModalState,
+    }));
+  };
+
+  goToLearning = () => {
+    this.setState(() => ({
+      goLearning: true,
     }));
   };
 
@@ -203,14 +212,20 @@ export class Dashboard extends Component {
                   </span>
                 </p>
                 <hr className="main-panel-hr"></hr>
-                <div className="card-body">
-                  {/* <a
-                    className="btn btn-primary btn-med main-card-btn"
+                <div className="card-body main-cb">
+                  <a
+                    className="btn lg btn-secondary main-panel-btn"
                     href="#"
                     role="button"
                   >
-                    Learn more
-                  </a> */}
+                    Learn more on Indicode
+                  </a>
+                  <Link to="/learning">
+                    <a className="main-panel-arrow" href="#" role="button">
+                      {`Continue Learning Path `}{" "}
+                      <AsIcons.AiOutlineRightCircle />
+                    </a>
+                  </Link>
                 </div>
               </div>
               <div className="bottom-row">
