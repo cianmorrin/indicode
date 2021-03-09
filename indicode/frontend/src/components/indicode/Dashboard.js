@@ -252,7 +252,7 @@ export class Dashboard extends Component {
             >
               <div className="dashboard-side-panels">
                 <div className="side-panel-title">Write some code!</div>
-                <img className="side-panels-img" src={Pencil} />
+                <img className="side-panels-img pencil" src={Pencil} />
                 <div className="side-panel-div">
                   <button
                     className="btn lg btn-secondary side-panel-btn"
