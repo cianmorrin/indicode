@@ -221,10 +221,10 @@ export class Dashboard extends Component {
                     Learn more on Indicode
                   </a>
                   <Link to="/learning">
-                    <a className="main-panel-arrow" href="#" role="button">
+                    <span className="main-panel-arrow" href="#" role="button">
                       {`Continue Learning Path `}{" "}
                       <AsIcons.AiOutlineRightCircle />
-                    </a>
+                    </span>
                   </Link>
                 </div>
               </div>

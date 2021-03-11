@@ -179,7 +179,7 @@
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 60%);
   font-size: 14px;
   position: absolute;
-  top: 50%;
+  top: 60%;
 }
 
 .side-panel-div {
@@ -312,7 +312,6 @@
   align-items: center;
   justify-content: left;
   padding-bottom: 7vh;
-  margin-left: 5rem;
   justify-content: space-around;
 }
 
@@ -635,6 +634,7 @@
 .rightlabel {
   font-size: 13px;
   text-align: center;
+  cursor: pointer;
 }
 
 .header-arrow {
@@ -703,6 +703,14 @@
 
 .module-choice-clickable:hover .compeleted-icon {
   color: white;
+}
+
+.explanation-box {
+  position: fixed;
+  margin-right: 3rem;
+  width: 15rem;
+  height: 22vh;
+  margin-bottom: 2vh;
 }
 
 @media only screen and (max-width: 1770px) {
