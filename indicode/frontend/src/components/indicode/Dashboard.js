@@ -143,7 +143,7 @@ export class Dashboard extends Component {
                     <BsIcons.BsAward />
                   </td>
                   <td className="table-text">Conditional and If Statements</td>
-                </tr>{" "}
+                </tr>
               </tbody>
             </table>
           </div>

@@ -6,7 +6,7 @@ import {
   submitQuiz,
   getUserQuizResults,
 } from "../../actions/learning";
-
+import * as AsIcons from "react-icons/ai";
 import MCQuizPage from "./MCQuizPage";
 import { setSidebar } from "../../actions/sidebar";
 
@@ -88,9 +88,9 @@ export class MCQuiz extends Component {
   };
 
   render() {
-    if (this.state.finishedQuiz) {
-      return <Redirect to="/" />;
-    }
+    // if (this.state.finishedQuiz) {
+    //   return <Redirect to="/" />;
+    // }
 
     let mcqs = this.props.mcquiz.slice(0, 5);
     let indent = false;
@@ -117,22 +117,44 @@ export class MCQuiz extends Component {
       showSubmit = true;
     }
 
+    let resultContent = "Quiz Finished";
+    let trophyRes = "Not this time, try again!";
+    if (this.state.score > 3) {
+      trophyRes = "Yes. Congratulations!";
+    }
+
     return (
       <div className="container">
-        <h1>UPDATED This is the Variables and Data Types Quiz!</h1>
-        {/* <form onSubmit={this.onSubmit}> */}
-        <form>
-          <h2>QUIZ</h2>
-          <MCQuizPage
-            questions={currentQs}
-            onSelectedAnswer={this.onSelectedAnswer}
-            onClickMCQBtn={this.onClickMCQBtn}
-            selected={this.state.selected}
-            answerChecked={this.state.answerChecked}
-            currentPage={this.state.currentPage}
-            indent={indent}
-          />
-        </form>
+        {this.state.finishedQuiz && (
+          <div className="alert alert-info mcquiz-alert">
+            <div>
+              <div>{resultContent}</div>
+              <div>Your score : {this.state.score}/5</div>
+              <div>Trophy : {trophyRes}</div>
+              <div className="mcq-dash-link">
+                <Link to="/">
+                  <span className="alert-link mt-3">
+                    {`Return to Dashboard `} <AsIcons.AiOutlineRightCircle />
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className={this.state.finishedQuiz ? "fade-mcq" : ""}>
+          <form>
+            <h2>QUIZ</h2>
+            <MCQuizPage
+              questions={currentQs}
+              onSelectedAnswer={this.onSelectedAnswer}
+              onClickMCQBtn={this.onClickMCQBtn}
+              selected={this.state.selected}
+              answerChecked={this.state.answerChecked}
+              currentPage={this.state.currentPage}
+              indent={indent}
+            />
+          </form>
+        </div>
       </div>
     );
   }
