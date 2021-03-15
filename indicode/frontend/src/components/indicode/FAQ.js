@@ -1,12 +1,12 @@
 import React from "react";
 
-function Explore() {
+function FAQ() {
   return (
     <div className="container">
-      <h1>Explore</h1>
+      <h1>FAQ</h1>
       <p>Coming soon ......</p>
     </div>
   );
 }
 
-export default Explore;
+export default FAQ;
