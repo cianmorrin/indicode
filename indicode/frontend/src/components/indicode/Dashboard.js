@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Popup from "reactjs-popup";
+import { Link, Redirect } from "react-router-dom";
 import "reactjs-popup/dist/index.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -12,6 +13,7 @@ import QuizResultsModal from "./QuizResultsModal";
 import InterpreterModal from "./InterpreterModal";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
+import * as AsIcons from "react-icons/ai";
 import Pencil from "../images/pencil.webp";
 import Calendar from "../images/calendar.webp";
 import Trophy from "../images/trophy.png";
@@ -61,6 +63,7 @@ export class Dashboard extends Component {
     isLSModalOpen: false,
     isIntModalOpen: false,
     isQRModalOpen: false,
+    goLearning: false,
   };
 
   setLSOpen = (lsModalState) => {
@@ -77,6 +80,12 @@ export class Dashboard extends Component {
   setQROpen = (qrModalState) => {
     this.setState(() => ({
       isQRModalOpen: qrModalState,
+    }));
+  };
+
+  goToLearning = () => {
+    this.setState(() => ({
+      goLearning: true,
     }));
   };
 
@@ -99,34 +108,56 @@ export class Dashboard extends Component {
       border: "1px lightgray",
     };
 
-    let trophies = 0;
-
+    let quiz1trophy = false;
+    let quiz2trophy = false;
+    let trophies = "Trophies";
     this.props.quizResults.forEach(function (entry) {
       if (entry.quiz_no === 1) {
         if (entry.trophy === true) {
-          trophies = 1;
+          quiz1trophy = true;
         }
       }
       if (entry.quiz_no === 2) {
         if (entry.trophy === true) {
-          trophies = 2;
+          quiz2trophy = true;
         }
       }
     });
 
-    if (trophies === 0) {
+    if (quiz1trophy === false && quiz2trophy === false) {
       trophies = <div className="no-trophy">Nothing yet!</div>;
     } else {
-      if (trophies === 1) {
+      if (quiz1trophy && quiz2trophy) {
         trophies = (
           <div className="trophy-table-div">
             <table className="awards-table">
               <tbody>
                 <tr>
-                  <td>
+                  <td className="award-icon">
                     <BsIcons.BsAward />
                   </td>
-                  <td>Data Types and Variables</td>
+                  <td className="table-text">Data Types and Variables</td>
+                </tr>
+                <tr>
+                  <td className="award-icon">
+                    <BsIcons.BsAward />
+                  </td>
+                  <td className="table-text">Conditional and If Statements</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      } else if (quiz1trophy === true && quiz2trophy === false) {
+        trophies = (
+          <div className="trophy-table-div">
+            <table className="awards-table">
+              <tbody>
+                <tr>
+                  <td className="award-icon">
+                    <BsIcons.BsAward />
+                  </td>
+                  <td className="table-text">Data Types and Variables</td>
                 </tr>
               </tbody>
             </table>
@@ -138,17 +169,11 @@ export class Dashboard extends Component {
             <table className="awards-table">
               <tbody>
                 <tr>
-                  <td>
+                  <td className="award-icon">
                     <BsIcons.BsAward />
                   </td>
-                  <td>Data Types and Variables</td>
+                  <td className="table-text">Conditional and If Statements</td>
                 </tr>
-                <tr>
-                  <td>
-                    <BsIcons.BsAward />
-                  </td>
-                  <td>Conditional and If Statements</td>
-                </tr>{" "}
               </tbody>
             </table>
           </div>
@@ -187,14 +212,20 @@ export class Dashboard extends Component {
                   </span>
                 </p>
                 <hr className="main-panel-hr"></hr>
-                <div className="card-body">
-                  {/* <a
-                    className="btn btn-primary btn-med main-card-btn"
+                <div className="card-body main-cb">
+                  <a
+                    className="btn lg btn-secondary main-panel-btn"
                     href="#"
                     role="button"
                   >
-                    Learn more
-                  </a> */}
+                    Learn more on Indicode
+                  </a>
+                  <Link to="/learning">
+                    <span className="main-panel-arrow" href="#" role="button">
+                      {`Continue Learning Path `}{" "}
+                      <AsIcons.AiOutlineRightCircle />
+                    </span>
+                  </Link>
                 </div>
               </div>
               <div className="bottom-row">
@@ -208,6 +239,7 @@ export class Dashboard extends Component {
                   {/* <p className="card-text">Review and Updated Your Style</p> */}
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
+                      id="openLSPortal"
                       className="btn lg btn-secondary bottom-panel-btn"
                       onClick={() => this.setLSOpen(true)}
                     >
@@ -232,6 +264,7 @@ export class Dashboard extends Component {
                   {/* <p className="card-text">Check out your progress</p> */}
                   <div style={BUTTON_WRAPPER_STYLES}>
                     <button
+                      id="openQuizPortal"
                       className="btn lg btn-secondary bottom-panel-btn"
                       onClick={() => this.setQROpen(true)}
                     >
@@ -255,6 +288,7 @@ export class Dashboard extends Component {
                 <img className="side-panels-img pencil" src={Pencil} />
                 <div className="side-panel-div">
                   <button
+                    id="openCodePortal"
                     className="btn lg btn-secondary side-panel-btn"
                     onClick={() => this.setIntOpen(true)}
                   >

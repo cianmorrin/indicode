@@ -48,8 +48,9 @@ export class MCQuizPage extends Component {
         <ul className="list-group mb-4">
           {this.props.questions.map((question) => (
             <li key={question.id} className="list-group-item">
-              <p className="questionnaire-q">{question.question}</p> <br></br>
-              <p className="questionnaire-q">{question.question_1}</p>
+              <h5>Question : </h5>
+              <p className="mcq-q">{question.question}</p> <br></br>
+              <p className="mcq-q">{question.question_1}</p>
               {showFinalImg ? (
                 <div>
                   {" "}
@@ -169,7 +170,9 @@ export class MCQuizPage extends Component {
         <button
           onClick={this.onClickMCQButton}
           className={
-            this.props.selected ? "btn btn-primary" : "btn btn-primary disabled"
+            this.props.selected
+              ? "btn btn-primary mcq-btn"
+              : "btn btn-primary mcq-btn disabled"
           }
         >
           {buttonText}

@@ -83,7 +83,7 @@
 }
 
 .quiz-answers {
-  height: 12vh;
+  height: 11vh;
   border: 2px solid cornflowerblue;
   cursor: pointer;
   margin: auto;
@@ -111,6 +111,29 @@
   color: white;
 }
 
+.mcquiz-alert {
+  position: absolute;
+  z-index: 200;
+  height: 30vh;
+  font-size: 20px;
+  margin-left: 12rem;
+  margin-right: auto;
+  width: 50vw;
+}
+
+.alert-link {
+  cursor: pointer;
+}
+
+.mcq-dash-link {
+  margin-top: 10vh;
+}
+
+.fade-mcq {
+  opacity: 0.2;
+  cursor: no-drop;
+}
+
 .quiz-answers span {
   display: block;
   font-size: 16px;
@@ -121,8 +144,8 @@
 }
 
 .main-panel-hr {
-  margin-top: 0;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
 }
 
 .main-panel-header {
@@ -135,12 +158,6 @@
   color: white;
   padding-top: 8vh;
   padding-left: 4rem;
-}
-
-.main-card-btn {
-  width: 25%;
-  border-radius: 20px;
-  margin-top: -4vh;
 }
 
 .bottom-row {
@@ -158,13 +175,34 @@
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 60%);
 }
 
+.main-cb {
+  padding-bottom: 1.5rem;
+}
+
+.main-panel-btn {
+  float: left;
+  margin-left: 2rem;
+  margin-bottom: 3vh;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 80%);
+}
+
+.main-panel-arrow {
+  float: left;
+  margin-left: 2rem;
+  margin-top: 1.5vh;
+  font-size: 18px;
+  color: #55595c;
+}
+
 .submit-intls-btn {
   border: 1px solid lightgray;
   border-radius: 5px;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 60%);
   font-size: 14px;
   position: absolute;
-  top: 50%;
+  top: 60%;
 }
 
 .side-panel-div {
@@ -236,6 +274,14 @@
   font-weight: 600;
 }
 
+.mcq-q {
+  margin-top: 0;
+  margin-bottom: -1rem;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 2rem;
+}
+
 .page-link.current {
   background-color: gray;
 }
@@ -297,7 +343,6 @@
   align-items: center;
   justify-content: left;
   padding-bottom: 7vh;
-  margin-left: 5rem;
   justify-content: space-around;
 }
 
@@ -620,6 +665,7 @@
 .rightlabel {
   font-size: 13px;
   text-align: center;
+  cursor: pointer;
 }
 
 .header-arrow {
@@ -643,9 +689,29 @@
   margin-top: 0;
 }
 
-/* .list-group-item {
-  height: 10vh;
-} */
+.awards-table {
+  border-collapse: collapse;
+  margin-top: -2vh;
+}
+
+.awards-table td {
+  padding-bottom: 1vh;
+}
+
+.table-text {
+  padding-left: 2rem;
+}
+
+.award-icon {
+  color: orange;
+  font-size: 26px;
+}
+
+.mcq-btn {
+  margin-left: 30rem;
+  margin-bottom: 4vh;
+}
+
 .module-choice {
   cursor: no-drop;
   background-color: lightgray;
@@ -671,6 +737,14 @@
 
 .module-choice-clickable:hover .compeleted-icon {
   color: white;
+}
+
+.explanation-box {
+  position: fixed;
+  margin-right: 3rem;
+  width: 15rem;
+  height: 22vh;
+  margin-bottom: 2vh;
 }
 
 @media only screen and (max-width: 1770px) {
@@ -726,6 +800,7 @@
 
   .main-panel-text {
     padding-top: 1rem;
+    margin-bottom: 0;
   }
   .side-panels-img.pencil {
     margin-top: 0;
@@ -763,6 +838,14 @@
 
   .interpreter-div {
     width: 46%;
+  }
+
+  .award-icon {
+    padding-left: 1rem;
+  }
+
+  .main-panel-btn {
+    margin-left: 1rem;
   }
 }
 

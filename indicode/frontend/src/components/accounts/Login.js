@@ -56,7 +56,7 @@ export class Login extends Component {
               </div>
 
               <div className="form-group">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" id="loginBtn" className="btn btn-primary">
                   Login
                 </button>
               </div>

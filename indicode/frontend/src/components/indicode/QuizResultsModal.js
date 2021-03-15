@@ -31,8 +31,6 @@ function QuizResultsModal({ open, onClose, quizResults }) {
   let results = Array(5).fill(0);
 
   if (quizResults.length > 0) {
-    console.log("quizResults", quizResults);
-
     quizResults.forEach(function (entry) {
       if (entry.quiz_no === 1) {
         results[0] = entry.score;
@@ -48,12 +46,13 @@ function QuizResultsModal({ open, onClose, quizResults }) {
     labels: [
       "Data Types & Variables",
       "Conditional Statements",
+      "Loops",
       "Strings",
-      "Advanced Data Types",
+      "Lists & Tuples",
     ],
     datasets: [
       {
-        data: [results[0], results[1], results[2], results[3]],
+        data: [results[0], results[1], results[2], results[3], results[4]],
         backgroundColor: [
           "rgba(255, 99, 132, 0.8)",
           "rgba(255, 159, 64, 0.8)",

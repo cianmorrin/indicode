@@ -7,6 +7,8 @@ import {
   getUserQuizResults,
   whatQuiz,
 } from "../../actions/learning";
+import { setSidebar } from "../../actions/sidebar";
+
 import { getLearningStyleResults } from "../../actions/questionnaire";
 import Interpreter from "./Interpreter";
 import LearningContent from "./LearningContent";
@@ -53,6 +55,9 @@ export class Learning extends Component {
     this.props.getLearningStyleResults();
     this.props.getLearning();
     this.props.getUserQuizResults();
+    if (this.props.sidebar) {
+      this.props.setSidebar();
+    }
   }
 
   getLearningContent = () => {
@@ -101,7 +106,8 @@ export class Learning extends Component {
 
     let module1Clickable = true,
       module2Clickable = false,
-      module3Clickable = false;
+      module3Clickable = false,
+      module45Clickable = false;
 
     if (this.props.quizResults.length > 0) {
       this.props.quizResults.forEach(function (entry) {
@@ -1050,6 +1056,34 @@ export class Learning extends Component {
                   {globalPerson ? "Loops" : "3. Loops"}
                   {module3Completed ? <span className="badge">Tick</span> : ""}
                 </li>
+                <li
+                  className={
+                    module45Clickable
+                      ? "list-group-item d-flex justify-content-between align-items-center module-choice-clickable"
+                      : "list-group-item d-flex justify-content-between align-items-center module-choice"
+                  }
+                  onClick={
+                    module45Clickable ? this.moduleClicked.bind(this) : () => {}
+                  }
+                  data-id="4"
+                >
+                  {globalPerson ? "Strings" : "4. Strings"}
+                  {module3Completed ? <span className="badge">Tick</span> : ""}
+                </li>
+                <li
+                  className={
+                    module45Clickable
+                      ? "list-group-item d-flex justify-content-between align-items-center module-choice-clickable"
+                      : "list-group-item d-flex justify-content-between align-items-center module-choice"
+                  }
+                  onClick={
+                    module45Clickable ? this.moduleClicked.bind(this) : () => {}
+                  }
+                  data-id="5"
+                >
+                  {globalPerson ? "Lists & Tuples" : "5. Lists & Tuples"}
+                  {module3Completed ? <span className="badge">Tick</span> : ""}
+                </li>
               </ul>
             </div>
           )}
@@ -1071,6 +1105,7 @@ const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
   learningStyleResults: state.style.learningStyleResults,
   quizResults: state.learning.quizResults,
+  sidebar: state.sidebar.sidebar,
 });
 
 export default connect(mapStateToProps, {
@@ -1078,4 +1113,5 @@ export default connect(mapStateToProps, {
   getLearningStyleResults,
   getUserQuizResults,
   whatQuiz,
+  setSidebar,
 })(Learning);
