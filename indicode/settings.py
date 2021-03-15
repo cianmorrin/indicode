@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import socket
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'sof1!f1*=%vxnhkqpcbgubht885h#qt3py%s6xk9r&kson9-@v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -95,6 +96,15 @@ DATABASES = {
     }
 }
 
+if socket.gethostname() == "Cians-MacBook-Pro.local":
+    ALLOWED_HOSTS = ['*', ]
+else:
+    DATABASES["default"]["ENGINE"] = "django.db.backends.postgresql_psycopg2"
+    DATABASES["default"]["NAME"] = 'indicodedb'
+    DATABASES["default"]["USER"] = 'indiuser'
+    DATABASES["default"]["PASSWORD"] = 'indipass'
+    ALLOWED_HOSTS = ['138.68.129.2', '.indicode.digital', 'localhost']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -132,11 +142,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT= os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/static')
+    os.path.join(BASE_DIR, 'frontend/static/frontend')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 try:
     from .local_settings import *
