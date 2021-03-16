@@ -97,12 +97,16 @@ DATABASES = {
 }
 
 if socket.gethostname() == "Cians-MacBook-Pro.local":
+    DEBUG = True
+    TEMPLATES[0]["OPTIONS"]["debug"] = True
     ALLOWED_HOSTS = ['*', ]
 else:
     DATABASES["default"]["ENGINE"] = "django.db.backends.postgresql_psycopg2"
     DATABASES["default"]["NAME"] = 'indicodedb'
     DATABASES["default"]["USER"] = 'indiuser'
     DATABASES["default"]["PASSWORD"] = 'indipass'
+    DEBUG = False
+    TEMPLATES[0]["OPTIONS"]["debug"] = False
     ALLOWED_HOSTS = ['138.68.129.2', '.indicode.digital', 'localhost']
 
 
