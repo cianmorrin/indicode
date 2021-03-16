@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'sof1!f1*=%vxnhkqpcbgubht885h#qt3py%s6xk9r&kson9-@v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -95,20 +95,6 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
-
-if socket.gethostname() == "Cians-MacBook-Pro.local":
-    DEBUG = True
-    TEMPLATES[0]["OPTIONS"]["debug"] = True
-    ALLOWED_HOSTS = ['*', ]
-else:
-    DATABASES["default"]["ENGINE"] = "django.db.backends.postgresql_psycopg2"
-    DATABASES["default"]["NAME"] = 'indicodedb'
-    DATABASES["default"]["USER"] = 'indiuser'
-    DATABASES["default"]["PASSWORD"] = 'indipass'
-    DEBUG = False
-    TEMPLATES[0]["OPTIONS"]["debug"] = False
-    ALLOWED_HOSTS = ['138.68.129.2', '.indicode.digital', 'localhost']
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
