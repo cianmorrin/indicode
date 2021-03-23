@@ -26,7 +26,3 @@ class QuizResults(models.Model):
     trophy = models.BooleanField(default=False)
     date = models.DateField(auto_now_add=True)
     streak = models.IntegerField(default=0)
-
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     streak = models.IntegerField()

@@ -1,6 +1,6 @@
 describe("Test Login", () => {
   it("Visits IndiCode", () => {
-    cy.visit("/");
+    cy.visit("/"); // Url is set to "http://localhost:8000/#/" in cypress config file
     cy.contains("Login");
     cy.url().should("include", "/login");
     cy.get(":nth-child(1) > .form-control")

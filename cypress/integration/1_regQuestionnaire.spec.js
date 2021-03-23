@@ -9,8 +9,8 @@ describe("Questionnaire", () => {
     cy.url().should("include", "/register");
 
     cy.get(":nth-child(1) > .form-control")
-      .type("TestUser4")
-      .should("have.value", "TestUser4");
+      .type("IndiTestUser1")
+      .should("have.value", "IndiTestUser1");
 
     cy.get(":nth-child(2) > .form-control")
       .type("tester@mail.com")
@@ -25,7 +25,7 @@ describe("Questionnaire", () => {
       .should("have.value", "testing123");
 
     cy.get("#submitFormRegisterBtn").click();
-    cy.contains("Welcome TestUser4");
+    cy.contains("Welcome IndiTestUser1");
   });
 
   it("Fills out questionnaire", function () {
