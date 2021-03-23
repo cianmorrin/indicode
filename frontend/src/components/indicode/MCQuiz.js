@@ -88,15 +88,21 @@ export class MCQuiz extends Component {
   };
 
   render() {
-    // if (this.state.finishedQuiz) {
-    //   return <Redirect to="/" />;
-    // }
+    let quiz1 = [],
+      quiz2 = [];
+    for (let lesson of this.props.mcquiz) {
+      if (lesson.moduleNum === 1) {
+        quiz1.push(lesson);
+      } else if (lesson.moduleNum === 2) {
+        quiz2.push(lesson);
+      }
+    }
 
-    let mcqs = this.props.mcquiz.slice(0, 5);
+    let mcqs = quiz1;
     let indent = false;
 
     if (this.props.lessonNum === 3) {
-      mcqs = this.props.mcquiz.slice(5, 10);
+      mcqs = quiz2;
       indent = true;
     }
 
@@ -143,7 +149,13 @@ export class MCQuiz extends Component {
         )}
         <div className={this.state.finishedQuiz ? "fade-mcq" : ""}>
           <form>
-            <h2>QUIZ</h2>
+            <h2 className="quiz-title">
+              {indent
+                ? "Conditions and If Statements"
+                : "Variables and Data Types"}{" "}
+              Quiz
+            </h2>
+
             <MCQuizPage
               questions={currentQs}
               onSelectedAnswer={this.onSelectedAnswer}

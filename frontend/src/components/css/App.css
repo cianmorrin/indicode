@@ -148,6 +148,15 @@
   margin-bottom: 0rem;
 }
 
+.home-icon {
+  margin-left: 2rem;
+  background: none;
+  color: white;
+  display: flex;
+  cursor: pointer;
+  font-size: 3rem;
+}
+
 .main-panel-header {
   text-transform: none;
   height: 24vh;
@@ -599,6 +608,12 @@
 .final-q {
   height: 35vh;
   margin-left: 25rem;
+  margin-top: 3vh;
+}
+
+.quiz-title {
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
 }
 
 .instructions-img {

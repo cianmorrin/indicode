@@ -21,9 +21,7 @@ export class Navbar extends Component {
           <nav className={this.props.sidebar ? "nav-menu active" : "nav-menu"}>
             <ul className="nav-menu-items" onClick={this.props.setSidebar}>
               <li className="navbar-toggle">
-                <Link to="#" className="menu-bars">
-                  <FaIcons.FaCode onClick={this.props.setSidebar} />
-                </Link>
+                <span className="home-icon"></span>
               </li>
               {SideBarData.map((item, index) => {
                 return (

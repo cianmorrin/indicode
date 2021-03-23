@@ -177,36 +177,30 @@ export const submitLearningStyle = (learningStyleScore) => (
 
   const { af_a, af_b, si_a, si_b, vv_a, vv_b, sg_a, sg_b } = learningStyleScore;
 
+  console.log("af_a, af_b", af_a, af_b);
+
   if (af_a > af_b) {
-    const temp1 = af_a - af_b;
-    act_or_ref = "act" + temp1.toString();
+    act_or_ref = "act" + af_a.toString();
   } else if (af_b > af_a) {
-    const temp2 = af_b - af_a;
-    act_or_ref = "ref" + temp2.toString();
+    act_or_ref = "ref" + af_b.toString();
   }
 
   if (si_a > si_b) {
-    const temp1 = si_a - si_b;
-    sen_or_int = "sen" + temp1.toString();
+    sen_or_int = "sen" + si_a.toString();
   } else if (si_b > si_a) {
-    const temp2 = si_b - si_a;
-    sen_or_int = "int" + temp2.toString();
+    sen_or_int = "int" + si_b.toString();
   }
 
   if (vv_a > vv_b) {
-    const temp1 = vv_a - vv_b;
-    vis_or_verb = "vis" + temp1.toString();
+    vis_or_verb = "vis" + vv_a.toString();
   } else if (vv_b > vv_a) {
-    const temp2 = vv_b - vv_a;
-    vis_or_verb = "verb" + temp2.toString();
+    vis_or_verb = "verb" + vv_b.toString();
   }
 
   if (sg_a > sg_b) {
-    const temp1 = sg_a - sg_b;
-    seq_or_glob = "seq" + temp1.toString();
+    seq_or_glob = "seq" + sg_a.toString();
   } else if (sg_b > sg_a) {
-    const temp2 = sg_b - sg_a;
-    seq_or_glob = "glo" + temp2.toString();
+    seq_or_glob = "glo" + sg_b.toString();
   }
 
   const questionnaireSubmission = {

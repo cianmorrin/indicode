@@ -3,6 +3,7 @@ import Popup from "reactjs-popup";
 import { Link, Redirect } from "react-router-dom";
 import "reactjs-popup/dist/index.css";
 import { connect } from "react-redux";
+import { setSidebar } from "../../actions/sidebar";
 import PropTypes from "prop-types";
 import LSOptions from "./LSOptions";
 import LSResults from "./LSResults";
@@ -30,6 +31,9 @@ export class Dashboard extends Component {
   componentDidMount() {
     this.props.getLearningStyleResults();
     this.props.getUserQuizResults();
+    if (!this.props.sidebar) {
+      this.props.setSidebar();
+    }
   }
 
   componentDidUpdate() {
@@ -343,4 +347,5 @@ export default connect(mapStateToProps, {
   getLearningStyleResults,
   getUserQuizResults,
   isStreakOn,
+  setSidebar,
 })(Dashboard);
