@@ -762,6 +762,87 @@
   margin-bottom: 2vh;
 }
 
+.faqtitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 4vh;
+}
+
+.qa {
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+  height: 20vh;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 50%);
+  border-radius: 20px;
+}
+.q {
+  display: flex;
+  height: 10vh;
+}
+
+.qdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 5rem;
+  height: 10vh;
+  font-size: 50px;
+  color: white;
+  border-radius: 20px 0px 0px 0px;
+}
+
+.qd1 {
+  background: linear-gradient(353deg, #ff0400, #980400);
+}
+
+.qd2 {
+  background: linear-gradient(340deg, #26c6da, #007280);
+}
+
+.qd3 {
+  background: linear-gradient(360deg, #66bb6a, #43a047);
+}
+
+.qd4 {
+  background: linear-gradient(335deg, #ab47bc, #6c0388);
+}
+
+.qt {
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  background: rgb(237, 232, 232);
+  width: 100%;
+  font-size: 24px;
+  color: #000;
+  border-radius: 0px 20px 0px 0px;
+}
+
+.a {
+  display: flex;
+  height: 10vh;
+  border-radius: 20px;
+}
+
+.adiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 5rem;
+  height: 10vh;
+  font-size: 50px;
+  border-radius: 0px 0px 0px 20px;
+  border-right: 0.5px solid lightgray;
+}
+
+.at {
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  border-radius: 20px;
+  font-size: 18px;
+}
+
 @media only screen and (max-width: 1770px) {
   .bottom-panels {
     width: 24rem;
