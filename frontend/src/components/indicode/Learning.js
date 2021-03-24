@@ -252,6 +252,10 @@ export class Learning extends Component {
             case "act7":
             case "act6":
             case "act5":
+            case "act4":
+            case "act3":
+            case "act2":
+            case "act1":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -319,6 +323,10 @@ export class Learning extends Component {
             case "ref7":
             case "ref6":
             case "ref5":
+            case "ref4":
+            case "ref3":
+            case "ref2":
+            case "ref1":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -413,6 +421,11 @@ export class Learning extends Component {
             case "vis8":
             case "vis7":
             case "vis6":
+            case "vis5":
+            case "vis4":
+            case "vis3":
+            case "vis2":
+            case "vis1":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -507,6 +520,11 @@ export class Learning extends Component {
             case "verb8":
             case "verb7":
             case "verb6":
+            case "verb5":
+            case "verb4":
+            case "verb3":
+            case "verb2":
+            case "verb1":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -586,6 +604,11 @@ export class Learning extends Component {
             case "sen8":
             case "sen7":
             case "sen6":
+            case "sen5":
+            case "sen4":
+            case "sen3":
+            case "sen2":
+            case "sen1":
               learning_content_comp = (
                 <div>
                   {header_comp}
@@ -683,6 +706,11 @@ export class Learning extends Component {
             case "int8":
             case "int7":
             case "int6":
+            case "int5":
+            case "int4":
+            case "int3":
+            case "int2":
+            case "int1":
               learning_content_comp = (
                 <div>
                   {header_comp}
