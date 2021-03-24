@@ -41,6 +41,8 @@ export const submitQuestionnaire = (questionnaireResults) => (
   dispatch,
   getState
 ) => {
+  console.log("GETTING CALLED");
+
   let results = [];
   for (const [key, value] of Object.entries(questionnaireResults)) {
     results.push(value);
@@ -153,6 +155,7 @@ export const submitQuestionnaire = (questionnaireResults) => (
       tokenConfig(getState)
     )
     .then((res) => {
+      console.log("questionnaire submitted");
       dispatch(
         createMessage({ submitQuestionnaire: "Questionnaire Submitted" })
       );
@@ -161,9 +164,10 @@ export const submitQuestionnaire = (questionnaireResults) => (
         payload: res.data,
       });
     })
-    .catch((err) =>
-      dispatch(returnErrors(err.response.data, err.response.status))
-    );
+    .catch((err) => {
+      console.log("questionnaire failing");
+      dispatch(returnErrors(err.response.data, err.response.status));
+    });
 };
 
 // SUBMIT LEARNING STYLE

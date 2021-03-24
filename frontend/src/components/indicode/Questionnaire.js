@@ -37,10 +37,6 @@ export class Questionnaire extends Component {
 
   onSubmitQ = () => {
     this.props.submitQuestionnaire(this.state);
-    this.setState(() => ({
-      finishedQuestionnaire: true,
-    }));
-    timedRefresh(100);
     window.location.reload();
   };
 
@@ -69,8 +65,6 @@ export class Questionnaire extends Component {
 
     let showSubmit = false;
     if (this.state.currentPage == 8) {
-      console.log("the state", this.state);
-      console.log("state lenght", Object.keys(this.state).length);
       showSubmit = true;
     }
 
@@ -84,7 +78,7 @@ export class Questionnaire extends Component {
     let submitComp = (
       <div>
         <button
-          onSubmit={this.onSubmitQ}
+          onClick={this.onSubmitQ}
           disabled={questionnaireCompleted ? false : true}
           className={
             questionnaireCompleted
@@ -99,7 +93,7 @@ export class Questionnaire extends Component {
 
     return (
       <div className="container">
-        <form onSubmit={this.onSubmit}>
+        <div>
           <div className="header-arrow">
             <span className="back-arrow" onClick={this.arrowClick}>
               {<BiIcons.BiArrowBack />}
@@ -113,7 +107,7 @@ export class Questionnaire extends Component {
             checked={this.state}
           />
           {showSubmit ? submitComp : ""}
-        </form>
+        </div>
         <Pagination
           questionsPerPage={this.state.questionsPerPage}
           totalQs={this.props.questionnaire.length}

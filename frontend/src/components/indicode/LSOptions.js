@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LSModal from "./LSModal";
 import { submitLearningStyle } from "../../actions/questionnaire";
+import { getLearningStyleResults } from "../../actions/questionnaire";
 
 export class LSOptions extends Component {
   static propTypes = {
@@ -22,7 +23,6 @@ export class LSOptions extends Component {
   };
 
   submitStandard = () => {
-    console.log("submit Standard");
     const learningStyleSubmission = {
       af_a: 6,
       af_b: 5,
@@ -124,6 +124,10 @@ export class LSOptions extends Component {
 
 const mapStateToProps = (state) => ({
   sidebar: state.sidebar.sidebar,
+  learningStyleResults: state.style.learningStyleResults,
 });
 
-export default connect(mapStateToProps, { submitLearningStyle })(LSOptions);
+export default connect(mapStateToProps, {
+  submitLearningStyle,
+  getLearningStyleResults,
+})(LSOptions);
