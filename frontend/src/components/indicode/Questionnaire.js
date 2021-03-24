@@ -35,12 +35,13 @@ export class Questionnaire extends Component {
     });
   };
 
-  onSubmit = (e) => {
-    e.preventDefault();
+  onSubmitQ = () => {
     this.props.submitQuestionnaire(this.state);
     this.setState(() => ({
       finishedQuestionnaire: true,
     }));
+    timedRefresh(100);
+    window.location.reload();
   };
 
   setCurrentPage = (pageNumber) => {
@@ -66,18 +67,35 @@ export class Questionnaire extends Component {
       indexOfLastQ
     );
 
+    let showSubmit = false;
+    if (this.state.currentPage == 8) {
+      console.log("the state", this.state);
+      console.log("state lenght", Object.keys(this.state).length);
+      showSubmit = true;
+    }
+
+    let stateLen = Object.keys(this.state).length;
+    let questionnaireCompleted = false;
+
+    stateLen > 46
+      ? (questionnaireCompleted = true)
+      : (questionnaireCompleted = false);
+
     let submitComp = (
-      <div className="form-group">
-        <button type="submit" className="btn btn-primary">
+      <div>
+        <button
+          onSubmit={this.onSubmitQ}
+          disabled={questionnaireCompleted ? false : true}
+          className={
+            questionnaireCompleted
+              ? "btn btn-primary"
+              : "btn btn-primary disabled"
+          }
+        >
           Submit
         </button>
       </div>
     );
-
-    let showSubmit = false;
-    if (this.state.currentPage == 8) {
-      showSubmit = true;
-    }
 
     return (
       <div className="container">
