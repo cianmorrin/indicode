@@ -31,9 +31,6 @@ export class Dashboard extends Component {
   componentDidMount() {
     this.props.getLearningStyleResults();
     this.props.getUserQuizResults();
-    if (!this.props.sidebar) {
-      this.props.setSidebar();
-    }
   }
 
   componentDidUpdate() {
@@ -211,19 +208,22 @@ export class Dashboard extends Component {
                     Python but in the way you want to be taught!
                   </span>{" "}
                   <span>
-                    Fill out out the questionnaire to determine your learning
-                    style and start the Python learning
+                    Adjust your Learning Style in the Portal in order to suit
+                    your needs, happy coding!
                   </span>
                 </p>
                 <hr className="main-panel-hr"></hr>
                 <div className="card-body main-cb">
-                  <a
-                    className="btn lg btn-secondary main-panel-btn"
-                    href="#"
-                    role="button"
-                  >
-                    Learn more on Indicode
-                  </a>
+                  <Link to="/explore">
+                    <span
+                      className="btn lg btn-secondary main-panel-btn"
+                      href="#"
+                      role="button"
+                    >
+                      Learn more on Indicode
+                    </span>
+                  </Link>
+
                   <Link to="/learning">
                     <span className="main-panel-arrow" href="#" role="button">
                       {`Continue Learning Path `}{" "}
