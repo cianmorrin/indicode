@@ -226,6 +226,7 @@ export class Learning extends Component {
                           showExtraImg ? "act-ref-img sml" : "act-ref-img"
                         }
                         src={firstActiveImg}
+                        alt="Img for Active Learner"
                       />
                     </div>
                     <p>{actRefLesson.active_3_2}</p>
@@ -237,6 +238,7 @@ export class Learning extends Component {
                             showExtraImg ? "act-ref-img sml" : "act-ref-img"
                           }
                           src={Lesson_2_Operators}
+                          alt="Img for Active Learner"
                         />
                       </div>
                     ) : (
@@ -267,6 +269,7 @@ export class Learning extends Component {
                           showExtraImg ? "act-ref-img sml" : "act-ref-img"
                         }
                         src={firstActiveImg}
+                        alt="Img for Active Learner"
                       />
                     </div>
                     <p>{actRefLesson.active_2_2}</p>
@@ -278,6 +281,7 @@ export class Learning extends Component {
                             showExtraImg ? "act-ref-img sml" : "act-ref-img"
                           }
                           src={Lesson_2_Operators}
+                          alt="Img for Active Learner"
                         />
                       </div>
                     ) : (
@@ -310,7 +314,11 @@ export class Learning extends Component {
                       ""
                     ) : (
                       <div>
-                        <img className="ref-img" src={Var_Print} />
+                        <img
+                          className="ref-img"
+                          src={Var_Print}
+                          alt="Img for Active Learner"
+                        />
                       </div>
                     )}
                     <p>{actRefLesson.reflective_3_3}</p>
@@ -335,6 +343,7 @@ export class Learning extends Component {
                       <img
                         className={showExtraImg ? "ref-img sml" : "ref-img"}
                         src={firstReflectiveImg}
+                        alt="Img for Active Learner"
                       />
                     </div>
                     <p>{actRefLesson.reflective_2_2}</p>
@@ -342,7 +351,11 @@ export class Learning extends Component {
                       ""
                     ) : (
                       <div>
-                        <img className="ref-img" src={Var_Print} />
+                        <img
+                          className="ref-img"
+                          src={Var_Print}
+                          alt="Img for Active Learner"
+                        />
                       </div>
                     )}
                     <p>{actRefLesson.reflective_2_3}</p>
@@ -387,7 +400,11 @@ export class Learning extends Component {
                       <div>
                         <p>{visVerbLesson.visual_3_1}</p>{" "}
                         {showExtraImg ? (
-                          <img className="if-code" src={IfCode} />
+                          <img
+                            className="if-code"
+                            src={IfCode}
+                            alt="Img of If Statement"
+                          />
                         ) : (
                           ""
                         )}
@@ -401,6 +418,7 @@ export class Learning extends Component {
                       <img
                         className={showExtraImg ? "vis-img lg" : "vis-img"}
                         src={visualImg2}
+                        alt="Img for Visual Learner"
                       />
                       <p>{visVerbLesson.visual_3_2}</p>
                     </div>
@@ -409,6 +427,7 @@ export class Learning extends Component {
                       <img
                         className={showExtraImg ? "if-else-code" : "vis-img"}
                         src={visualImg3}
+                        alt="Img for Visual Learner"
                       />
                     </div>
                     <p>{visVerbLesson.active_1_1}</p>
@@ -433,7 +452,11 @@ export class Learning extends Component {
                       <div>
                         <p>{visVerbLesson.visual_2_1}</p>{" "}
                         {showExtraImg ? (
-                          <img className="if-code" src={IfCode} />
+                          <img
+                            className="if-code"
+                            src={IfCode}
+                            alt="Img of If Else Code"
+                          />
                         ) : (
                           ""
                         )}
@@ -441,12 +464,14 @@ export class Learning extends Component {
                       <img
                         className={showExtraImg ? "vis-img lg" : "vis-img"}
                         src={visualImg1}
+                        alt="Img for Visual Learner"
                       />
                     </div>
                     <div className="visual-images">
                       <img
                         className={showExtraImg ? "vis-img lg" : "vis-img"}
                         src={visualImg2}
+                        alt="Img for Visual Learner"
                       />
                       <p>{visVerbLesson.visual_2_2}</p>
                     </div>
@@ -455,6 +480,7 @@ export class Learning extends Component {
                       <img
                         className={showExtraImg ? "if-else-code" : "vis-img"}
                         src={visualImg3}
+                        alt="Img for Visual Learner"
                       />
                     </div>
                     <p>{visVerbLesson.active_1_1}</p>
@@ -480,6 +506,7 @@ export class Learning extends Component {
                       <img
                         className={showExtraImg ? "syntax-img" : "ver-img"}
                         src={verbalImg1}
+                        alt="Img for Verbal Learner"
                       />
                     </div>
                     <div
@@ -493,6 +520,7 @@ export class Learning extends Component {
                           showExtraImg ? "if-else-code left" : "ver-img"
                         }
                         src={verbalImg2}
+                        alt="Img for Verbal Learner"
                       />
                       <p>{visVerbLesson.verbal_3_2}</p>
                     </div>
@@ -506,7 +534,11 @@ export class Learning extends Component {
                         ""
                       ) : (
                         <div>
-                          <img className="ver-img" src={BooleanVerbal} />
+                          <img
+                            className="ver-img"
+                            src={BooleanVerbal}
+                            alt="Img of Boolean for Verbal Learner"
+                          />
                         </div>
                       )}
                       <p>{visVerbLesson.verbal_3_3}</p>{" "}
@@ -538,6 +570,7 @@ export class Learning extends Component {
                       <img
                         className={showExtraImg ? "syntax-img" : "ver-img"}
                         src={verbalImg1}
+                        alt="Img for Verbal Learner"
                       />
                     </div>
                     <div
@@ -551,6 +584,7 @@ export class Learning extends Component {
                           showExtraImg ? "if-else-code left" : "ver-img"
                         }
                         src={verbalImg2}
+                        alt="Img for Verbal Learner"
                       />
                       <p>{visVerbLesson.verbal_2_2}</p>
                     </div>
@@ -564,7 +598,11 @@ export class Learning extends Component {
                         ""
                       ) : (
                         <div>
-                          <img className="ver-img" src={BooleanVerbal} />
+                          <img
+                            className="ver-img"
+                            src={BooleanVerbal}
+                            alt="Img of Boolean for Verbal Learner"
+                          />
                         </div>
                       )}
                       <p>{visVerbLesson.verbal_1_3}</p>{" "}
@@ -854,7 +892,11 @@ export class Learning extends Component {
                   <h5>Make sure to read before starting</h5>
                   <hr className="my-2"></hr>
                 </div>
-                <img className="instructions-img" src={Instructions} />
+                <img
+                  className="instructions-img"
+                  src={Instructions}
+                  alt="instructions"
+                />
                 <hr className="my-2"></hr>
                 <div className="card start-lesson-card border-secondary mb-3">
                   <div>

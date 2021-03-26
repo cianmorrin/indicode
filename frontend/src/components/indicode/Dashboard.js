@@ -289,7 +289,11 @@ export class Dashboard extends Component {
             >
               <div className="dashboard-side-panels">
                 <div className="side-panel-title">Write some code!</div>
-                <img className="side-panels-img pencil" src={Pencil} />
+                <img
+                  className="side-panels-img pencil"
+                  src={Pencil}
+                  alt="pencil image"
+                />
                 <div className="side-panel-div">
                   <button
                     id="openCodePortal"
@@ -308,7 +312,11 @@ export class Dashboard extends Component {
               <div className="dashboard-side-panels">
                 <div className="side-panel-title streak">IndiCoding Streak</div>
                 <div className="side-panel-streak-content">
-                  <img className="side-panels-img" src={Calendar} />
+                  <img
+                    className="side-panels-img"
+                    src={Calendar}
+                    alt="calendar image"
+                  />
                   <div className="streak-panel-num">
                     {currentStreakScore}
                     <span className="streak-text">
@@ -321,7 +329,11 @@ export class Dashboard extends Component {
               <div className="dashboard-side-panels">
                 <div className="side-panel-title trophy">Awards Won</div>
                 <div className="side-panel-streak-content">
-                  <img className="side-panels-img t" src={Trophy} />
+                  <img
+                    className="side-panels-img t"
+                    src={Trophy}
+                    alt="trophy image"
+                  />
                   {trophies}
                 </div>
               </div>

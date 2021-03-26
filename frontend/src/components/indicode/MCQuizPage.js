@@ -54,7 +54,7 @@ export class MCQuizPage extends Component {
               {showFinalImg ? (
                 <div>
                   {" "}
-                  <img className="final-q" src={FinalQ} />
+                  <img className="final-q" src={FinalQ} alt="final q img" />
                 </div>
               ) : (
                 ""
