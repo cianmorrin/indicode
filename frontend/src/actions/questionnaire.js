@@ -18,7 +18,9 @@ export const getQuestionnaire = () => (dispatch, getState) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log("error retreiving questionnaire content"));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // GET LS RESULTS
@@ -41,8 +43,6 @@ export const submitQuestionnaire = (questionnaireResults) => (
   dispatch,
   getState
 ) => {
-  console.log("GETTING CALLED");
-
   let results = [];
   for (const [key, value] of Object.entries(questionnaireResults)) {
     results.push(value);
@@ -155,7 +155,6 @@ export const submitQuestionnaire = (questionnaireResults) => (
       tokenConfig(getState)
     )
     .then((res) => {
-      console.log("questionnaire submitted");
       dispatch(
         createMessage({ submitQuestionnaire: "Questionnaire Submitted" })
       );
@@ -165,7 +164,6 @@ export const submitQuestionnaire = (questionnaireResults) => (
       });
     })
     .catch((err) => {
-      console.log("questionnaire failing");
       dispatch(returnErrors(err.response.data, err.response.status));
     });
 };
@@ -177,11 +175,7 @@ export const submitLearningStyle = (learningStyleScore) => (
 ) => {
   let act_or_ref, sen_or_int, vis_or_verb, seq_or_glob;
 
-  console.log("action learningStyleScore", learningStyleScore);
-
   const { af_a, af_b, si_a, si_b, vv_a, vv_b, sg_a, sg_b } = learningStyleScore;
-
-  console.log("af_a, af_b", af_a, af_b);
 
   if (af_a > af_b) {
     act_or_ref = "act" + af_a.toString();

@@ -21,7 +21,9 @@ export const getLearning = () => (dispatch, getState) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log("error retreiving learning content"));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // GET MCQUIZ MATERIAL
@@ -34,7 +36,9 @@ export const getMCQuiz = () => (dispatch, getState) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log("error retreiving quiz content"));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const submitQuiz = (quizResults, lessonNum, streakScore) => (
@@ -77,7 +81,9 @@ export const getUserQuizResults = () => (dispatch, getState) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const isStreakOn = (streakOn) => (dispatch, getState) => {
@@ -88,7 +94,6 @@ export const isStreakOn = (streakOn) => (dispatch, getState) => {
 };
 
 export const whatQuiz = (lessonNum) => (dispatch, getState) => {
-  console.log("lessonNum in action ", lessonNum);
   dispatch({
     type: WHAT_QUIZ,
     payload: lessonNum,

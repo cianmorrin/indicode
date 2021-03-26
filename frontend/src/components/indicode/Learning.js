@@ -167,7 +167,6 @@ export class Learning extends Component {
 
       let actRefLesson, visVerbLesson, senIntLesson;
       for (let lc of learningContent) {
-        console.log("lc", lc);
         if (theMod > 0) {
           if (lc.id === 4) {
             actRefLesson = lc;
