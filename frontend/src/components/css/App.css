@@ -928,6 +928,14 @@
   width: 85%;
 }
 
+.log-reg-title {
+  display: flex;
+  justify-content: center;
+  font-size: 45px;
+  color: black;
+  padding-bottom: 20px;
+}
+
 @media only screen and (max-width: 1770px) {
   .bottom-panels {
     width: 24rem;

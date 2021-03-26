@@ -29,6 +29,7 @@ export class Login extends Component {
     const { username, password } = this.state;
     return (
       <div className="container login-reg-container">
+        <div className="log-reg-title">IndiCode</div>
         <div className="col-md-5 m-auto">
           <div className="card card-body">
             <h2 className="text-center">Login</h2>

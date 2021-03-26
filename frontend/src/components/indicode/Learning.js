@@ -193,10 +193,9 @@ export class Learning extends Component {
 
       switch (this.state.currentPage) {
         case 1:
-          console.log("Learning Comp learning array", this.props.learning);
-          title = this.props.learning[theMod].module;
-          submodule = this.props.learning[theMod].sub_module;
-          intro = this.props.learning[theMod].intro;
+          title = actRefLesson.module;
+          submodule = actRefLesson.sub_module;
+          intro = actRefLesson.intro;
           header_comp = (
             <div className="learning-content-header">
               <h1>
@@ -358,9 +357,9 @@ export class Learning extends Component {
           }
           break;
         case 2:
-          title = this.props.learning[theMod + 1].module;
-          submodule = this.props.learning[theMod + 1].sub_module;
-          intro = this.props.learning[theMod + 1].intro;
+          title = visVerbLesson.module;
+          submodule = visVerbLesson.sub_module;
+          intro = visVerbLesson.intro;
           header_comp = (
             <Fragment>
               <div className="learning-content-header">
@@ -581,9 +580,9 @@ export class Learning extends Component {
           }
           break;
         case 3:
-          title = this.props.learning[theMod + 2].module;
-          submodule = this.props.learning[theMod + 2].sub_module;
-          intro = this.props.learning[theMod + 2].intro;
+          title = senIntLesson.module;
+          submodule = senIntLesson.sub_module;
+          intro = senIntLesson.intro;
           header_comp = (
             <div className="learning-content-header">
               <h1>

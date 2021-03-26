@@ -52,9 +52,12 @@ export class LSOptions extends Component {
           </button>
           <h4 className="alert-heading">Time to choose!</h4>
           <p className="mb-0">
-            We want you assess your learning style! However if you would prefer
-            to dynamically assign it yourself or take the standard approach,
-            that's perfectly ok!
+            IndiCode is an E-Learning application which teaches Python. But
+            that's not all, we want to assess your learning style to teach in a
+            way that suits you. For the most accurate assessment we recommend
+            option 1! However if you would prefer to dynamically assign it
+            yourself (Option 2) or take the standard approach (Option 1), that's
+            perfectly ok!
           </p>
         </div>
         <div className="ls-option-panels mt-4">
@@ -64,8 +67,8 @@ export class LSOptions extends Component {
               <h4 className="card-title">Questionnaire</h4>
               <p className="card-text">
                 Fill out the Index of Learning Style Questionnaire in order to
-                categories your learning style and have a fully immersed
-                learning experience
+                determine your style and have a personalised learning experience
+                (Recommended)
               </p>
               <Link to={"./questionnaire"}>
                 <span

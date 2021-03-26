@@ -42,6 +42,7 @@ export class Register extends Component {
     const { username, email, password, password2 } = this.state;
     return (
       <div className="container login-reg-container">
+        <div className="log-reg-title">IndiCode</div>
         <div className="col-md-5 m-auto">
           <div className="card card-body">
             <h2 className="text-center">Register</h2>
